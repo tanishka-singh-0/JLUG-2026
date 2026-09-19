@@ -1,45 +1,15 @@
-import Image from "next/image";
+import Link from "next/link";
 import InteractiveWordmark from "@/components/InteractiveWordmark";
-
-function Crosshairs() {
-  return (
-    <div className="fixed inset-0 pointer-events-none z-50 hidden md:block">
-      <div className="absolute top-8 left-8 w-4 h-4 border-t border-l border-jlug-gray-2" />
-      <div className="absolute top-8 right-8 w-4 h-4 border-t border-r border-jlug-gray-2" />
-      <div className="absolute bottom-8 left-8 w-4 h-4 border-b border-l border-jlug-gray-2" />
-      <div className="absolute bottom-8 right-8 w-4 h-4 border-b border-r border-jlug-gray-2" />
-      <div className="absolute top-0 bottom-0 left-12 w-px bg-jlug-line" />
-      <div className="absolute top-0 bottom-0 right-12 w-px bg-jlug-line" />
-    </div>
-  );
-}
-
-function GridBackground() {
-  return (
-    <div 
-      className="fixed inset-0 pointer-events-none z-0 opacity-[0.15]" 
-      style={{ 
-        backgroundImage: `
-          linear-gradient(to right, var(--color-jlug-line) 1px, transparent 1px),
-          linear-gradient(to bottom, var(--color-jlug-line) 1px, transparent 1px)
-        `, 
-        backgroundSize: '48px 48px' 
-      }} 
-    />
-  );
-}
+import { NAV_ITEMS } from "@/lib/navigation";
 
 export default function Home() {
   return (
-    <div className="relative flex flex-col min-h-screen text-jlug-white selection:bg-jlug-accent selection:text-jlug-black overflow-x-hidden">
-      <GridBackground />
-      <Crosshairs />
-
+    <div className="relative flex flex-col text-jlug-white selection:bg-jlug-accent selection:text-jlug-black overflow-x-hidden">
       {/* CONTINUOUS ENVIRONMENT WRAPPER */}
-      <div className="relative z-10 w-full max-w-[1440px] mx-auto border-l border-r border-jlug-line bg-jlug-black/80 backdrop-blur-sm min-h-screen">
+      <div className="relative z-10 w-full max-w-[1440px] mx-auto border-l border-r border-jlug-line bg-jlug-black/80 backdrop-blur-sm">
         
         {/* HERO — FALLING BLOCK CONSTRUCTION */}
-        <section className="relative min-h-screen flex flex-col border-b border-jlug-line overflow-hidden">
+        <section className="relative min-h-[calc(100vh-3.5rem)] flex flex-col border-b border-jlug-line overflow-hidden">
 
           {/* Top metadata strip */}
           <div className="flex justify-between items-center px-6 md:px-12 py-4 border-b border-jlug-line/50 font-mono text-[0.6rem] md:text-[0.7rem] text-jlug-gray-2 uppercase tracking-widest z-20">
@@ -88,7 +58,7 @@ export default function Home() {
 
         {/* WHAT WE DO / THE DIRECTORY */}
         <section className="relative border-b border-jlug-line">
-          <div className="sticky top-0 bg-jlug-black border-b border-jlug-line z-20 px-6 py-3 flex justify-between font-mono text-xs text-jlug-gray-1 uppercase tracking-widest">
+          <div className="sticky top-14 bg-jlug-black border-b border-jlug-line z-20 px-6 py-3 flex justify-between font-mono text-xs text-jlug-gray-1 uppercase tracking-widest">
             <span>02 // DIRECTORY</span>
             <span>LS -LA /DOMAINS</span>
           </div>
@@ -121,11 +91,66 @@ export default function Home() {
           </div>
         </section>
 
+        {/* SECTIONS / SITE INDEX — entry points to the dedicated pages */}
+        <section className="relative border-b border-jlug-line">
+          <div className="sticky top-14 bg-jlug-black border-b border-jlug-line z-20 px-6 py-3 flex justify-between font-mono text-xs text-jlug-gray-1 uppercase tracking-widest">
+            <span>03 // SECTIONS</span>
+            <span>CD /</span>
+          </div>
+
+          <div className="px-6 md:px-24 pt-20 pb-8">
+            <h2 className="text-5xl md:text-8xl font-semibold tracking-tight uppercase">
+              GO DEEPER
+            </h2>
+            <p className="mt-6 max-w-xl text-lg text-jlug-gray-1">
+              Four rooms off the main hall. Each one has its own page.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 border-t border-jlug-line">
+            {NAV_ITEMS.map((item, i) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={`group relative flex flex-col justify-between gap-12 border-b border-jlug-line p-8 md:p-12 transition-colors hover:bg-jlug-white hover:text-jlug-black focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-jlug-accent ${
+                  i % 2 === 0 ? "md:border-r md:border-jlug-line" : ""
+                }`}
+              >
+                <div className="flex items-baseline justify-between font-mono text-[0.7rem] uppercase tracking-widest text-jlug-gray-2 group-hover:text-jlug-black">
+                  <span>SEC_{item.index}</span>
+                  <span>{item.meta}</span>
+                </div>
+
+                <div>
+                  <h3 className="text-3xl md:text-5xl font-bold uppercase tracking-tight leading-[0.95]">
+                    {item.title}
+                  </h3>
+                  <p className="mt-5 max-w-md text-base text-jlug-gray-1 group-hover:text-jlug-black/70">
+                    {item.blurb}
+                  </p>
+                </div>
+
+                <div className="flex items-center justify-between border-t border-jlug-line group-hover:border-jlug-black/20 pt-5 font-mono text-xs uppercase tracking-widest">
+                  <span className="text-jlug-gray-1 group-hover:text-jlug-black">
+                    {item.href}
+                  </span>
+                  <span
+                    aria-hidden="true"
+                    className="text-jlug-accent group-hover:text-jlug-black group-hover:translate-x-1 transition-transform"
+                  >
+                    {"-->"}
+                  </span>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </section>
+
         {/* PEOPLE / ID CARDS */}
         <section className="relative py-32 border-b border-jlug-line bg-jlug-ink">
           <div className="px-6 md:px-24 mb-24">
             <div className="font-mono text-xs text-jlug-accent mb-4 uppercase tracking-widest">
-              03 // PERSONNEL
+              04 // PERSONNEL
             </div>
             <h2 className="text-5xl md:text-8xl font-semibold tracking-tight">THE BUILDERS</h2>
           </div>
@@ -164,10 +189,13 @@ export default function Home() {
               </div>
             </div>
             
-            {/* Decorator label */}
-            <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 font-mono text-xs border border-jlug-line px-4 py-2 hover:bg-jlug-white hover:text-jlug-black transition-colors cursor-pointer">
+            {/* Jump to the full member directory */}
+            <Link
+              href="/members"
+              className="absolute bottom-10 left-1/2 transform -translate-x-1/2 font-mono text-xs border border-jlug-line px-4 py-2 hover:bg-jlug-white hover:text-jlug-black transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-jlug-accent"
+            >
               LOAD_ALL_RECORDS.SH
-            </div>
+            </Link>
           </div>
         </section>
 
@@ -176,13 +204,16 @@ export default function Home() {
           <div className="px-6 md:px-24 mb-16 flex flex-col md:flex-row md:items-end justify-between">
             <div>
               <div className="font-mono text-xs text-jlug-accent mb-4 uppercase tracking-widest">
-                04 // ARCHIVE
+                05 // ARCHIVE
               </div>
               <h2 className="text-5xl md:text-8xl font-semibold tracking-tight">EVENT LOG</h2>
             </div>
-            <div className="font-mono text-xs text-jlug-gray-1 uppercase mt-8 md:mt-0">
-              FILTER: ALL_YEARS
-            </div>
+            <Link
+              href="/events"
+              className="font-mono text-xs text-jlug-gray-1 uppercase mt-8 md:mt-0 border border-jlug-line px-4 py-2 hover:bg-jlug-white hover:text-jlug-black transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-jlug-accent"
+            >
+              VIEW ALL EVENTS {"-->"}
+            </Link>
           </div>
 
           <div className="px-6 md:px-24">
@@ -238,9 +269,12 @@ export default function Home() {
               YOU COULD<br/>BE HERE.
             </h2>
             <div className="relative">
-              <a href="#" className="inline-block bg-jlug-accent text-jlug-black font-mono font-bold text-lg md:text-xl px-12 py-6 hover:bg-jlug-white transition-colors">
+              <Link
+                href="/join"
+                className="inline-block bg-jlug-accent text-jlug-black font-mono font-bold text-lg md:text-xl px-12 py-6 hover:bg-jlug-white transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-jlug-white"
+              >
                 EXECUTE /JOIN
-              </a>
+              </Link>
               {/* ASCII decorative brackets */}
               <div className="absolute -left-8 top-1/2 -translate-y-1/2 text-jlug-gray-2 hidden md:block">
                 {`>[`}
@@ -265,10 +299,16 @@ export default function Home() {
             <div className="flex flex-wrap gap-16 lg:gap-32">
               <div className="flex flex-col gap-4">
                 <div className="text-jlug-white border-b border-jlug-line pb-2 mb-2">PAGES</div>
-                <a href="#" className="hover:text-jlug-white transition-colors">/HOME</a>
-                <a href="#" className="hover:text-jlug-white transition-colors">/EVENTS</a>
-                <a href="#" className="hover:text-jlug-white transition-colors">/HALL_OF_FAME</a>
-                <a href="#" className="hover:text-jlug-white transition-colors">/MEMBERS</a>
+                <Link href="/" className="hover:text-jlug-white transition-colors">/HOME</Link>
+                {NAV_ITEMS.map((item) => (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    className="hover:text-jlug-white transition-colors"
+                  >
+                    {item.href.toUpperCase().replace("-", "_")}
+                  </Link>
+                ))}
               </div>
               <div className="flex flex-col gap-4">
                 <div className="text-jlug-white border-b border-jlug-line pb-2 mb-2">NETWORK</div>

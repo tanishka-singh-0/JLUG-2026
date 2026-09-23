@@ -18,7 +18,7 @@ export default function ManifestoSection() {
             We learn things, build things, break things, and teach each other what we figured out.
           </p>
           <p className="text-lg md:text-xl text-jlug-gray-1 leading-[1.6]">
-            Founded on 7th September 2019, JLUG is the official techno-cultural club of Jabalpur Engineering College. Originally rooted in Linux and FOSS, we've evolved into a vibrant community where technology, creativity, and culture intersect. From hands-on tech workshops to cultural fests, we empower students to explore, build, and express.
+            Founded on 7th September 2019, JLUG is the official techno-cultural club of Jabalpur Engineering College. Originally rooted in Linux and FOSS, we&apos;ve evolved into a vibrant community where technology, creativity, and culture intersect. From hands-on tech workshops to cultural fests, we empower students to explore, build, and express.
           </p>
           <div className="mt-12 pt-6 border-t border-jlug-line flex justify-between font-mono text-xs text-jlug-gray-1">
             <span>FILE: MANIFESTO.TXT</span>

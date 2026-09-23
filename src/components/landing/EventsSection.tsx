@@ -106,7 +106,7 @@ export default function EventsSection() {
                 THE JECX<br/>TIMES
               </h3>
               <p className="text-xl text-jlug-gray-1 mb-8 max-w-md">
-                JEC's very own virtual newsletter. Launched on 31st July 2023. Aimed at updating all with upcoming events and nourishing the history of JEC.
+                JEC&apos;s very own virtual newsletter. Launched on 31st July 2023. Aimed at updating all with upcoming events and nourishing the history of JEC.
               </p>
               <table className="font-mono text-sm w-full max-w-xs text-jlug-gray-2">
                 <tbody>

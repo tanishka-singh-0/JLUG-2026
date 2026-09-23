@@ -43,18 +43,18 @@ export default function MembersRoster({ initialMembers }: MembersRosterProps) {
     <div className="relative min-h-screen">
       {/* Header */}
       <header className="site-header max-w-4xl mx-auto px-6 pt-16 pb-8">
-        <div className="flex items-center justify-between font-mono text-xs uppercase tracking-widest text-[var(--slate)] mb-4">
+        <div className="flex items-center justify-between font-mono text-xs uppercase tracking-widest text-jlug-gray-1 mb-4">
           <span>JLUG // ROSTER</span>
-          <span className="site-header__badge bg-[var(--navy)] text-[var(--frost)] border border-[var(--steel)] px-3 py-1 rounded-full font-semibold">
+          <span className="site-header__badge bg-jlug-black text-jlug-white border border-jlug-line px-3 py-1 rounded-full font-semibold">
             {initialMembers.length} ACTIVE MEMBERS
           </span>
         </div>
 
-        <h1 className="font-display text-4xl sm:text-6xl font-bold tracking-tight text-[var(--frost)]">
+        <h1 className="font-display text-4xl sm:text-6xl font-bold tracking-tight text-jlug-white">
           The people building it
         </h1>
 
-        <p className="mt-4 max-w-xl font-sans text-base text-[var(--mist)] leading-relaxed">
+        <p className="mt-4 max-w-xl font-sans text-base text-jlug-gray-2 leading-relaxed">
           A community of engineers, designers, and maintainers driving open-source culture at Jabalpur Engineering College. Tap or hover a card to explore.
         </p>
       </header>

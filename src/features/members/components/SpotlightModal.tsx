@@ -61,63 +61,63 @@ export default function SpotlightModal({ member, onClose }: SpotlightModalProps)
 
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
-      {/* Dimmed Blurred Backdrop */}
+      {/* Dimmed Backdrop */}
       <div
         onClick={onClose}
-        className="fixed inset-0 bg-[#0a1324]/85 backdrop-blur-md transition-opacity duration-300"
+        className="fixed inset-0 bg-jlug-black/90 transition-opacity duration-300"
         aria-hidden="true"
       />
 
-      {/* Expanded Lightbox Card */}
+      {/* Expanded Record Card */}
       <div
         role="dialog"
         aria-modal="true"
         aria-labelledby="spotlight-title"
-        className="relative z-[101] w-full max-w-lg bg-[var(--navy)] border border-[var(--slate)] rounded-2xl overflow-hidden shadow-2xl animate-scaleUp"
+        className="relative z-[101] w-full max-w-lg bg-jlug-black border border-jlug-line overflow-hidden animate-scaleUp"
       >
-        <div className="relative aspect-[16/10] w-full bg-[var(--steel)]">
+        <div className="relative aspect-[16/10] w-full bg-jlug-surface">
           <Image
             src={member.image}
             alt={member.name}
             fill
             unoptimized
-            className="object-cover"
+            className="object-cover grayscale"
           />
           <button
             ref={closeButtonRef}
             type="button"
             onClick={onClose}
             aria-label={`Close modal for ${member.name}`}
-            className="absolute top-4 right-4 w-10 h-10 rounded-full bg-[var(--navy)]/90 text-[var(--frost)] border border-[var(--steel)] flex items-center justify-center font-mono text-xl hover:bg-[var(--steel)] transition-colors cursor-pointer"
+            className="absolute top-4 right-4 w-10 h-10 border border-jlug-line bg-jlug-black text-jlug-white flex items-center justify-center font-mono text-xl hover:border-jlug-accent hover:text-jlug-accent transition-colors cursor-pointer"
           >
             ×
           </button>
         </div>
 
         <div className="p-6">
-          <div className="flex items-center justify-between border-b border-[var(--steel)] pb-3 mb-4">
-            <span className="font-mono text-xs uppercase tracking-widest text-[var(--mist)]">
+          <div className="flex items-center justify-between border-b border-jlug-line pb-3 mb-4">
+            <span className="font-mono text-xs uppercase tracking-widest text-jlug-gray-1">
               JLUG // {member.category.toUpperCase()}
             </span>
-            <span className="font-mono text-xs text-[var(--frost)] bg-[var(--steel)] px-2 py-0.5 rounded">
-              ACTIVE RECORD
+            <span className="font-mono text-xs text-jlug-accent border border-jlug-line px-2 py-0.5">
+              ACTIVE
             </span>
           </div>
 
-          <h2 id="spotlight-title" className="font-display text-2xl font-bold text-[var(--frost)]">
+          <h2 id="spotlight-title" className="font-display text-2xl font-bold uppercase text-jlug-white">
             {member.name}
           </h2>
-          <p className="font-mono text-sm text-[var(--mist)] font-semibold mt-1">
+          <p className="font-mono text-sm text-jlug-gray-1 font-semibold mt-1 uppercase tracking-wide">
             {member.role}
           </p>
 
-          <p className="font-mono text-xs text-[var(--frost)]/90 leading-relaxed mt-4 bg-[var(--void)]/60 p-4 border border-[var(--steel)] rounded-lg">
+          <p className="font-mono text-xs text-jlug-gray-2 leading-relaxed mt-4 bg-jlug-surface p-4 border border-jlug-line">
             {member.bio}
           </p>
 
           {member.socials && (
-            <div className="flex items-center justify-between mt-6 pt-4 border-t border-[var(--steel)] font-mono text-xs">
-              <span className="text-[var(--slate)] uppercase">CONNECT:</span>
+            <div className="flex items-center justify-between mt-6 pt-4 border-t border-jlug-line font-mono text-xs">
+              <span className="text-jlug-gray-2 uppercase">CONNECT:</span>
               <ul className="flex items-center gap-4">
                 {Object.entries(member.socials).map(([platform, url]) => (
                   <li key={platform}>
@@ -125,7 +125,7 @@ export default function SpotlightModal({ member, onClose }: SpotlightModalProps)
                       href={url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-[var(--mist)] hover:text-[var(--frost)] transition-colors"
+                      className="text-jlug-gray-1 hover:text-jlug-accent transition-colors"
                     >
                       <SocialIcon platform={platform} />
                     </a>

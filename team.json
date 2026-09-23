@@ -1,89 +1,66 @@
 [
     {
         "id": 1,
-        "name": "Akshat Tiwari",
+        "name": "AKSHAT TIWARI",
         "role": "President",
-        "image": "https://i.pravatar.cc/600?img=12",
-        "bio": "Keeps the club's roadmap honest and its late-night build sessions fuelled. Started three open-source projects that actually shipped."
+        "DEPARTMENT": "INDUSTRIAL AND PRODUCTION ENGINEERING",
+        "image": "/alumni/2026-27, heads/akshat.jpeg",
+        "bio": "Great leaders don't simply lead organizations they inspire people to dream bigger, innovate boldly, and achieve together."
     },
     {
         "id": 2,
-        "name": "",
-        "role": "Technical Lead",
-        "image": "https://i.pravatar.cc/600?img=47",
-        "bio": "Owns the club's infrastructure and reviews every pull request like it's going to production tomorrow — because it usually is."
+        "name": "CHITRANSH TIWARI",
+        "role": "VICE PRESIDENT",
+        "DEPARTMENT": "MECHANICAL ENGINEERING",
+        "image": "/alumni/2026-27, heads/chitransh.jpeg",
+        "bio": "Leadership is about inspiring others to believe in a vision and empowering them to achieve it together."
     },
     {
         "id": 3,
-        "name": "Kabir Sen",
-        "role": "Events Coordinator",
-        "category": "design-events",
-        "image": "https://i.pravatar.cc/600?img=33",
-        "bio": "Turns a half-finished idea into a full workshop in under a week. Has never missed a deadline or a chai break.",
-        "socials": {
-            "github": "https://github.com/",
-            "linkedin": "https://linkedin.com/"
-        }
+        "name": "SHIV OJHA",
+        "role": "EXECUTIVE PRESIDENT",
+        "DEPARTMENT": "ELECTRONIC AND TELECOMMUNICATION ENGINEERING",
+        "image": "/alumni/2026-27, heads/shiv.jpeg",
+        "bio": "A true leader doesn't just set the vision they inspire an entire community to bring it to life."
     },
     {
         "id": 4,
-        "name": "Ananya Deshmukh",
-        "role": "Open Source Maintainer",
-        "category": "engineering",
-        "image": "https://i.pravatar.cc/600?img=32",
-        "bio": "Mentors first-time contributors and leads monthly hackathons. Passionate about Linux kernels and rust-based tooling.",
-        "socials": {
-            "github": "https://github.com/",
-            "linkedin": "https://linkedin.com/",
-            "website": "https://ananya.dev"
-        }
+        "name": "RITIKA",
+        "role": "EXECUTIVE SECRETARY",
+        "DEPARTMENT": "INFORMATION TECHNOLOGY",
+        "image": "/alumni/2026-27, heads/ritika.jpeg",
+        "bio": "Excellence lies in the details, and every great achievement begins with seamless coordination."
     },
     {
         "id": 5,
-        "name": "Rohan Sharma",
-        "role": "Security Researcher",
-        "category": "engineering",
-        "image": "https://i.pravatar.cc/600?img=60",
-        "bio": "Breaks authentication protocols for fun and reports bugs responsibly. Leads the club's CTF team.",
-        "socials": {
-            "github": "https://github.com/",
-            "twitter": "https://x.com/"
-        }
+        "name": "PEEHU PAHADE",
+        "role": "GENERAL SECRETARY",
+        "DEPARTMENT": "MECHANICAL ENGINEERING",
+        "image": "/alumni/2026-27, heads/peehu.jpeg",
+        "bio": "Leadership is reflected not only in guiding a team, but in ensuring every vision is transformed into meaningful action."
     },
     {
         "id": 6,
-        "name": "Devansh Patel",
-        "role": "AI / ML Specialist",
-        "category": "engineering",
+        "name": "NAMAN YADAV",
+        "role": "JOINT SECRETARY",
+        "DEPARTMENT": "MECHANICAL ENGINEERING",
         "image": "https://i.pravatar.cc/600?img=68",
-        "bio": "Trains custom LLMs on student notes and builds autonomous agent benchmarks. Loves PyTorch and GPUs.",
-        "socials": {
-            "github": "https://github.com/",
-            "linkedin": "https://linkedin.com/"
-        }
+        "bio": "Every successful organization is built on dedication, coordination, and the ability to turn plans into progress."
     },
     {
         "id": 7,
-        "name": "Sneha Gupta",
-        "role": "UI / UX Lead",
-        "category": "design-events",
+        "name": "PUSHPENDRA TOMAR",
+        "role": "OPERATIONAL CHIEF",
+        "DEPARTMENT": "MECHATRONICS ENGINEERING",
         "image": "https://i.pravatar.cc/600?img=49",
-        "bio": "Crafts dark-mode design systems, micro-interactions, and accessible typography scale for all club web apps.",
-        "socials": {
-            "linkedin": "https://linkedin.com/",
-            "website": "https://sneha.design"
-        }
+        "bio": "Success isn't just about great ideas it's about executing them with excellence."
     },
     {
         "id": 8,
-        "name": "Vikramaditya Nair",
-        "role": "DevOps & Cloud Lead",
-        "category": "leadership",
-        "image": "https://i.pravatar.cc/600?img=53",
-        "bio": "Automates CI/CD pipelines, provisions Kubernetes clusters, and keeps cluster uptime at 99.99%.",
-        "socials": {
-            "github": "https://github.com/",
-            "linkedin": "https://linkedin.com/"
-        }
+        "name": "APOORVA GUPTA",
+        "role": "OPERATIONAL CHIEF",
+        "DEPARTMENT": "LEADERSHIP",
+        "image": "/alumni/2026-27, heads/apoorva.jpeg",
+        "bio": "Great execution turns ambitious ideas into remarkable achievements."
     }
 ]

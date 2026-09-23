@@ -3,9 +3,8 @@
 import { useMemo, useState } from "react";
 import { FilterCategory, TeamMember } from "../types";
 import FilterBar from "./FilterBar";
-import MemberCard from "./MemberCard";
+import IDCard from "@/components/IDCard";
 import SpotlightModal from "./SpotlightModal";
-import TuxGliderRope from "./TuxGliderRope";
 
 interface MembersRosterProps {
   initialMembers: TeamMember[];
@@ -41,10 +40,7 @@ export default function MembersRoster({ initialMembers }: MembersRosterProps) {
   }, [initialMembers, activeFilter]);
 
   return (
-    <div className="relative min-h-screen bg-[var(--void)] text-[var(--frost)]">
-      {/* Tux Zip-Liner Rope Mascot */}
-      <TuxGliderRope isDucked={!!selectedMember} />
-
+    <div className="relative min-h-screen">
       {/* Header */}
       <header className="site-header max-w-4xl mx-auto px-6 pt-16 pb-8">
         <div className="flex items-center justify-between font-mono text-xs uppercase tracking-widest text-[var(--slate)] mb-4">
@@ -75,16 +71,14 @@ export default function MembersRoster({ initialMembers }: MembersRosterProps) {
         {/* Member Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {filteredMembers.map((member, idx) => (
-            <MemberCard
+            <IDCard
               key={member.id}
               member={member}
-              index={idx}
-              isExpanded={selectedMember?.id === member.id}
-              onToggleSpotlight={(m) => {
-                if (selectedMember?.id === m.id) {
+              onClick={() => {
+                if (selectedMember?.id === member.id) {
                   setSelectedMember(null);
                 } else {
-                  setSelectedMember(m);
+                  setSelectedMember(member);
                 }
               }}
             />

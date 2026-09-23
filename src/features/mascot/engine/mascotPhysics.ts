@@ -30,10 +30,10 @@ export function initMascotPhysicsState(reducedMotion: boolean = false): MascotPh
     bounceScaleX: 1,
     bounceScaleY: 1,
 
-    eyeTargetX: 0,
-    eyeTargetY: 0,
-    eyeCurrentX: 0,
-    eyeCurrentY: 0,
+    currentEyeYaw: 0,
+    currentEyePitch: 0,
+    targetEyeYaw: 0,
+    targetEyePitch: 0,
 
     isBlinking: false,
     blinkProgress: 0,
@@ -72,35 +72,42 @@ export function updateMascotPhysics(
 
   // ── 1. Target Look-At from Pointer ──
   if (pointer.active && !reducedMotion) {
-    state.targetHeadYaw = pointer.normalizedX * CFG.physics.maxHeadYaw;
-    state.targetHeadPitch = -pointer.normalizedY * CFG.physics.maxHeadPitch;
-    state.targetHeadRoll = pointer.normalizedX * CFG.physics.maxHeadRoll * 0.4;
+    // Eyeballs have wide, agile gaze tracking:
+    state.targetEyeYaw = pointer.normalizedX * 0.72; // up to ±41 deg
+    state.targetEyePitch = pointer.normalizedY * 0.48; // up to ±28 deg
 
-    state.targetBodyYaw = pointer.normalizedX * CFG.physics.maxBodyYaw;
-    state.targetBodyPitch = -pointer.normalizedY * CFG.physics.maxBodyPitch;
-    state.targetBodyRoll = pointer.normalizedX * CFG.physics.maxBodyRoll;
+    // Head follows with smooth moderate angle:
+    state.targetHeadYaw = pointer.normalizedX * 0.32;
+    state.targetHeadPitch = -pointer.normalizedY * 0.2;
+    state.targetHeadRoll = pointer.normalizedX * 0.08;
 
-    // Pupil look-at: agile eye tracking
-    state.eyeTargetX = pointer.normalizedX * 0.42;
-    state.eyeTargetY = -pointer.normalizedY * 0.32;
+    // Body follows with subtle angle:
+    state.targetBodyYaw = pointer.normalizedX * 0.16;
+    state.targetBodyPitch = -pointer.normalizedY * 0.1;
+    state.targetBodyRoll = pointer.normalizedX * 0.04;
   } else {
     // Gentle ambient sway when idle
     const t = state.idlePhase;
-    state.targetHeadYaw = Math.sin(t * 0.6) * 0.08;
-    state.targetHeadPitch = Math.cos(t * 0.8) * 0.04;
+    state.targetEyeYaw = Math.sin(t * 0.5) * 0.08;
+    state.targetEyePitch = Math.cos(t * 0.7) * 0.05;
+
+    state.targetHeadYaw = Math.sin(t * 0.6) * 0.06;
+    state.targetHeadPitch = Math.cos(t * 0.8) * 0.03;
     state.targetHeadRoll = Math.sin(t * 0.5) * 0.02;
 
-    state.targetBodyYaw = Math.sin(t * 0.4) * 0.04;
+    state.targetBodyYaw = Math.sin(t * 0.4) * 0.03;
     state.targetBodyPitch = 0;
-    state.targetBodyRoll = Math.sin(t * 0.3) * 0.02;
-
-    state.eyeTargetX = 0;
-    state.eyeTargetY = 0;
+    state.targetBodyRoll = Math.sin(t * 0.3) * 0.015;
   }
 
-  // ── 2. Spring Smoothing on Head & Body Angles ──
-  const ease = reducedMotion ? 1 : 1 - Math.pow(1 - CFG.physics.lookAtStiffness, dt * 60);
+  // ── 2. Smoothing ──
+  // Fast & agile for eyeballs:
+  const eyeEase = reducedMotion ? 1 : 1 - Math.pow(1 - 0.28, dt * 60);
+  state.currentEyeYaw += (state.targetEyeYaw - state.currentEyeYaw) * eyeEase;
+  state.currentEyePitch += (state.targetEyePitch - state.currentEyePitch) * eyeEase;
 
+  // Spring smoothing for head & body:
+  const ease = reducedMotion ? 1 : 1 - Math.pow(1 - CFG.physics.lookAtStiffness, dt * 60);
   state.currentHeadYaw += (state.targetHeadYaw - state.currentHeadYaw) * ease;
   state.currentHeadPitch += (state.targetHeadPitch - state.currentHeadPitch) * ease;
   state.currentHeadRoll += (state.targetHeadRoll - state.currentHeadRoll) * ease;
@@ -108,9 +115,6 @@ export function updateMascotPhysics(
   state.currentBodyYaw += (state.targetBodyYaw - state.currentBodyYaw) * ease;
   state.currentBodyPitch += (state.targetBodyPitch - state.currentBodyPitch) * ease;
   state.currentBodyRoll += (state.targetBodyRoll - state.currentBodyRoll) * ease;
-
-  state.eyeCurrentX += (state.eyeTargetX - state.eyeCurrentX) * ease * 2.2;
-  state.eyeCurrentY += (state.eyeTargetY - state.eyeCurrentY) * ease * 2.2;
 
   // ── 3. Idle Breathing Oscillator ──
   if (!reducedMotion) {
@@ -185,14 +189,20 @@ export function updateMascotPhysics(
   rig.flipperLeft.rotation.z = 0.22 + flipperSway;
   rig.flipperRight.rotation.z = -0.22 - flipperSway;
 
-  // Eye blinking & look-at displacement
+  // Rotate Left and Right Eyeballs to track the cursor
+  rig.eyeLeftGroup.rotation.y = -0.12 + state.currentEyeYaw;
+  rig.eyeLeftGroup.rotation.x = -0.04 - state.currentEyePitch;
+
+  rig.eyeRightGroup.rotation.y = 0.12 + state.currentEyeYaw;
+  rig.eyeRightGroup.rotation.x = -0.04 - state.currentEyePitch;
+
+  // Pupil micro-shift and blink scaling
   rig.eyeLeftPupil.scale.y = currentEyeScaleY;
   rig.eyeRightPupil.scale.y = currentEyeScaleY;
-
-  rig.eyeLeftGroup.rotation.y = -0.32 + state.eyeCurrentX;
-  rig.eyeLeftGroup.rotation.x = -0.05 + state.eyeCurrentY;
-  rig.eyeRightGroup.rotation.y = 0.32 + state.eyeCurrentX;
-  rig.eyeRightGroup.rotation.x = -0.05 + state.eyeCurrentY;
+  rig.eyeLeftPupil.position.x = state.currentEyeYaw * 0.05;
+  rig.eyeLeftPupil.position.y = state.currentEyePitch * 0.04;
+  rig.eyeRightPupil.position.x = state.currentEyeYaw * 0.05;
+  rig.eyeRightPupil.position.y = state.currentEyePitch * 0.04;
 
   // Contact shadow scale with jump/bounce
   const shadowScale = 1 / Math.max(0.75, 1 + totalY * 0.8);

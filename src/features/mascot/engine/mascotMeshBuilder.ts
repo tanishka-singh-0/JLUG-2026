@@ -114,55 +114,68 @@ export function buildMascotRig(): MascotRig {
 
   headGroup.add(beakGroup);
 
-  // ── 3b. Eyes ──
-  const eyeTex = createEyeTexture();
-  const eyeMat = new THREE.MeshStandardMaterial({
-    map: eyeTex,
-    roughness: 0.1,
-    metalness: 0.05,
-  });
-
-  const corneaMat = new THREE.MeshPhysicalMaterial({
+  // ── 3b. Articulated Eyeballs (Glossy Sclera Spheres with Front Iris) ──
+  const scleraMat = new THREE.MeshStandardMaterial({
     color: 0xffffff,
-    transparent: true,
-    opacity: 0.25,
-    roughness: 0.02,
-    transmission: 0.6,
-    clearcoat: 1.0,
-    clearcoatRoughness: 0.05,
+    roughness: 0.15,
+    metalness: 0.0,
   });
 
-  // Left Eye
+  const irisTex = createEyeTexture();
+  const irisMat = new THREE.MeshBasicMaterial({
+    map: irisTex,
+    transparent: true,
+    alphaTest: 0.01,
+    side: THREE.DoubleSide,
+  });
+
+  const scleraGeo = new THREE.SphereGeometry(0.24, 32, 24);
+  const irisPlaneGeo = new THREE.PlaneGeometry(0.38, 0.38);
+
+  // Left Eyeball Group (Pivots at eye center: x=-0.38, y=0.38, z=0.76)
   const eyeLeftGroup = new THREE.Group();
+  eyeLeftGroup.name = "EyeLeftGroup";
   eyeLeftGroup.position.set(-0.38, 0.38, 0.76);
-  eyeLeftGroup.rotation.y = -0.32;
-  eyeLeftGroup.rotation.x = -0.05;
+  eyeLeftGroup.rotation.y = -0.12;
+  eyeLeftGroup.rotation.x = -0.04;
 
-  const eyeGeo = new THREE.SphereGeometry(0.24, 32, 24);
-  const eyeLeftMesh = new THREE.Mesh(eyeGeo, eyeMat);
-  // Rotate texture forward
-  eyeLeftMesh.rotation.y = -Math.PI / 2;
-  eyeLeftGroup.add(eyeLeftMesh);
+  const scleraLeftMesh = new THREE.Mesh(scleraGeo, scleraMat);
+  eyeLeftGroup.add(scleraLeftMesh);
 
-  const eyeLeftCornea = new THREE.Mesh(new THREE.SphereGeometry(0.245, 24, 16), corneaMat);
-  eyeLeftGroup.add(eyeLeftCornea);
+  const pupilLeftGroup = new THREE.Group();
+  pupilLeftGroup.name = "PupilLeftGroup";
+  const pupilLeftMesh = new THREE.Mesh(irisPlaneGeo, irisMat);
+  pupilLeftMesh.position.set(0, 0, 0.242);
+  pupilLeftGroup.add(pupilLeftMesh);
+  eyeLeftGroup.add(pupilLeftGroup);
 
   headGroup.add(eyeLeftGroup);
 
-  // Right Eye
+  // Right Eyeball Group (Pivots at eye center: x=0.38, y=0.38, z=0.76)
   const eyeRightGroup = new THREE.Group();
+  eyeRightGroup.name = "EyeRightGroup";
   eyeRightGroup.position.set(0.38, 0.38, 0.76);
-  eyeRightGroup.rotation.y = 0.32;
-  eyeRightGroup.rotation.x = -0.05;
+  eyeRightGroup.rotation.y = 0.12;
+  eyeRightGroup.rotation.x = -0.04;
 
-  const eyeRightMesh = new THREE.Mesh(eyeGeo, eyeMat);
-  eyeRightMesh.rotation.y = -Math.PI / 2;
-  eyeRightGroup.add(eyeRightMesh);
+  const scleraRightMesh = new THREE.Mesh(scleraGeo, scleraMat);
+  eyeRightGroup.add(scleraRightMesh);
 
-  const eyeRightCornea = new THREE.Mesh(new THREE.SphereGeometry(0.245, 24, 16), corneaMat);
-  eyeRightGroup.add(eyeRightCornea);
+  const pupilRightGroup = new THREE.Group();
+  pupilRightGroup.name = "PupilRightGroup";
+  const pupilRightMesh = new THREE.Mesh(irisPlaneGeo, irisMat);
+  pupilRightMesh.position.set(0, 0, 0.242);
+  pupilRightGroup.add(pupilRightMesh);
+  eyeRightGroup.add(pupilRightGroup);
 
   headGroup.add(eyeRightGroup);
+
+  // Dummy cornea references for type compatibility
+  const dummyCorneaGeo = new THREE.SphereGeometry(0.01, 8, 8);
+  const eyeLeftCornea = new THREE.Mesh(dummyCorneaGeo, scleraMat);
+  const eyeRightCornea = new THREE.Mesh(dummyCorneaGeo, scleraMat);
+  eyeLeftCornea.visible = false;
+  eyeRightCornea.visible = false;
 
   // ── 3c. Golden Feather Crests (Left & Right temporal streaks) ──
   const crestTexLeft = createCrestTexture(false);
@@ -307,10 +320,12 @@ export function buildMascotRig(): MascotRig {
     beakGroup,
     eyeLeftGroup,
     eyeRightGroup,
+    pupilLeftGroup,
+    pupilRightGroup,
     eyeLeftCornea,
     eyeRightCornea,
-    eyeLeftPupil: eyeLeftMesh,
-    eyeRightPupil: eyeRightMesh,
+    eyeLeftPupil: pupilLeftMesh,
+    eyeRightPupil: pupilRightMesh,
     flipperLeft,
     flipperRight,
     footLeft,

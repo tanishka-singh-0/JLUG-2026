@@ -133,8 +133,8 @@ export default function MascotCanvas() {
       const mascotCenterY = rect.top + rect.height * 0.42;
 
       // Calculate direction relative to mascot's position on screen
-      const dx = (e.clientX - mascotCenterX) / Math.max(200, window.innerWidth * 0.45);
-      const dy = (e.clientY - mascotCenterY) / Math.max(200, window.innerHeight * 0.45);
+      const dx = (e.clientX - mascotCenterX) / Math.max(120, window.innerWidth * 0.35);
+      const dy = (e.clientY - mascotCenterY) / Math.max(120, window.innerHeight * 0.35);
 
       currentPointer.normalizedX = Math.max(-1, Math.min(1, dx));
       currentPointer.normalizedY = -Math.max(-1, Math.min(1, dy)); // positive is looking up

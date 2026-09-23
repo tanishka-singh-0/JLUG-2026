@@ -1,10 +1,10 @@
 import * as THREE from "three";
 
 /**
- * Creates a high-resolution cartoon eye texture matching Pingu Tiwari reference:
- * Dark espresso iris, amber edge gradient, crisp black pupil, and dual specular highlights.
+ * Creates high-resolution transparent Iris & Pupil texture matching Pingu Tiwari:
+ * Deep espresso iris gradient, amber edge transition, deep black pupil, and dual specular highlights.
  */
-export function createEyeTexture(): THREE.CanvasTexture {
+export function createIrisTexture(): THREE.CanvasTexture {
   const size = 512;
   const canvas = document.createElement("canvas");
   canvas.width = size;
@@ -19,51 +19,43 @@ export function createEyeTexture(): THREE.CanvasTexture {
   const cy = size / 2;
   const r = size * 0.46;
 
-  // Clear background (white sclera)
-  ctx.fillStyle = "#ffffff";
-  ctx.beginPath();
-  ctx.arc(cx, cy, r, 0, Math.PI * 2);
-  ctx.fill();
+  ctx.clearRect(0, 0, size, size);
 
-  // Subtle outer shadow ring
-  const scleraGrad = ctx.createRadialGradient(cx, cy, r * 0.7, cx, cy, r);
-  scleraGrad.addColorStop(0, "rgba(255, 255, 255, 1)");
-  scleraGrad.addColorStop(0.85, "rgba(240, 243, 248, 1)");
-  scleraGrad.addColorStop(1, "rgba(200, 208, 220, 1)");
-  ctx.fillStyle = scleraGrad;
-  ctx.beginPath();
-  ctx.arc(cx, cy, r, 0, Math.PI * 2);
-  ctx.fill();
-
-  // Dark Iris
-  const irisRadius = r * 0.82;
-  const irisGrad = ctx.createRadialGradient(cx, cy, irisRadius * 0.2, cx, cy, irisRadius);
-  irisGrad.addColorStop(0, "#483224"); // warm deep brown center
-  irisGrad.addColorStop(0.65, "#2a1c14");
-  irisGrad.addColorStop(0.9, "#18100b");
-  irisGrad.addColorStop(1, "#0d0906"); // dark outer ring
+  // Dark Iris Gradient
+  const irisGrad = ctx.createRadialGradient(cx, cy, r * 0.2, cx, cy, r);
+  irisGrad.addColorStop(0, "#4a3322"); // warm deep brown center
+  irisGrad.addColorStop(0.55, "#2b1c13");
+  irisGrad.addColorStop(0.85, "#18100b");
+  irisGrad.addColorStop(1, "#0a0705"); // dark outer ring
 
   ctx.fillStyle = irisGrad;
   ctx.beginPath();
-  ctx.arc(cx, cy, irisRadius, 0, Math.PI * 2);
+  ctx.arc(cx, cy, r, 0, Math.PI * 2);
   ctx.fill();
 
-  // Iris subtle radial striations
+  // Iris subtle golden/amber radial striations
   ctx.save();
   ctx.translate(cx, cy);
-  ctx.strokeStyle = "rgba(245, 184, 46, 0.12)"; // subtle golden hint
-  ctx.lineWidth = 1.5;
-  for (let i = 0; i < 24; i++) {
-    const angle = (i / 24) * Math.PI * 2;
+  ctx.strokeStyle = "rgba(245, 184, 46, 0.15)";
+  ctx.lineWidth = 1.8;
+  for (let i = 0; i < 28; i++) {
+    const angle = (i / 28) * Math.PI * 2;
     ctx.beginPath();
-    ctx.moveTo(Math.cos(angle) * (irisRadius * 0.4), Math.sin(angle) * (irisRadius * 0.4));
-    ctx.lineTo(Math.cos(angle) * (irisRadius * 0.85), Math.sin(angle) * (irisRadius * 0.85));
+    ctx.moveTo(Math.cos(angle) * (r * 0.35), Math.sin(angle) * (r * 0.35));
+    ctx.lineTo(Math.cos(angle) * (r * 0.88), Math.sin(angle) * (r * 0.88));
     ctx.stroke();
   }
   ctx.restore();
 
+  // Dark Outer Ring Outline for crisp definition
+  ctx.strokeStyle = "rgba(10, 7, 5, 0.6)";
+  ctx.lineWidth = 3;
+  ctx.beginPath();
+  ctx.arc(cx, cy, r - 1.5, 0, Math.PI * 2);
+  ctx.stroke();
+
   // Pupil (Deep black)
-  const pupilRadius = irisRadius * 0.52;
+  const pupilRadius = r * 0.52;
   ctx.fillStyle = "#07080a";
   ctx.beginPath();
   ctx.arc(cx, cy, pupilRadius, 0, Math.PI * 2);
@@ -72,10 +64,18 @@ export function createEyeTexture(): THREE.CanvasTexture {
   // Primary Specular Reflection Highlight (top-left, large crisp white oval)
   ctx.save();
   ctx.fillStyle = "#ffffff";
-  ctx.shadowColor = "rgba(255, 255, 255, 0.6)";
-  ctx.shadowBlur = 6;
+  ctx.shadowColor = "rgba(255, 255, 255, 0.8)";
+  ctx.shadowBlur = 8;
   ctx.beginPath();
-  ctx.ellipse(cx - pupilRadius * 0.5, cy - pupilRadius * 0.5, pupilRadius * 0.42, pupilRadius * 0.35, -Math.PI / 4, 0, Math.PI * 2);
+  ctx.ellipse(
+    cx - pupilRadius * 0.48,
+    cy - pupilRadius * 0.48,
+    pupilRadius * 0.42,
+    pupilRadius * 0.35,
+    -Math.PI / 4,
+    0,
+    Math.PI * 2
+  );
   ctx.fill();
 
   // Secondary Specular Reflection Highlight (bottom-right, small round dot)
@@ -88,6 +88,10 @@ export function createEyeTexture(): THREE.CanvasTexture {
   texture.colorSpace = THREE.SRGBColorSpace;
   texture.needsUpdate = true;
   return texture;
+}
+
+export function createEyeTexture(): THREE.CanvasTexture {
+  return createIrisTexture();
 }
 
 /**

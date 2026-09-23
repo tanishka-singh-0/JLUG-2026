@@ -8,6 +8,8 @@ export interface MascotRig {
   beakGroup: THREE.Group;
   eyeLeftGroup: THREE.Group;
   eyeRightGroup: THREE.Group;
+  pupilLeftGroup: THREE.Group;
+  pupilRightGroup: THREE.Group;
   eyeLeftCornea: THREE.Mesh;
   eyeRightCornea: THREE.Mesh;
   eyeLeftPupil: THREE.Mesh;
@@ -44,11 +46,11 @@ export interface MascotPhysicsState {
   bounceScaleX: number;
   bounceScaleY: number;
 
-  // Eye gaze
-  eyeTargetX: number;
-  eyeTargetY: number;
-  eyeCurrentX: number;
-  eyeCurrentY: number;
+  // Eye gaze tracking
+  currentEyeYaw: number;
+  currentEyePitch: number;
+  targetEyeYaw: number;
+  targetEyePitch: number;
 
   // Blink state
   isBlinking: boolean;

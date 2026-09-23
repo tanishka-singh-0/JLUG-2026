@@ -73,6 +73,8 @@ const SplitFlapText = ({
   fontSize = 52,
   loop = true,
   padTo = 12,
+  highlights = [],      // Array<number[]>  — per-word tile indices to highlight
+  highlightColor = '#B7F34A', // Color applied to highlighted tiles
   className = '',
   style = {},
   ...props
@@ -81,6 +83,7 @@ const SplitFlapText = ({
   const rafRef = useRef(null);
   const cycleTimerRef = useRef(null);
   const currentTextRef = useRef('');
+  const [activePhraseIndex, setActivePhraseIndex] = useState(0);
 
   const sourceWords = Array.isArray(words) && words.length > 0 ? words : DEFAULT_WORDS;
   const phrasesKey = typeof text === 'string' ? text : sourceWords.map(word => String(word ?? '')).join('\u001f');
@@ -247,6 +250,7 @@ const SplitFlapText = ({
         if (nextIndex >= normalizedPhrases.length && !loop) return;
 
         phraseIndex = nextIndex % normalizedPhrases.length;
+        setActivePhraseIndex(phraseIndex);
         const animationDuration = animateTo(normalizedPhrases[phraseIndex]);
         scheduleNext(safeCycleDelay + animationDuration);
       }, delay);
@@ -264,6 +268,13 @@ const SplitFlapText = ({
     .map(tile => tile.current)
     .join('')
     .trimEnd();
+
+  // Build a Set of highlighted tile indices for the currently active phrase
+  const activeHighlightSet = useMemo(() => {
+    const indices = highlights[activePhraseIndex];
+    return new Set(Array.isArray(indices) ? indices : []);
+  }, [highlights, activePhraseIndex]);
+
   const componentStyle = {
     '--split-flap-tile-color': tileColor,
     '--split-flap-text-color': textColor,
@@ -282,27 +293,31 @@ const SplitFlapText = ({
       aria-label={settledText || undefined}
       {...props}
     >
-      {tiles.map((tile, index) => (
-        <span className="split-flap-text__tile" aria-hidden="true" key={`${index}-${tiles.length}`}>
-          <span className="split-flap-text__half split-flap-text__half--top">
-            <span className="split-flap-text__char">{tile.current === ' ' ? '\u00A0' : tile.current}</span>
-          </span>
-          <span className="split-flap-text__half split-flap-text__half--bottom">
-            <span className="split-flap-text__char">{tile.flipping ? tile.next : tile.current}</span>
-          </span>
+      {tiles.map((tile, index) => {
+        const charColor = activeHighlightSet.has(index) ? highlightColor : undefined;
+        const charStyle = charColor ? { color: charColor } : undefined;
+        return (
+          <span className="split-flap-text__tile" aria-hidden="true" key={`${index}-${tiles.length}`}>
+            <span className="split-flap-text__half split-flap-text__half--top">
+              <span className="split-flap-text__char" style={charStyle}>{tile.current === ' ' ? '\u00A0' : tile.current}</span>
+            </span>
+            <span className="split-flap-text__half split-flap-text__half--bottom">
+              <span className="split-flap-text__char" style={charStyle}>{tile.flipping ? tile.next : tile.current}</span>
+            </span>
 
-          {tile.flipping && (
-            <>
-              <span className="split-flap-text__flap split-flap-text__flap--front" key={`front-${index}-${tile.tick}`}>
-                <span className="split-flap-text__char">{tile.current === ' ' ? '\u00A0' : tile.current}</span>
-              </span>
-              <span className="split-flap-text__flap split-flap-text__flap--back" key={`back-${index}-${tile.tick}`}>
-                <span className="split-flap-text__char">{tile.next === ' ' ? '\u00A0' : tile.next}</span>
-              </span>
-            </>
-          )}
-        </span>
-      ))}
+            {tile.flipping && (
+              <>
+                <span className="split-flap-text__flap split-flap-text__flap--front" key={`front-${index}-${tile.tick}`}>
+                  <span className="split-flap-text__char" style={charStyle}>{tile.current === ' ' ? '\u00A0' : tile.current}</span>
+                </span>
+                <span className="split-flap-text__flap split-flap-text__flap--back" key={`back-${index}-${tile.tick}`}>
+                  <span className="split-flap-text__char" style={charStyle}>{tile.next === ' ' ? '\u00A0' : tile.next}</span>
+                </span>
+              </>
+            )}
+          </span>
+        );
+      })}
     </div>
   );
 };

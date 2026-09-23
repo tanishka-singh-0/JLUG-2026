@@ -1,28 +1,17 @@
 [
     {
         "id": 1,
-        "name": "Aarav Mehta",
+        "name": "Akshat Tiwari",
         "role": "President",
-        "category": "leadership",
         "image": "https://i.pravatar.cc/600?img=12",
-        "bio": "Keeps the club's roadmap honest and its late-night build sessions fuelled. Started three open-source projects that actually shipped.",
-        "socials": {
-            "github": "https://github.com/",
-            "linkedin": "https://linkedin.com/",
-            "twitter": "https://x.com/"
-        }
+        "bio": "Keeps the club's roadmap honest and its late-night build sessions fuelled. Started three open-source projects that actually shipped."
     },
     {
         "id": 2,
-        "name": "Ishita Rao",
+        "name": "",
         "role": "Technical Lead",
-        "category": "engineering",
         "image": "https://i.pravatar.cc/600?img=47",
-        "bio": "Owns the club's infrastructure and reviews every pull request like it's going to production tomorrow — because it usually is.",
-        "socials": {
-            "github": "https://github.com/",
-            "linkedin": "https://linkedin.com/"
-        }
+        "bio": "Owns the club's infrastructure and reviews every pull request like it's going to production tomorrow — because it usually is."
     },
     {
         "id": 3,

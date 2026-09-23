@@ -1,7 +1,10 @@
 .split-flap-text {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: var(--split-flap-gap, 6px);
+  max-width: 100%;
+  overflow: hidden;
   color: var(--split-flap-text-color, #f8fafc);
   font-family: 'SFMono-Regular', 'Roboto Mono', 'Cascadia Code', 'Liberation Mono', Menlo, monospace;
   font-size: var(--split-flap-font-size, 52px);
@@ -21,11 +24,9 @@
   border-radius: var(--split-flap-radius, 8px);
   background:
     radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.16), transparent 44%),
-    linear-gradient(
-      180deg,
+    linear-gradient(180deg,
       color-mix(in srgb, var(--split-flap-tile-color, #111827) 82%, white),
-      var(--split-flap-tile-color, #111827)
-    );
+      var(--split-flap-tile-color, #111827));
   box-shadow:
     0 0.035em 0.08em rgba(255, 255, 255, 0.08) inset,
     0 -0.05em 0.1em rgba(0, 0, 0, 0.38) inset,
@@ -43,14 +44,12 @@
   left: 0;
   width: 100%;
   height: 1px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.18) 18%,
-    rgba(0, 0, 0, 0.64) 50%,
-    rgba(255, 255, 255, 0.14) 82%,
-    transparent
-  );
+  background: linear-gradient(90deg,
+      transparent,
+      rgba(255, 255, 255, 0.18) 18%,
+      rgba(0, 0, 0, 0.64) 50%,
+      rgba(255, 255, 255, 0.14) 82%,
+      transparent);
   box-shadow:
     0 -1px 0 rgba(255, 255, 255, 0.08),
     0 1px 0 rgba(0, 0, 0, 0.5);
@@ -151,6 +150,7 @@
 }
 
 @keyframes split-flap-back {
+
   0%,
   45% {
     transform: rotateX(90deg);
@@ -166,5 +166,44 @@
 @media (prefers-reduced-motion: reduce) {
   .split-flap-text__flap {
     animation: none !important;
+  }
+}
+
+/* Responsive sizing */
+
+/* Responsive sizing */
+
+@media (max-width: 1200px) {
+  .split-flap-text {
+    --split-flap-font-size: 85px !important;
+    --split-flap-gap: 5px !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .split-flap-text {
+    --split-flap-font-size: 70px !important;
+    --split-flap-gap: 4px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .split-flap-text {
+    --split-flap-font-size: 55px !important;
+    --split-flap-gap: 3px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .split-flap-text {
+    --split-flap-font-size: 40px !important;
+    --split-flap-gap: 2px !important;
+  }
+}
+
+@media (max-width: 360px) {
+  .split-flap-text {
+    --split-flap-font-size: 34px !important;
+    --split-flap-gap: 2px !important;
   }
 }

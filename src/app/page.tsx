@@ -11,7 +11,7 @@ export default function Home() {
   return (
     <div className="relative flex flex-col text-jlug-white selection:bg-jlug-accent selection:text-jlug-black overflow-x-hidden">
       {/* CONTINUOUS ENVIRONMENT WRAPPER */}
-      <div className="relative z-10 w-full max-w-[1440px] mx-auto border-l border-r border-jlug-line bg-jlug-black/80 backdrop-blur-sm">
+      <div className="relative z-10 w-full max-w-[1440px] mx-auto border-l border-r border-jlug-line bg-jlug-black/40 backdrop-blur-sm">
         
         <HeroSection />
         

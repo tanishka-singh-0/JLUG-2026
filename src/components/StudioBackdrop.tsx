@@ -6,18 +6,23 @@
  */
 export default function StudioBackdrop() {
   return (
-    <div aria-hidden="true">
+    <div aria-hidden="true" className="fixed inset-0 z-[-1] overflow-hidden bg-[#05050A]">
+      {/* Aurora / Glowing Orbs */}
+      <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] rounded-full bg-purple-600/30 blur-[120px] mix-blend-screen pointer-events-none" />
+      <div className="absolute top-[20%] right-[-10%] w-[60%] h-[60%] rounded-full bg-indigo-600/20 blur-[120px] mix-blend-screen pointer-events-none" />
+      <div className="absolute bottom-[-20%] left-[20%] w-[50%] h-[50%] rounded-full bg-fuchsia-600/20 blur-[120px] mix-blend-screen pointer-events-none" />
+
+      {/* Dot Grid */}
       <div
-        className="pointer-events-none fixed inset-0 z-0 opacity-[0.15]"
+        className="absolute inset-0 z-0 pointer-events-none opacity-[0.2]"
         style={{
-          backgroundImage: `
-            linear-gradient(to right, var(--color-jlug-line) 1px, transparent 1px),
-            linear-gradient(to bottom, var(--color-jlug-line) 1px, transparent 1px)
-          `,
-          backgroundSize: "48px 48px",
+          backgroundImage: `radial-gradient(circle at center, #ffffff 1px, transparent 1px)`,
+          backgroundSize: "24px 24px",
         }}
       />
-      <div className="pointer-events-none fixed inset-0 z-50 hidden md:block">
+      
+      {/* Existing corner crosshairs */}
+      <div className="pointer-events-none absolute inset-0 z-50 hidden md:block opacity-40">
         <div className="absolute top-8 left-8 h-4 w-4 border-t border-l border-jlug-gray-2" />
         <div className="absolute top-8 right-8 h-4 w-4 border-t border-r border-jlug-gray-2" />
         <div className="absolute bottom-8 left-8 h-4 w-4 border-b border-l border-jlug-gray-2" />

@@ -26,7 +26,7 @@ export default function Home() {
         <EventsSection />
         
         <CallToActionSection />
-
+        
         <Footer />
         
       </div>

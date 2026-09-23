@@ -1,16 +1,11 @@
-import type { Metadata } from "next";
+import MembersRoster from "@/features/members/components/MembersRoster";
+import teamData from "../../../team.json";
 
-import PlaceholderPage from "@/components/PlaceholderPage";
-import { NAV_ITEMS } from "@/lib/navigation";
-
-const item = NAV_ITEMS.find((entry) => entry.href === "/members")!;
-
-export const metadata: Metadata = {
-  title: "Members | JLUG",
-  description: "Every JLUG member, across all years.",
+export const metadata = {
+  title: "Members — JEC Linux Users Group (JLUG)",
+  description: "Meet the team members, engineers, and contributors building the club projects.",
 };
 
-// TODO: replace the placeholder with the member directory.
 export default function MembersPage() {
-  return <PlaceholderPage item={item} />;
+  return <MembersRoster initialMembers={teamData} />;
 }

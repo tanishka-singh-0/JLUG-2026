@@ -1,0 +1,100 @@
+[
+    {
+        "id": 1,
+        "name": "Aarav Mehta",
+        "role": "President",
+        "category": "leadership",
+        "image": "https://i.pravatar.cc/600?img=12",
+        "bio": "Keeps the club's roadmap honest and its late-night build sessions fuelled. Started three open-source projects that actually shipped.",
+        "socials": {
+            "github": "https://github.com/",
+            "linkedin": "https://linkedin.com/",
+            "twitter": "https://x.com/"
+        }
+    },
+    {
+        "id": 2,
+        "name": "Ishita Rao",
+        "role": "Technical Lead",
+        "category": "engineering",
+        "image": "https://i.pravatar.cc/600?img=47",
+        "bio": "Owns the club's infrastructure and reviews every pull request like it's going to production tomorrow — because it usually is.",
+        "socials": {
+            "github": "https://github.com/",
+            "linkedin": "https://linkedin.com/"
+        }
+    },
+    {
+        "id": 3,
+        "name": "Kabir Sen",
+        "role": "Events Coordinator",
+        "category": "design-events",
+        "image": "https://i.pravatar.cc/600?img=33",
+        "bio": "Turns a half-finished idea into a full workshop in under a week. Has never missed a deadline or a chai break.",
+        "socials": {
+            "github": "https://github.com/",
+            "linkedin": "https://linkedin.com/"
+        }
+    },
+    {
+        "id": 4,
+        "name": "Ananya Deshmukh",
+        "role": "Open Source Maintainer",
+        "category": "engineering",
+        "image": "https://i.pravatar.cc/600?img=32",
+        "bio": "Mentors first-time contributors and leads monthly hackathons. Passionate about Linux kernels and rust-based tooling.",
+        "socials": {
+            "github": "https://github.com/",
+            "linkedin": "https://linkedin.com/",
+            "website": "https://ananya.dev"
+        }
+    },
+    {
+        "id": 5,
+        "name": "Rohan Sharma",
+        "role": "Security Researcher",
+        "category": "engineering",
+        "image": "https://i.pravatar.cc/600?img=60",
+        "bio": "Breaks authentication protocols for fun and reports bugs responsibly. Leads the club's CTF team.",
+        "socials": {
+            "github": "https://github.com/",
+            "twitter": "https://x.com/"
+        }
+    },
+    {
+        "id": 6,
+        "name": "Devansh Patel",
+        "role": "AI / ML Specialist",
+        "category": "engineering",
+        "image": "https://i.pravatar.cc/600?img=68",
+        "bio": "Trains custom LLMs on student notes and builds autonomous agent benchmarks. Loves PyTorch and GPUs.",
+        "socials": {
+            "github": "https://github.com/",
+            "linkedin": "https://linkedin.com/"
+        }
+    },
+    {
+        "id": 7,
+        "name": "Sneha Gupta",
+        "role": "UI / UX Lead",
+        "category": "design-events",
+        "image": "https://i.pravatar.cc/600?img=49",
+        "bio": "Crafts dark-mode design systems, micro-interactions, and accessible typography scale for all club web apps.",
+        "socials": {
+            "linkedin": "https://linkedin.com/",
+            "website": "https://sneha.design"
+        }
+    },
+    {
+        "id": 8,
+        "name": "Vikramaditya Nair",
+        "role": "DevOps & Cloud Lead",
+        "category": "leadership",
+        "image": "https://i.pravatar.cc/600?img=53",
+        "bio": "Automates CI/CD pipelines, provisions Kubernetes clusters, and keeps cluster uptime at 99.99%.",
+        "socials": {
+            "github": "https://github.com/",
+            "linkedin": "https://linkedin.com/"
+        }
+    }
+]

@@ -1,16 +1,12 @@
 import type { Metadata } from "next";
-
-import PlaceholderPage from "@/components/PlaceholderPage";
-import { NAV_ITEMS } from "@/lib/navigation";
-
-const item = NAV_ITEMS.find((entry) => entry.href === "/hall-of-fame")!;
+import HallOfFameClient from "@/features/hall-of-fame/HallOfFameClient";
 
 export const metadata: Metadata = {
   title: "Hall of Fame | JLUG",
-  description: "Presidents who have led JLUG since 2019.",
+  description:
+    "Every president who has led JEC Linux Users Group since 2019 — the people who carried JLUG forward.",
 };
 
-// TODO: replace the placeholder with the list of presidents since 2019.
 export default function HallOfFamePage() {
-  return <PlaceholderPage item={item} />;
+  return <HallOfFameClient />;
 }

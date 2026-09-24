@@ -37,7 +37,7 @@ export default function CoreTeamGrid({ members, academicYear }: CoreTeamGridProp
           branch={member.branch}
           yearOfStudy={`${member.yearOfStudy} YEAR`}
           academicYear={member.academicYear}
-          isActive={member.academicYear === "2025–26"}
+          isActive={member.academicYear === "2026–27"}
           portraitUrl={member.portraitUrl}
         />
       ))}

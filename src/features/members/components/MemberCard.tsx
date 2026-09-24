@@ -75,7 +75,7 @@ export default function MemberCard({
           fill
           unoptimized
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-          className="card__photo object-cover w-full h-full filter saturate-[0.85] transition-transform duration-500 group-hover:scale-105 group-hover:saturate-100"
+          className="card__photo object-cover object-center w-full h-full filter saturate-[0.85] scale-[1.35] transition-transform duration-500 group-hover:scale-[1.5] group-hover:saturate-100"
         />
       </div>
 

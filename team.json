@@ -5,6 +5,8 @@
         "role": "President",
         "DEPARTMENT": "INDUSTRIAL AND PRODUCTION ENGINEERING",
         "image": "/alumni/2026-27, heads/akshat.jpeg",
+        "imageScale": 1,
+        "objectPosition": "center 5%",
         "bio": "Great leaders don't simply lead organizations they inspire people to dream bigger, innovate boldly, and achieve together."
     },
     {
@@ -13,14 +15,18 @@
         "role": "VICE PRESIDENT",
         "DEPARTMENT": "MECHANICAL ENGINEERING",
         "image": "/alumni/2026-27, heads/chitransh.jpeg",
+        "imageScale": 1,
+        "objectPosition": "center 50%",
         "bio": "Leadership is about inspiring others to believe in a vision and empowering them to achieve it together."
     },
     {
         "id": 3,
         "name": "SHIV OJHA",
         "role": "EXECUTIVE PRESIDENT",
-        "DEPARTMENT": "ELECTRONIC AND TELECOMMUNICATION ENGINEERING",
+        "DEPARTMENT": "ELECTRONIC AND COMMUNICATION ENGINEERING",
         "image": "/alumni/2026-27, heads/shiv.jpeg",
+        "imageScale": 1,
+        "objectPosition": "center 60%",
         "bio": "A true leader doesn't just set the vision they inspire an entire community to bring it to life."
     },
     {
@@ -29,6 +35,8 @@
         "role": "EXECUTIVE SECRETARY",
         "DEPARTMENT": "INFORMATION TECHNOLOGY",
         "image": "/alumni/2026-27, heads/ritika.jpeg",
+        "imageScale": 1.5,
+        "objectPosition": "center 75%",
         "bio": "Excellence lies in the details, and every great achievement begins with seamless coordination."
     },
     {
@@ -37,6 +45,8 @@
         "role": "GENERAL SECRETARY",
         "DEPARTMENT": "MECHANICAL ENGINEERING",
         "image": "/alumni/2026-27, heads/peehu.jpeg",
+        "imageScale": 2.5,
+        "objectPosition": "center 40%",
         "bio": "Leadership is reflected not only in guiding a team, but in ensuring every vision is transformed into meaningful action."
     },
     {
@@ -44,7 +54,9 @@
         "name": "NAMAN YADAV",
         "role": "JOINT SECRETARY",
         "DEPARTMENT": "MECHANICAL ENGINEERING",
-        "image": "https://i.pravatar.cc/600?img=68",
+        "image": "/alumni/2026-27, heads/naman.jpeg",
+        "imageScale": 1,
+        "objectPosition": "center 5%",
         "bio": "Every successful organization is built on dedication, coordination, and the ability to turn plans into progress."
     },
     {
@@ -52,15 +64,162 @@
         "name": "PUSHPENDRA TOMAR",
         "role": "OPERATIONAL CHIEF",
         "DEPARTMENT": "MECHATRONICS ENGINEERING",
-        "image": "https://i.pravatar.cc/600?img=49",
+        "image": "/alumni/2026-27, heads/pushpendra.jpeg",
+        "imageScale": 1,
+        "objectPosition": "center 5%",
         "bio": "Success isn't just about great ideas it's about executing them with excellence."
     },
     {
         "id": 8,
         "name": "APOORVA GUPTA",
         "role": "OPERATIONAL CHIEF",
-        "DEPARTMENT": "LEADERSHIP",
+        "DEPARTMENT": "ELECTRONIC AND COMMUNICATION ENGINEERING",
         "image": "/alumni/2026-27, heads/apoorva.jpeg",
+        "imageScale": 1.75,
+        "objectPosition": "center 100%",
         "bio": "Great execution turns ambitious ideas into remarkable achievements."
+    },
+    
+    {
+        "id": 9,
+        "name": "ADITYA PRATAP SINGH",
+        "role": "TECHNICAL HEAD",
+        "DEPARTMENT": "COMPUTER SCIENCE ENGINEERING",
+        "image": "/alumni/2026-27, heads/aditya.jpeg",
+        "imageScale": 1,
+        "objectPosition": "center 100%",
+        "bio": "Every breakthrough begins with a leader who believes in the power of innovation"
+    },
+    {
+        "id": 10,
+        "name": "SAURABH SUMAN",
+        "role": "TECHNICAL HEAD",
+        "DEPARTMENT": "ELECTRONICS AND COMMUNICATION ENGINEERING",
+        "image": "/alumni/2026-27, heads/saurabh.jpeg",
+        "imageScale": 1,
+        "objectPosition": "center 100%",
+        "bio": "Great technology isn't just built it is inspired by those who dare to innovate."
+    },
+    {
+        "id": 11,
+        "name": "PAWAAN SAXENA",
+        "role": "PR HEAD",
+        "DEPARTMENT": "COMPUTER SCIENCE ENGINEERING",
+        "image": "/alumni/2026-27, heads/pawaan.jpeg",
+        "imageScale": 1,
+        "objectPosition": "center 10%",
+        "bio": "Strong connections are built through meaningful conversations and authentic relationships."
+    },
+    {
+        "id": 12,
+        "name": "VINAY PATIDAR",
+        "role": "PR HEAD",
+        "DEPARTMENT": "MECHATRONICS ENGINEERING",
+        "image": "/alumni/2026-27, heads/vinay.jpeg",
+        "imageScale": 2.75,
+        "objectPosition": "center 10%",
+        "bio": "The strongest communities are built on trust, collaboration, and meaningful connections"
+    },
+    {
+        "id": 13,
+        "name": "AKSHATRA SEN",
+        "role": "PR HEAD",
+        "DEPARTMENT": "COMPUTER SCIENCE ENGINEERING",
+        "image": "/alumni/2026-27, heads/akshatra.jpeg",
+        "imageScale": 1.5,
+        "objectPosition": "center 40%",
+        "bio": "Every opportunity begins with a conversation, and every connection shapes a brighter future."
+    },
+    {
+        "id": 14,
+        "name": "PRANJAL VERMA",
+        "role": "CULTURAL HEAD",
+        "DEPARTMENT": "MECHATRONICS ENGINEERING",
+        "image": "/alumni/2026-27, heads/pranjal.jpeg",
+        "imageScale": 1.5,
+        "objectPosition": "center 40%",
+        "bio": "Every celebration tells a story, and every story begins with inspired leadership"
+    },
+    {
+        "id": 15,
+        "name": "SVASTI SHRIVASTAVA",
+        "role": "CULTURAL HEAD",
+        "DEPARTMENT": "ARTIFICIAL IMTELLIGENCE AND DATA SCIENCE ENGINEERING",
+        "image": "/alumni/2026-27, heads/svasti.jpeg",
+        "imageScale": 1.5,
+        "objectPosition": "center 10%",
+        "bio": "Culture is the heartbeat of every community, and every memorable moment begins with creativity"
+    },
+    {
+        "id": 16,
+        "name": "DAKSH SHARMA",
+        "role": "CULTURAL HEAD",
+        "DEPARTMENT": "N/A ENGINEERING",
+        "image": "/alumni/2026-27, heads/daksh.jpeg",
+        "imageScale": 1,
+        "objectPosition": "center 20%",
+        "bio": "The best moments are created by those who dare to dream, create, and inspire."
+    },
+    {
+        "id": 17,
+        "name": "VEDANSH CHANDAK",
+        "role": "ADVISORY COMMITTEE",
+        "DEPARTMENT": "COMPUTER SCIENCE ENGINEERING",
+        "image": "/alumni/2026-27, heads/vedansh.jpeg",
+        "imageScale": 1,
+        "objectPosition": "center 10%",
+        "bio": "Wisdom shapes direction, and experience builds excellence."
+    },
+    {
+        "id": 18,
+        "name": "ISHAAN SINGH",
+        "role": "CULTURAL HEAD",
+        "DEPARTMENT": "MECHATRONICS ENGINEERING",
+        "image": "/alumni/2026-27, heads/ishaan.jpeg",
+        "imageScale": 1.5,
+        "objectPosition": "center 80%",
+        "bio": "Wisdom shapes direction, and experience builds excellence."
+    },
+    {
+        "id": 19,
+        "name": "SHREYA PACHORI",
+        "role": "CULTURAL HEAD",
+        "DEPARTMENT": "MECHATRONICS ENGINEERING",
+        "image": "/alumni/2026-27, heads/shreya.jpeg",
+        "imageScale": 1.2,
+        "objectPosition": "center 50%",
+        "bio": "Wisdom shapes direction, and experience builds excellence."
+    },
+    {
+        "id": 20,
+        "name": "HARDIK PATEL",
+        "role": "CULTURAL HEAD",
+        "DEPARTMENT": "ARTIFICIAL IMTELLIGENCE AND DATA SCIENCE ENGINEERING",
+        "image": "/alumni/2026-27, heads/hardik.jpeg",
+        "imageScale": 1.5,
+        "objectPosition": "center 10%",
+        "bio": "Wisdom shapes direction, and experience builds excellence."
+    },
+    {
+        "id": 21,
+        "name": "ISHA KHATRI",
+        "role": "CULTURAL HEAD",
+        "DEPARTMENT": "INFORMATION TECHNOLOGY",
+        "image": "/alumni/2026-27, heads/isha.jpeg",
+        "imageScale": 1.5,
+        "objectPosition": "center 10%",
+        "bio": "Wisdom shapes direction, and experience builds excellence."
+    },
+    {
+        "id": 12,
+        "name": "AMUSHKA SHARMA",
+        "role": "CULTURAL HEAD",
+        "DEPARTMENT": "ELECTRONICS AND COMMUNICATION ENGINEERING",
+        "image": "/alumni/2026-27, heads/anushka.jpeg",
+        "imageScale": 1.8,
+        "objectPosition": "center 30%",
+        "bio": "Wisdom shapes direction, and experience builds excellence."
     }
+    
+    
 ]

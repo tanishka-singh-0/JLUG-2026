@@ -48,7 +48,7 @@ export default function HofIDCard({
               alt={`${name}, ${role}, ${academicYear}`}
               fill
               sizes="(max-width: 640px) 100vw, 220px"
-              className="object-cover"
+              className="object-cover object-center scale-[1.35]"
             />
           ) : (
             <span className="tracking-widest text-[0.65rem] select-none">

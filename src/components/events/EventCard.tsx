@@ -2,6 +2,7 @@
 
 import type { EventRecord } from "@/data/events";
 import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 
 type EventCardProps = {
   event: EventRecord;
@@ -10,6 +11,9 @@ type EventCardProps = {
 
 export default function EventCard({ event, year = "2026" }: EventCardProps) {
   const [galleryOpen, setGalleryOpen] = useState(false);
+  const [activeImageIndex, setActiveImageIndex] = useState(0);
+  const galleryPreviewImages = event.images.slice(1, 5);
+  const additionalImageCount = Math.max(event.images.length - 5, 0);
   const stats = [
     ["PARTICIPANTS", event.participants],
     ["TEAMS", event.teams],
@@ -18,16 +22,31 @@ export default function EventCard({ event, year = "2026" }: EventCardProps) {
 
   useEffect(() => {
     if (!galleryOpen) return;
-    const closeOnEscape = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setGalleryOpen(false);
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    const closeOnEscape = (keyEvent: KeyboardEvent) => {
+      if (keyEvent.key === "Escape") setGalleryOpen(false);
+      if (keyEvent.key === "ArrowLeft") {
+        setActiveImageIndex((index) =>
+          index === 0 ? event.images.length - 1 : index - 1,
+        );
+      }
+      if (keyEvent.key === "ArrowRight") {
+        setActiveImageIndex((index) =>
+          index === event.images.length - 1 ? 0 : index + 1,
+        );
+      }
     };
     window.addEventListener("keydown", closeOnEscape);
-    return () => window.removeEventListener("keydown", closeOnEscape);
-  }, [galleryOpen]);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", closeOnEscape);
+    };
+  }, [event.images.length, galleryOpen]);
 
   return (
     <>
-      <article className="group relative border border-jlug-line bg-jlug-ink">
+      <article className="group relative border border-jlug-line bg-jlug-ink transition-colors duration-300 hover:border-jlug-accent focus-within:border-jlug-accent">
         <div className="pointer-events-none absolute -top-12 -right-4 z-0 w-full overflow-hidden truncate text-right text-[15vw] font-bold text-jlug-surface-raised opacity-20">
           {year}
         </div>
@@ -71,14 +90,19 @@ export default function EventCard({ event, year = "2026" }: EventCardProps) {
           <div className="relative w-full lg:w-1/2">
             <button
               type="button"
-              onClick={() => firstImage && setGalleryOpen(true)}
+              onClick={() => {
+                if (firstImage) {
+                  setActiveImageIndex(0);
+                  setGalleryOpen(true);
+                }
+              }}
               disabled={!firstImage}
               aria-label={
                 firstImage
                   ? `Open ${event.name} image gallery`
                   : `${event.name} has no images yet`
               }
-              className="relative block aspect-video w-full border border-jlug-line bg-jlug-black p-2 text-left transition-colors hover:border-jlug-gray-2 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-jlug-accent disabled:cursor-default"
+              className="relative block aspect-video w-full border border-jlug-line bg-jlug-black p-2 text-left transition-colors hover:border-jlug-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-jlug-accent disabled:cursor-default"
             >
               {firstImage ? (
                 // eslint-disable-next-line @next/next/no-img-element
@@ -92,61 +116,120 @@ export default function EventCard({ event, year = "2026" }: EventCardProps) {
                   [ IMAGE_PENDING ]
                 </span>
               )}
-              {event.images.length > 0 && (
-                <span className="absolute right-4 bottom-4 bg-jlug-black/90 px-3 py-2 font-mono text-xs uppercase tracking-widest text-jlug-white">
-                  {event.images.length}{" "}
-                  {event.images.length === 1 ? "IMAGE" : "IMAGES"}
-                </span>
-              )}
             </button>
+            {galleryPreviewImages.length > 0 && (
+              <div className="mt-3 grid grid-cols-4 gap-2">
+                {galleryPreviewImages.map((image, index) => {
+                  const isOverflowPreview =
+                    index === galleryPreviewImages.length - 1 &&
+                    additionalImageCount > 0;
+
+                  return (
+                    <button
+                      type="button"
+                      key={`${event.id}-preview-${image}`}
+                      onClick={() => {
+                        setActiveImageIndex(index + 1);
+                        setGalleryOpen(true);
+                      }}
+                      aria-label={`Open ${event.name} image ${index + 2}`}
+                      className="relative aspect-video overflow-hidden border border-jlug-line bg-jlug-black p-1 text-left transition-colors hover:border-jlug-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-jlug-accent"
+                    >
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={image}
+                        alt=""
+                        className="h-full w-full object-cover"
+                      />
+                      {isOverflowPreview && (
+                        <span className="absolute inset-0 flex items-center justify-center bg-jlug-black/75 font-mono text-xs font-bold tracking-widest text-jlug-white">
+                          +{additionalImageCount}
+                        </span>
+                      )}
+                    </button>
+                  );
+                })}
+              </div>
+            )}
           </div>
         </div>
       </article>
 
-      {galleryOpen && (
-        <div
-          className="fixed inset-0 z-50 overflow-y-auto bg-jlug-black/95 p-6 md:p-12"
-          role="dialog"
-          aria-modal="true"
-          aria-label={`${event.name} image gallery`}
-          onClick={() => setGalleryOpen(false)}
-        >
+      {galleryOpen &&
+        createPortal(
           <div
-            className="mx-auto max-w-6xl"
-            onClick={(clickEvent) => clickEvent.stopPropagation()}
+            className="fixed inset-0 z-50 flex items-center justify-center overflow-hidden bg-jlug-black/95 p-4 md:p-8"
+            role="dialog"
+            aria-modal="true"
+            aria-label={`${event.name} image gallery`}
+            onClick={() => setGalleryOpen(false)}
           >
-            <div className="mb-8 flex items-center justify-between border-b border-jlug-line pb-4">
-              <div>
-                <p className="font-mono text-xs uppercase tracking-widest text-jlug-accent">
-                  {event.images.length}{" "}
-                  {event.images.length === 1 ? "IMAGE" : "IMAGES"}
-                </p>
-                <h3 className="mt-2 text-3xl font-bold uppercase md:text-5xl">
-                  {event.name}
-                </h3>
+            <div
+              className="flex h-[calc(100vh-2rem)] w-full max-w-6xl flex-col overflow-hidden md:h-[calc(100vh-4rem)]"
+              onClick={(clickEvent) => clickEvent.stopPropagation()}
+            >
+              <div className="flex shrink-0 items-center justify-between border-b border-jlug-line bg-jlug-black/80 px-4 py-4">
+                <div>
+                  <p className="font-mono text-xs uppercase tracking-widest text-jlug-accent">
+                    {event.images.length}{" "}
+                    {event.images.length === 1 ? "IMAGE" : "IMAGES"}
+                  </p>
+                  <h3 className="mt-2 text-3xl font-bold uppercase md:text-5xl">
+                    {event.name}
+                  </h3>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setGalleryOpen(false)}
+                  className="border border-jlug-line px-4 py-2 font-mono text-xs uppercase text-jlug-gray-1 hover:bg-jlug-white hover:text-jlug-black focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-jlug-accent"
+                >
+                  CLOSE [X]
+                </button>
               </div>
-              <button
-                type="button"
-                onClick={() => setGalleryOpen(false)}
-                className="border border-jlug-line px-4 py-2 font-mono text-xs uppercase text-jlug-gray-1 hover:bg-jlug-white hover:text-jlug-black focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-jlug-accent"
-              >
-                CLOSE [X]
-              </button>
-            </div>
-            <div className="grid gap-6 md:grid-cols-2">
-              {event.images.map((image, index) => (
-                // eslint-disable-next-line @next/next/no-img-element
+              <div className="relative flex min-h-0 flex-1 items-center justify-center overflow-hidden border border-jlug-line bg-jlug-surface p-4">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  key={`${event.id}-${image}`}
-                  src={image}
-                  alt={`${event.name} image ${index + 1}`}
-                  className="w-full border border-jlug-line bg-jlug-surface object-contain"
+                  src={event.images[activeImageIndex]}
+                  alt={`${event.name} image ${activeImageIndex + 1}`}
+                  style={{ maxHeight: "100%", maxWidth: "100%" }}
+                  className="object-contain"
                 />
-              ))}
+                {event.images.length > 1 && (
+                  <>
+                    <button
+                      type="button"
+                      onClick={() =>
+                        setActiveImageIndex((index) =>
+                          index === 0 ? event.images.length - 1 : index - 1,
+                        )
+                      }
+                      aria-label="Previous image"
+                      className="absolute left-3 top-1/2 -translate-y-1/2 border border-jlug-line bg-jlug-black/80 px-4 py-3 font-mono text-xl text-jlug-white transition-colors hover:border-jlug-accent hover:text-jlug-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-jlug-accent"
+                    >
+                      &lt;
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() =>
+                        setActiveImageIndex((index) =>
+                          index === event.images.length - 1 ? 0 : index + 1,
+                        )
+                      }
+                      aria-label="Next image"
+                      className="absolute right-3 top-1/2 -translate-y-1/2 border border-jlug-line bg-jlug-black/80 px-4 py-3 font-mono text-xl text-jlug-white transition-colors hover:border-jlug-accent hover:text-jlug-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-jlug-accent"
+                    >
+                      &gt;
+                    </button>
+                    <span className="absolute bottom-3 left-1/2 -translate-x-1/2 bg-jlug-black/80 px-3 py-1 font-mono text-xs text-jlug-white">
+                      {activeImageIndex + 1} / {event.images.length}
+                    </span>
+                  </>
+                )}
+              </div>
             </div>
-          </div>
-        </div>
-      )}
+          </div>,
+          document.body,
+        )}
     </>
   );
 }

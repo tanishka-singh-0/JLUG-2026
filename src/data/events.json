@@ -10,7 +10,11 @@
     "status": "SUCCESS",
     "images": [
       "/assets/events/code-kumbh.jpg",
-      "/assets/events/IMG_20260313_112654258_HDR_AE.jpg"
+      "/assets/events/IMG_20260313_112654258_HDR_AE.jpg",
+      "/assets/events/IMG_20260313_113145785_HDR_AE.jpg",
+      "/assets/events/IMG_20260313_125500539_HDR_AE.jpg",
+      "/assets/events/WhatsApp Image 2026-09-11 at 4.04.45 PMd.jpeg",
+      "/assets/events/WhatsApp Image 2026-09-11 at 4.04.45 PMe.jpeg"
     ]
   },
   {
@@ -22,7 +26,9 @@
     "participants": "",
     "teams": "",
     "status": "RECURRING",
-    "images": []
+    "images": [
+      "/assets/events/code-kumbh.jpg"
+    ]
   },
   {
     "id": "jecx-times",
@@ -33,6 +39,8 @@
     "participants": "",
     "teams": "",
     "status": "ACTIVE",
-    "images": []
+    "images": [
+      "/assets/events/code-kumbh.jpg"
+    ]
   }
 ]

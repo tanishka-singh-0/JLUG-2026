@@ -15,4 +15,6 @@ export interface TeamMember {
   image: string;
   bio: string;
   socials?: MemberSocials;
+  objectPosition?: string;
+  imageScale?: number;
 }

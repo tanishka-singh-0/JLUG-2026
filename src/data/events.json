@@ -1,0 +1,46 @@
+[
+  {
+    "id": "code-kumbh",
+    "tag": "HACKATHON",
+    "date": "MARCH 13, 2026",
+    "name": "CODE KUMBH",
+    "description": "24-hour hackathon bringing together builders from across the state.",
+    "participants": "200+",
+    "teams": "45+",
+    "status": "SUCCESS",
+    "images": [
+      "/assets/events/code-kumbh.jpg",
+      "/assets/events/IMG_20260313_112654258_HDR_AE.jpg",
+      "/assets/events/IMG_20260313_113145785_HDR_AE.jpg",
+      "/assets/events/IMG_20260313_125500539_HDR_AE.jpg",
+      "/assets/events/WhatsApp Image 2026-09-11 at 4.04.45 PMd.jpeg",
+      "/assets/events/WhatsApp Image 2026-09-11 at 4.04.45 PMe.jpeg"
+    ]
+  },
+  {
+    "id": "linux-workshop",
+    "tag": "WORKSHOP",
+    "date": "TBA",
+    "name": "LINUX WORKSHOP",
+    "description": "Master the Command Line. Learn shell scripting, file management, and system administration through hands-on sessions.",
+    "participants": "",
+    "teams": "",
+    "status": "RECURRING",
+    "images": [
+      "/assets/events/code-kumbh.jpg"
+    ]
+  },
+  {
+    "id": "jecx-times",
+    "tag": "NEWSLETTER",
+    "date": "JULY 31, 2023",
+    "name": "THE JECX TIMES",
+    "description": "JEC's very own virtual newsletter. Launched on 31st July 2023. Aimed at updating all with upcoming events and nourishing the history of JEC.",
+    "participants": "",
+    "teams": "",
+    "status": "ACTIVE",
+    "images": [
+      "/assets/events/code-kumbh.jpg"
+    ]
+  }
+]

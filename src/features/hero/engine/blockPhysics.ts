@@ -74,7 +74,7 @@ export function updateBlockPhysics(
         b.currentX = b.overshootX;
         // Reached the overshoot point — pause to "think"
         b.state = 'HESITATING';
-        b.hesitateTimer = 15 + Math.floor(Math.random() * 25); // ~15–40 frames
+        b.hesitateTimer = 4 + Math.floor(Math.random() * 8); // ~4–12 frames
         b.velocityY = Math.min(b.velocityY, 0.5); // Slow vertical while thinking
       } else {
         b.currentX += Math.sign(dxToOvershoot) * b.horizontalSpeed;

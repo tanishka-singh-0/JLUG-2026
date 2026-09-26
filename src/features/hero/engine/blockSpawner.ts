@@ -31,8 +31,8 @@ function chunkLetter(
     Array(cols).fill(false),
   );
 
-  // Stagger pieces per letter: J starts immediately, L after ~2s, U after ~4s, G after ~6s
-  const letterBaseDelay = letterIndex * 2200;
+  // Stagger pieces per letter: J starts immediately, L after ~0.5s, U after ~1.0s, G after ~1.5s
+  const letterBaseDelay = letterIndex * 500;
 
   for (let y = 0; y < rows; y++) {
     for (let x = 0; x < cols; x++) {
@@ -121,7 +121,7 @@ function chunkLetter(
           (overshootX > finalPixelX ? 1 : -1);
 
       // Per-piece delay within the letter (earlier rows/columns tend to come earlier)
-      const withinLetterDelay = (y * cols + x) * 30 + Math.random() * 600;
+      const withinLetterDelay = (y * cols + x) * 8 + Math.random() * 150;
 
       pieces.push({
         id: 0, // Will be assigned after sorting

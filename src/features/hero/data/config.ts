@@ -9,7 +9,7 @@ export const HERO_BLOCK_CONFIG = {
   startY: 160,
 
   // Sequence Timing (ms)
-  buildDuration: 10000,
+  buildDuration: 3000,
   holdDuration: 4000,
   resetDuration: 2500,
   get totalLoopDuration() {
@@ -17,11 +17,11 @@ export const HERO_BLOCK_CONFIG = {
   },
 
   // Physics Tuning
-  gravity: 0.12,
-  horizontalSpeedBase: 2.5,
-  horizontalSpeedVariance: 2.0,
-  hardDropSpeed: 18,
-  correctionSpeed: 1.5,
+  gravity: 0.35,
+  horizontalSpeedBase: 6.5,
+  horizontalSpeedVariance: 4.0,
+  hardDropSpeed: 36,
+  correctionSpeed: 4.0,
 
   // Human-player movement
   overshootMin: 60,

@@ -18,7 +18,7 @@ export interface President {
   name: string;
   photo: string;
   branch: string;
-
+  note?: string;
   socials?: {
     github?: string;
     linkedin?: string;

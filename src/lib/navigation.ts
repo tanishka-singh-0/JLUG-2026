@@ -67,9 +67,22 @@ export const NAV_ITEMS: NavItem[] = [
     ],
   },
   {
+    href: "/jec-sc",
+    label: "JEC SC",
+    index: "04",
+    title: "STUDENT COUNCIL",
+    blurb:
+      "The student council representatives and leaders of Jabalpur Engineering College.",
+    meta: "JEC SC",
+    todo: [
+      "Member roster with variable config file",
+      "Dynamic filtering and spotlight view",
+    ],
+  },
+  {
     href: "/join",
     label: "JOIN",
-    index: "04",
+    index: "05",
     title: "RECRUITMENT",
     blurb:
       "Applications for the incoming 2030 batch. Open a form, tell us what you want to build.",

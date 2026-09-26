@@ -38,9 +38,11 @@ export default function IDCard({ member, href, onClick }: IDCardProps) {
         </p>
       </div>
 
-      <p className="font-mono text-[0.7rem] text-jlug-gray-2 mt-4 line-clamp-2">
-        {member.bio}
-      </p>
+      {member.bio && (
+        <p className="font-mono text-[0.7rem] text-jlug-gray-2 mt-4 line-clamp-2">
+          {member.bio}
+        </p>
+      )}
     </div>
   );
 

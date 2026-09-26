@@ -40,8 +40,8 @@ export const JEC_SECURITY_COUNCIL_MEMBERS: SecurityCouncilMember[] = [
     id: 1,
     name: "AKSHAT TIWARI",
 
-    image: "/alumni/2026-27, heads/akshat.jpeg",
-    imageScale: 1,
+    image: "/alumni/2026-27, heads/akshat.png",
+    imageScale: 1.2,
     objectPosition: "center 5%",
 
   },
@@ -49,7 +49,7 @@ export const JEC_SECURITY_COUNCIL_MEMBERS: SecurityCouncilMember[] = [
     id: 2,
     name: "CHITRANSH TIWARI",
 
-    image: "/alumni/2026-27, heads/chitransh.jpeg",
+    image: "/alumni/2026-27, heads/chitransh.png",
     imageScale: 1,
     objectPosition: "center 50%",
 
@@ -59,7 +59,7 @@ export const JEC_SECURITY_COUNCIL_MEMBERS: SecurityCouncilMember[] = [
     name: "MUSTKEEM ARSH",
 
     image: "/assets/presidents/mustkeem_arsh.jpg",
-    imageScale: 1,
+    imageScale: 0.9,
     objectPosition: "center 60%",
 
   },
@@ -68,7 +68,7 @@ export const JEC_SECURITY_COUNCIL_MEMBERS: SecurityCouncilMember[] = [
     name: "MOHAMMAD USAID",
 
     image: "/assets/presidents/mohammad_usaid.png",
-    imageScale: 2.2,
+    imageScale: 1.3,
     objectPosition: "center 40%",
 
   },
@@ -77,7 +77,7 @@ export const JEC_SECURITY_COUNCIL_MEMBERS: SecurityCouncilMember[] = [
     name: "PRANSHU MISHRA",
 
     image: "/assets/presidents/pranshu_mishra.jpg",
-    imageScale: 2.2,
+    imageScale: 1.3,
     objectPosition: "center 30%",
   },
 
@@ -86,7 +86,7 @@ export const JEC_SECURITY_COUNCIL_MEMBERS: SecurityCouncilMember[] = [
     name: "SAMVEG SHANDILYA",
 
     image: "/assets/presidents/samveg_shandilya.jpg",
-    imageScale: 1,
+    imageScale: 1.2,
     objectPosition: "center 5%",
   },
   {
@@ -94,7 +94,7 @@ export const JEC_SECURITY_COUNCIL_MEMBERS: SecurityCouncilMember[] = [
     name: "AYUSHMAN PARCHORIA",
 
     image: "/assets/presidents/ayushman_parchoria.jpg",
-    imageScale: 1,
+    imageScale: 1.2,
     objectPosition: "center 5%",
 
   },

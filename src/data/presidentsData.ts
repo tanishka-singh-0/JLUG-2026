@@ -18,7 +18,7 @@ export interface President {
   name: string;
   photo: string;
   branch: string;
-  note: string;
+  note?: string;
   socials?: {
     github?: string;
     linkedin?: string;
@@ -31,7 +31,7 @@ export const PRESIDENTS: President[] = [
     name: "Ayushman Parchoria",
     photo: "/assets/presidents/ayushman_parchoria.jpg",
     branch: "B.Tech — Information Technology",
-    note: "Founded the club from scratch. Ran the first Linux install-fest with 40 attendees and zero budget.",
+
     socials: {
       github: "https://github.com/",
       linkedin: "https://linkedin.com/",
@@ -42,7 +42,7 @@ export const PRESIDENTS: President[] = [
     name: "Pranshu Mishra",
     photo: "/assets/presidents/pranshu_mishra.jpg",
     branch: "B.Tech — Computer Science Engineering",
-    note: "Led the club through a fully remote year. Launched the first open-source contribution sprint online.",
+
     socials: {
       github: "https://github.com/",
       linkedin: "https://linkedin.com/",
@@ -53,7 +53,7 @@ export const PRESIDENTS: President[] = [
     name: "Mohammad Usaid",
     photo: "/assets/presidents/mohammad_usaid.png",
     branch: "B.Tech — Electronics & Communication",
-    note: "Doubled membership and ran CodeKumbh 1.0 — the first 24-hour hackathon at JEC.",
+
     socials: {
       github: "https://github.com/",
       linkedin: "https://linkedin.com/",
@@ -64,7 +64,7 @@ export const PRESIDENTS: President[] = [
     name: "Samveg Shandilya",
     photo: "/assets/presidents/samveg_shandilya.jpg",
     branch: "B.Tech — Industrial Production",
-    note: "Formalised the club's domain structure. Introduced the design and AI/ML tracks.",
+
     socials: {
       linkedin: "https://linkedin.com/",
     },
@@ -74,7 +74,7 @@ export const PRESIDENTS: President[] = [
     name: "Mustkeem Arsh",
     photo: "/assets/presidents/mustkeem_arsh.jpg",
     branch: "B.Tech — Electronics and Communication Engineering",
-    note: "Shipped the first version of jlug.club and took CodeKumbh national with 200+ participants.",
+
     socials: {
       github: "https://github.com/",
       linkedin: "https://linkedin.com/",
@@ -85,7 +85,7 @@ export const PRESIDENTS: President[] = [
     name: "Harshit Solanki",
     photo: "/assets/presidents/harshit_solanki.jpg",
     branch: "B.Tech — Electrical Engineering",
-    note: "Grew the community to 120+ active members. Established the robotics and hardware track.",
+
     socials: {
       github: "https://github.com/",
       linkedin: "https://linkedin.com/",
@@ -96,7 +96,7 @@ export const PRESIDENTS: President[] = [
     name: "Prince Dwivedi",
     photo: "/assets/presidents/aarav_mehta.png",
     branch: "B.Tech — Electronics and Communication Engineering",
-    note: "Current president. Keeps the club's roadmap honest and its late-night build sessions fuelled.",
+
     socials: {
       github: "https://github.com/",
       linkedin: "https://linkedin.com/",
@@ -107,7 +107,7 @@ export const PRESIDENTS: President[] = [
     name: "Akshat Tiwari",
     photo: "/assets/presidents/president_2026_27.jpg",
     branch: "B.Tech — Computer Science",
-    note: "The baton passes. A new chapter for JLUG begins.",
+
     socials: {
       github: "https://github.com/",
       linkedin: "https://linkedin.com/",

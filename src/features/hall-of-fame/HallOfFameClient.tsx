@@ -205,12 +205,14 @@ function TextPanel({ president, index, total, visibility, entering }: TextPanelP
       />
 
       {/* Note */}
-      <p
-        className="text-jlug-gray-1 max-w-md leading-relaxed text-xs sm:text-sm lg:text-[clamp(0.95rem,1.2vw,1.1rem)]"
-        style={{ opacity: sub2 }}
-      >
-        {president.note}
-      </p>
+      {president.note && (
+        <p
+          className="text-jlug-gray-1 max-w-md leading-relaxed text-xs sm:text-sm lg:text-[clamp(0.95rem,1.2vw,1.1rem)]"
+          style={{ opacity: sub2 }}
+        >
+          {president.note}
+        </p>
+      )}
 
       {/* Socials */}
       {president.socials && (
@@ -514,9 +516,11 @@ export default function HallOfFameClient() {
                   {p.branch}
                 </span>
               </div>
-              <p className="mt-1.5 sm:mt-2 text-xs sm:text-sm text-jlug-gray-1 max-w-2xl leading-relaxed">
-                {p.note}
-              </p>
+              {p.note && (
+                <p className="mt-1.5 sm:mt-2 text-xs sm:text-sm text-jlug-gray-1 max-w-2xl leading-relaxed">
+                  {p.note}
+                </p>
+              )}
             </button>
           ))}
         </div>

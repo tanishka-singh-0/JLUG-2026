@@ -18,17 +18,17 @@ export default function IDCard({ member, href, onClick }: IDCardProps) {
         </div>
         <div className="w-full aspect-[3/4] bg-jlug-surface mb-4 relative overflow-hidden">
           <Image
-          src={member.image}
-          alt={member.name}
-          fill
-          unoptimized
-          className="object-cover grayscale group-hover:grayscale-0 transition-all duration-300"
-          style={{
-          objectFit: "cover",
-          objectPosition: member.objectPosition || "center center",
-          transform: `scale(${member.imageScale || 1})`,
-        }}
-        />
+            src={member.image}
+            alt={member.name}
+            fill
+            unoptimized
+            className="object-cover transition-all duration-300"
+            style={{
+              objectFit: "cover",
+              objectPosition: member.objectPosition || "center center",
+              transform: `scale(${member.imageScale || 1})`,
+            }}
+          />
         </div>
         <h3 className="text-xl font-bold uppercase mb-1 text-jlug-white group-hover:text-jlug-accent transition-colors">
           {member.name}
@@ -44,19 +44,27 @@ export default function IDCard({ member, href, onClick }: IDCardProps) {
     </div>
   );
 
-  const className = "group relative bg-jlug-black border border-jlug-line p-1 hover:border-jlug-accent transition-colors text-left cursor-pointer h-full block";
+  const baseClassName = "group relative bg-jlug-black border border-jlug-line p-1 hover:border-jlug-accent transition-colors text-left h-full block";
 
   if (href) {
     return (
-      <Link href={href} className={className} onClick={onClick}>
+      <Link href={href} className={`${baseClassName} cursor-pointer`} onClick={onClick}>
         {content}
       </Link>
     );
   }
 
+  if (onClick) {
+    return (
+      <button type="button" className={`${baseClassName} cursor-pointer`} onClick={onClick}>
+        {content}
+      </button>
+    );
+  }
+
   return (
-    <button type="button" className={className} onClick={onClick}>
+    <div className={baseClassName}>
       {content}
-    </button>
+    </div>
   );
 }

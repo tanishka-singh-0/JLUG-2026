@@ -71,7 +71,6 @@
         "objectPosition": "center 100%",
         "bio": "Great execution turns ambitious ideas into remarkable achievements."
     },
-    
     {
         "id": 9,
         "name": "ADITYA PRATAP SINGH",
@@ -190,7 +189,7 @@
         "bio": "Wisdom shapes direction, and experience builds excellence."
     },
     {
-        "id": 12,
+        "id": 22,
         "name": "AnUSHKA SHARMA",
         "role": "CULTURAL HEAD",
         "image": "/alumni/2026-27, heads/anushka.jpeg",
@@ -198,6 +197,4 @@
         "objectPosition": "center 30%",
         "bio": "Wisdom shapes direction, and experience builds excellence."
     }
-    
-    
 ]

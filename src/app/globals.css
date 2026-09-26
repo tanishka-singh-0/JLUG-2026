@@ -179,3 +179,27 @@ body {
 .animate-fadeIn {
   animation: fadeIn 0.25s var(--ease) forwards;
 }
+
+@keyframes floatIn {
+  0% {
+    opacity: 0;
+    transform: translateY(32px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-float-in-1 {
+  animation: floatIn 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.05s both;
+}
+
+.animate-float-in-2 {
+  animation: floatIn 0.95s cubic-bezier(0.16, 1, 0.3, 1) 0.18s both;
+}
+
+.animate-float-in-3 {
+  animation: floatIn 1.05s cubic-bezier(0.16, 1, 0.3, 1) 0.32s both;
+}
+

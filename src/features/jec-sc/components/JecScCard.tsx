@@ -2,17 +2,17 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { JecScMember } from "@/data/jecScMembers";
+import { SecurityCouncilMember } from "@/data/jecSecurityCouncil";
 
 interface JecScCardProps {
-  member: JecScMember;
-  onSelect: (member: JecScMember) => void;
+  member: SecurityCouncilMember;
+  onSelect?: (member: SecurityCouncilMember) => void;
 }
 
 export default function JecScCard({ member, onSelect }: JecScCardProps) {
   const [imageError, setImageError] = useState(false);
 
-  // Fallback initials if photo missing/broken
+  // Fallback initials if image fails
   const initials = member.name
     .split(" ")
     .map((n) => n[0])
@@ -20,40 +20,39 @@ export default function JecScCard({ member, onSelect }: JecScCardProps) {
     .slice(0, 2)
     .join("");
 
+  const formattedId = `SC // 026_${String(member.id).padStart(2, "0")}`;
+
   return (
     <article
-      onClick={() => onSelect(member)}
-      className="group relative flex h-full flex-col justify-between border border-jlug-line bg-jlug-surface p-1 text-left transition-all duration-300 hover:border-jlug-accent cursor-pointer"
-      role="button"
-      tabIndex={0}
-      onKeyDown={(e) => {
-        if (e.key === "Enter" || e.key === " ") {
-          e.preventDefault();
-          onSelect(member);
-        }
-      }}
-      aria-label={`View profile of ${member.name}, ${member.role}`}
+      onClick={() => onSelect?.(member)}
+      className={`group relative flex h-full flex-col justify-between border border-jlug-line bg-jlug-surface p-1 text-left transition-all duration-300 hover:border-jlug-accent ${
+        onSelect ? "cursor-pointer" : "cursor-default"
+      }`}
+      aria-label={`${member.name}${member.role ? `, ${member.role}` : ""}`}
     >
       <div className="flex h-full flex-col justify-between border border-jlug-line/70 p-4 transition-colors group-hover:border-jlug-accent/40">
         <div>
           {/* Top metadata strip */}
           <div className="mb-3 flex items-center justify-between border-b border-jlug-line pb-2 font-mono text-[0.65rem] uppercase tracking-wider text-jlug-gray-1">
-            <span className="text-jlug-gray-2">{member.id.toUpperCase()}</span>
-            <span className="font-semibold text-jlug-accent">
-              {member.badge || "ACTIVE"}
-            </span>
+            <span className="text-jlug-gray-2">{formattedId}</span>
+            <span className="font-semibold text-jlug-accent">ACTIVE</span>
           </div>
 
           {/* Photo frame */}
-          <div className="relative mb-4 aspect-[4/5] w-full overflow-hidden border border-jlug-line/80 bg-jlug-black">
-            {!imageError && member.photo ? (
+          <div className="relative mb-4 aspect-[3/4] w-full overflow-hidden border border-jlug-line/80 bg-jlug-black">
+            {!imageError && member.image ? (
               <Image
-                src={member.photo}
+                src={member.image}
                 alt={member.name}
                 fill
                 unoptimized
                 onError={() => setImageError(true)}
-                className="object-cover object-top grayscale transition-all duration-500 ease-out group-hover:scale-105 group-hover:grayscale-0"
+                className="object-cover transition-all duration-500 ease-out"
+                style={{
+                  objectFit: "cover",
+                  objectPosition: member.objectPosition || "center 20%",
+                  transform: `scale(${member.imageScale || 1})`,
+                }}
               />
             ) : (
               <div className="flex h-full w-full flex-col items-center justify-center bg-gradient-to-b from-jlug-surface-raised to-jlug-black font-mono text-jlug-gray-2">
@@ -61,52 +60,37 @@ export default function JecScCard({ member, onSelect }: JecScCardProps) {
                   {initials}
                 </span>
                 <span className="mt-2 text-[0.65rem] tracking-widest text-jlug-gray-3 uppercase">
-                  JEC SC // 26-27
+                  JEC SC
                 </span>
               </div>
             )}
 
-            {/* Subtle corner reticle accents */}
+            {/* Corner reticle accents */}
             <div className="absolute top-1 left-1 h-1.5 w-1.5 border-t border-l border-jlug-accent/60 opacity-0 group-hover:opacity-100 transition-opacity" />
             <div className="absolute top-1 right-1 h-1.5 w-1.5 border-t border-r border-jlug-accent/60 opacity-0 group-hover:opacity-100 transition-opacity" />
             <div className="absolute bottom-1 left-1 h-1.5 w-1.5 border-b border-l border-jlug-accent/60 opacity-0 group-hover:opacity-100 transition-opacity" />
             <div className="absolute bottom-1 right-1 h-1.5 w-1.5 border-b border-r border-jlug-accent/60 opacity-0 group-hover:opacity-100 transition-opacity" />
           </div>
 
-          {/* Member Name */}
+          {/* Name */}
           <h3 className="font-display text-lg font-bold uppercase tracking-tight text-jlug-white transition-colors duration-200 group-hover:text-jlug-accent sm:text-xl">
             {member.name}
           </h3>
 
-          {/* Role & Wing */}
-          <div className="mt-1 flex flex-col gap-0.5">
-            <span className="font-mono text-xs font-semibold uppercase tracking-wider text-jlug-white-soft">
-              {member.role}
-            </span>
-            <span className="font-mono text-[0.7rem] uppercase tracking-widest text-jlug-gray-2">
-              {member.wing}
-            </span>
-          </div>
-
-          {/* Branch & Academic Year */}
-          <div className="mt-2 font-mono text-[0.68rem] text-jlug-gray-1 border-t border-jlug-line/50 pt-2">
-            {member.branchYear}
+          {/* Role */}
+          <div className="mt-1 font-mono text-xs font-semibold uppercase tracking-wider text-jlug-white-soft">
+            {member.role}
           </div>
         </div>
 
         {/* Bio preview & inspect CTA */}
-        <div className="mt-4 pt-3 border-t border-jlug-line/60">
-          <p className="line-clamp-2 font-mono text-[0.72rem] leading-relaxed text-jlug-gray-2">
-            {member.bio}
-          </p>
-
-          <div className="mt-3 flex items-center justify-between font-mono text-[0.68rem] uppercase tracking-widest text-jlug-gray-3 group-hover:text-jlug-accent transition-colors">
-            <span>INSPECT DOSSIER</span>
-            <span className="transition-transform duration-200 group-hover:translate-x-1">
-              [→]
-            </span>
+        {member.bio ? (
+          <div className="mt-4 pt-3 border-t border-jlug-line/60">
+            <p className="line-clamp-2 font-mono text-[0.72rem] leading-relaxed text-jlug-gray-2">
+              {member.bio}
+            </p>
           </div>
-        </div>
+        ) : null}
       </div>
     </article>
   );

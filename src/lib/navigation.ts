@@ -70,9 +70,9 @@ export const NAV_ITEMS: NavItem[] = [
     href: "/jec-sc",
     label: "JEC SC",
     index: "04",
-    title: "STUDENT COUNCIL",
+    title: "SECURITY COUNCIL",
     blurb:
-      "The student council representatives and leaders of Jabalpur Engineering College.",
+      "The security council representatives and members of Jabalpur Engineering College.",
     meta: "JEC SC",
     todo: [
       "Member roster with variable config file",

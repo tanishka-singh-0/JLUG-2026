@@ -317,14 +317,14 @@ export default function HallOfFameClient() {
 
       {/* ── Hero ──────────────────────────────────────────────────────────── */}
       <div className="px-5 sm:px-8 md:px-16 lg:px-24 pt-12 sm:pt-20 pb-10 sm:pb-16 border-b border-jlug-line">
-        <h1 className="text-[clamp(3rem,11vw,11rem)] font-bold uppercase tracking-tight leading-[0.88]">
+        <h1 className="text-[clamp(3rem,11vw,11rem)] font-bold uppercase tracking-tight leading-[0.88] animate-float-in-1">
           HALL<br />
           <span className="text-jlug-accent">OF FAME</span>
         </h1>
-        <p className="mt-5 sm:mt-8 max-w-lg text-jlug-gray-1 text-base sm:text-lg leading-relaxed">
+        <p className="mt-5 sm:mt-8 max-w-lg text-jlug-gray-1 text-base sm:text-lg leading-relaxed animate-float-in-2">
           Every president who has carried JLUG forward — from the first install-fest in 2019 to today.
         </p>
-        <p className="mt-3 font-mono text-[0.7rem] sm:text-xs text-jlug-gray-3 uppercase tracking-widest">
+        <p className="mt-3 font-mono text-[0.7rem] sm:text-xs text-jlug-gray-3 uppercase tracking-widest animate-float-in-3">
           {total} TERMS · SCROLL TO NAVIGATE
         </p>
       </div>

@@ -21,8 +21,10 @@ function pickColor(): string {
 function chunkLetter(
   bitmap: string[],
   offsetX: number,
+  offsetY: number,
   letterIndex: number,
   prefersReducedMotion: boolean,
+  orientation: 'horizontal' | 'vertical',
 ): BlockPiece[] {
   const pieces: BlockPiece[] = [];
   const rows = bitmap.length;
@@ -30,9 +32,6 @@ function chunkLetter(
   const visited: boolean[][] = Array.from({ length: rows }, () =>
     Array(cols).fill(false),
   );
-
-  // Stagger pieces per letter: J starts immediately, L after ~0.5s, U after ~1.0s, G after ~1.5s
-  const letterBaseDelay = letterIndex * 500;
 
   for (let y = 0; y < rows; y++) {
     for (let x = 0; x < cols; x++) {
@@ -100,28 +99,55 @@ function chunkLetter(
 
       const cell = C.cellSize + C.cellGap;
       const finalPixelX = offsetX + x * cell;
-      const finalPixelY = C.startY + y * cell;
+      const finalPixelY = offsetY + y * cell;
       const pixelW = w * C.cellSize + (w - 1) * C.cellGap;
       const pixelH = h * C.cellSize + (h - 1) * C.cellGap;
 
       // --- Human-player trajectory ---
-      const overshootDir = Math.random() > 0.5 ? 1 : -1;
+      // On the narrow vertical (mobile) layout, alternate each block's
+      // entry side left/right so pieces visibly fly in from both sides
+      // of the screen instead of using desktop-scale overshoot distances
+      // that would fly blocks past the (much narrower) target column.
+      const overshootDir =
+        orientation === 'vertical'
+          ? (x + y) % 2 === 0 ? 1 : -1
+          : Math.random() > 0.5 ? 1 : -1;
+
+      const overshootRange =
+        orientation === 'vertical'
+          ? { min: C.overshootMinVertical, max: C.overshootMaxVertical }
+          : { min: C.overshootMin, max: C.overshootMax };
+
       const overshootAmount =
-        (C.overshootMin + Math.random() * (C.overshootMax - C.overshootMin)) * overshootDir;
+        (overshootRange.min + Math.random() * (overshootRange.max - overshootRange.min)) *
+        overshootDir;
       const overshootX = finalPixelX + overshootAmount;
 
       // Second overcorrection (smaller, opposite direction)
       const overcorrectAmount =
-        (20 + Math.random() * 40) * -overshootDir;
+        (orientation === 'vertical' ? 10 + Math.random() * 20 : 20 + Math.random() * 40) *
+        -overshootDir;
       const overcorrectX = finalPixelX + overcorrectAmount;
 
-      // Spawn position: even further from the overshoot target
+      // Spawn position: off-screen on the same side as the overshoot,
+      // so blocks clearly enter from the left or right edge.
+      const spawnOffsetRange =
+        orientation === 'vertical'
+          ? { min: C.spawnOffsetMinVertical, max: C.spawnOffsetMaxVertical }
+          : { min: C.spawnOffsetMin, max: C.spawnOffsetMax };
       const spawnX =
-        overshootX + (C.spawnOffsetMin + Math.random() * (C.spawnOffsetMax - C.spawnOffsetMin)) *
+        overshootX + (spawnOffsetRange.min + Math.random() * (spawnOffsetRange.max - spawnOffsetRange.min)) *
           (overshootX > finalPixelX ? 1 : -1);
 
-      // Per-piece delay within the letter (earlier rows/columns tend to come earlier)
-      const withinLetterDelay = (y * cols + x) * 8 + Math.random() * 150;
+      // Height this piece pauses at before its final hard drop.
+      // Computed once here (not per frame) so the piece settles smoothly
+      // instead of twitching against a randomly moving target.
+      const hoverY =
+        finalPixelY - (C.hoverGapMin + Math.random() * (C.hoverGapMax - C.hoverGapMin));
+
+      // All pieces spawn together — only a tiny jitter so hundreds of
+      // blocks don't move in perfect, robotic lockstep.
+      const withinLetterDelay = Math.random() * 60;
 
       pieces.push({
         id: 0, // Will be assigned after sorting
@@ -135,8 +161,9 @@ function chunkLetter(
         currentY: prefersReducedMotion ? finalPixelY : -(C.spawnHeightMin + Math.random() * (C.spawnHeightMax - C.spawnHeightMin)),
         overshootX,
         overcorrectX,
+        hoverY,
         state: prefersReducedMotion ? 'SETTLED' : 'WAITING',
-        spawnDelay: prefersReducedMotion ? 0 : letterBaseDelay + withinLetterDelay,
+        spawnDelay: prefersReducedMotion ? 0 : withinLetterDelay,
         hesitateTimer: 0,
         velocityY: 0,
         velocityX: 0,
@@ -154,17 +181,48 @@ function chunkLetter(
   return pieces;
 }
 
-export function spawnBlocks(prefersReducedMotion: boolean): BlockPiece[] {
+export function spawnBlocks(
+  prefersReducedMotion: boolean,
+  orientation: 'horizontal' | 'vertical' = 'horizontal',
+): BlockPiece[] {
   const letters: Array<keyof typeof JLUG_SHAPE_MATRIX> = ['J', 'L', 'U', 'G'];
   const allPieces: BlockPiece[] = [];
-  let offsetX = C.startX;
 
-  letters.forEach((char, letterIdx) => {
-    const bitmap = JLUG_SHAPE_MATRIX[char];
-    const letterPieces = chunkLetter(bitmap, offsetX, letterIdx, prefersReducedMotion);
-    allPieces.push(...letterPieces);
-    offsetX += C.letterSpacing;
-  });
+  if (orientation === 'vertical') {
+    // Stack letters top-to-bottom (J, then L, then U, then G), each
+    // centered on the same X column, so the wordmark reads vertically
+    // and fills a tall mobile viewport.
+    let offsetY = C.startYVertical;
+    letters.forEach((char, letterIdx) => {
+      const bitmap = JLUG_SHAPE_MATRIX[char];
+      const letterPieces = chunkLetter(
+        bitmap,
+        C.startXVertical,
+        offsetY,
+        letterIdx,
+        prefersReducedMotion,
+        'vertical',
+      );
+      allPieces.push(...letterPieces);
+      const rows = bitmap.length;
+      offsetY += rows * (C.cellSize + C.cellGap) + C.letterStackGap;
+    });
+  } else {
+    let offsetX = C.startX;
+    letters.forEach((char, letterIdx) => {
+      const bitmap = JLUG_SHAPE_MATRIX[char];
+      const letterPieces = chunkLetter(
+        bitmap,
+        offsetX,
+        C.startY,
+        letterIdx,
+        prefersReducedMotion,
+        'horizontal',
+      );
+      allPieces.push(...letterPieces);
+      offsetX += C.letterSpacing;
+    });
+  }
 
   // Sort by spawn delay and assign sequential IDs
   allPieces.sort((a, b) => a.spawnDelay - b.spawnDelay);

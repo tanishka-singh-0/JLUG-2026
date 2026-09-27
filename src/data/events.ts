@@ -10,6 +10,8 @@ export type EventRecord = {
   teams?: string;
   status: string;
   images: string[];
+  /** Link to a dedicated microsite for this event, if one exists. */
+  siteUrl?: string;
 };
 
 export const EVENTS: EventRecord[] = events;

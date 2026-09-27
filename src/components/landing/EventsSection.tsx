@@ -9,7 +9,7 @@ export default function EventsSection() {
       <div className="mb-16 flex flex-col justify-between px-6 md:flex-row md:items-end md:px-24">
         <div>
           <div className="mb-4 font-mono text-xs uppercase tracking-widest text-jlug-accent">
-            05 // ARCHIVE
+            04 // ARCHIVE
           </div>
           <h2 className="text-5xl font-semibold tracking-tight md:text-8xl">
             EVENT LOG

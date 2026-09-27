@@ -5,7 +5,7 @@ export default function SiteIndexSection() {
   return (
     <section className="relative border-b border-jlug-line">
       <div className="sticky top-14 bg-jlug-black border-b border-jlug-line z-20 px-6 py-3 flex justify-between font-mono text-xs text-jlug-gray-1 uppercase tracking-widest">
-        <span>03 // SECTIONS</span>
+        <span>02 // SECTIONS</span>
         <span>CD /</span>
       </div>
 

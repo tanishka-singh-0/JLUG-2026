@@ -11,8 +11,10 @@ export interface TeamMember {
   id: number | string;
   name: string;
   role: string;
-  category: FilterCategory | string;
+  category?: FilterCategory | string;
   image: string;
-  bio: string;
+  bio?: string;
   socials?: MemberSocials;
+  objectPosition?: string;
+  imageScale?: number;
 }

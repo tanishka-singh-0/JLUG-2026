@@ -27,6 +27,7 @@ export type BlockPiece = {
   // Human-player movement
   overshootX: number;       // Where the player initially aims (wrong)
   overcorrectX: number;     // Second overshoot in opposite direction
+  hoverY: number;           // Height it pauses at before the hard drop
   spawnDelay: number;       // ms before this piece appears
   hesitateTimer: number;    // Frames to pause at hesitation point
   state: BlockState;

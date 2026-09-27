@@ -85,6 +85,16 @@ export default function EventCard({ event, year = "2026" }: EventCardProps) {
                 </tr>
               </tbody>
             </table>
+            {event.siteUrl && (
+              <a
+                href={event.siteUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-8 inline-block border border-jlug-line px-4 py-2 font-mono text-xs uppercase tracking-widest text-jlug-gray-1 transition-colors hover:bg-jlug-white hover:text-jlug-black focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-jlug-accent"
+              >
+                VISIT_SITE.SH {"-->"}
+              </a>
+            )}
           </div>
 
           <div className="relative w-full lg:w-1/2">
@@ -109,7 +119,7 @@ export default function EventCard({ event, year = "2026" }: EventCardProps) {
                 <img
                   src={firstImage}
                   alt={`${event.name} event`}
-                  className="h-full w-full object-cover"
+                  className="h-full w-full object-contain"
                 />
               ) : (
                 <span className="flex h-full w-full items-center justify-center bg-jlug-surface font-mono text-xs text-jlug-gray-2">
@@ -139,7 +149,7 @@ export default function EventCard({ event, year = "2026" }: EventCardProps) {
                       <img
                         src={image}
                         alt=""
-                        className="h-full w-full object-cover"
+                        className="h-full w-full object-contain"
                       />
                       {isOverflowPreview && (
                         <span className="absolute inset-0 flex items-center justify-center bg-jlug-black/75 font-mono text-xs font-bold tracking-widest text-jlug-white">

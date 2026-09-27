@@ -7,9 +7,9 @@ import ScrollReveal from "./ScrollReveal";
 /* ─── Stagger configuration ────────────────────────────────────────── */
 const STAGGER_CONFIG = {
   /** Base delay for the first card (ms) */
-  initialDelay: 200,
+  initialDelay: 80,
   /** Incremental delay between consecutive cards (ms) */
-  staggerStep: 250,
+  staggerStep: 80,
 } as const;
 
 type AnimatedEventListProps = {

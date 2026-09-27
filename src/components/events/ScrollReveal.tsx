@@ -5,9 +5,9 @@ import { useEffect, useRef, useState, type ReactNode } from "react";
 /* ─── Animation configuration ──────────────────────────────────────── */
 const ANIMATION_CONFIG = {
   /** How far offscreen the element starts (px) */
-  translateDistance: 80,
+  translateDistance: 40,
   /** Base animation duration (ms) */
-  duration: 1200,
+  duration: 500,
   /** IntersectionObserver rootMargin — triggers slightly before element is visible */
   rootMargin: "0px 0px -40px 0px",
   /** Fraction of element visible before triggering */

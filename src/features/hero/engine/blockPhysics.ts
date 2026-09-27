@@ -3,6 +3,26 @@ import { HERO_BLOCK_CONFIG } from '../data/config';
 
 const C = HERO_BLOCK_CONFIG;
 
+/** One 60fps frame, in milliseconds. */
+const FRAME_MS = 1000 / 60;
+
+/**
+ * Eased horizontal step toward a target.
+ *
+ * Covers a fraction of the remaining distance each frame (so the piece
+ * decelerates as it arrives) with a floor speed so it never crawls, and
+ * never overshoots the target within a single step.
+ */
+function approach(current: number, target: number, minSpeed: number, frames: number): number {
+  const delta = target - current;
+  const distance = Math.abs(delta);
+  if (distance < 0.5) return target;
+
+  const eased = Math.max(distance * C.approachFactor, minSpeed) * frames;
+  if (eased >= distance) return target;
+  return current + Math.sign(delta) * eased;
+}
+
 /**
  * Multi-phase "human player" physics.
  *
@@ -13,12 +33,20 @@ const C = HERO_BLOCK_CONFIG;
  *   spawnX ──→ overshootX ──(pause)──→ overcorrectX ──→ finalX ──↓ LOCK
  *
  * This creates the visual impression of a human deciding where to place the piece.
+ *
+ * All motion is scaled by `dt` so the animation runs at the same real-world
+ * speed regardless of the display's refresh rate.
  */
 export function updateBlockPhysics(
   blocks: BlockPiece[],
   sequenceTime: number,
   prefersReducedMotion: boolean,
+  dt: number = FRAME_MS,
 ) {
+  // How many 60fps-equivalent frames elapsed. Clamped so a long stall
+  // (tab regains focus, GC pause) can't teleport pieces through targets.
+  const frames = Math.min(dt / FRAME_MS, 3);
+
   const resetStart = C.buildDuration + C.holdDuration;
   const isResetting = sequenceTime > resetStart;
 
@@ -34,21 +62,21 @@ export function updateBlockPhysics(
     if (isResetting) {
       if (b.state !== 'RESETTING') {
         b.state = 'RESETTING';
-        // Stagger the collapse: top pieces fall first, bottom pieces delay
-        const distFromTop = b.finalY - C.startY;
-        const collapseDelay = distFromTop * 0.3;
-        b.hesitateTimer = collapseDelay;
+        // Stagger the collapse slightly by depth so it ripples downward.
+        // Uses finalY directly (not an offset from a layout-specific
+        // origin) so it behaves the same in horizontal and vertical modes.
+        b.hesitateTimer = b.finalY * 0.03;
         b.velocityY = 0;
         // Add slight horizontal drift during collapse
         b.velocityX = (Math.random() - 0.5) * 3;
       }
       if (b.hesitateTimer > 0) {
-        b.hesitateTimer--;
+        b.hesitateTimer -= frames;
         continue;
       }
-      b.velocityY += 0.6;
-      b.currentY += b.velocityY;
-      b.currentX += b.velocityX;
+      b.velocityY += C.resetGravity * frames;
+      b.currentY += b.velocityY * frames;
+      b.currentX += b.velocityX * frames;
       continue;
     }
 
@@ -65,35 +93,36 @@ export function updateBlockPhysics(
     // ── PHASE 1: Fall + slide toward overshoot target ──
     if (b.state === 'FALLING_INITIAL') {
       // Vertical: gentle gravity
-      b.velocityY += C.gravity;
-      b.currentY += b.velocityY;
+      b.velocityY += C.gravity * frames;
+      b.currentY += b.velocityY * frames;
 
-      // Horizontal: move toward overshootX
-      const dxToOvershoot = b.overshootX - b.currentX;
-      if (Math.abs(dxToOvershoot) < b.horizontalSpeed * 1.5) {
-        b.currentX = b.overshootX;
-        // Reached the overshoot point — pause to "think"
-        b.state = 'HESITATING';
-        b.hesitateTimer = 4 + Math.floor(Math.random() * 8); // ~4–12 frames
-        b.velocityY = Math.min(b.velocityY, 0.5); // Slow vertical while thinking
-      } else {
-        b.currentX += Math.sign(dxToOvershoot) * b.horizontalSpeed;
+      // Horizontal: ease toward overshootX
+      const before = b.currentX;
+      b.currentX = approach(b.currentX, b.overshootX, b.horizontalSpeed, frames);
+      const arrivedHorizontally = b.currentX === b.overshootX && before !== b.overshootX;
+
+      // Cap vertical position at this piece's hover height
+      const reachedHover = b.currentY > b.hoverY;
+      if (reachedHover) {
+        b.currentY = b.hoverY;
+        b.velocityY = 0;
       }
 
-      // Cap vertical position: don't fall past a "hover zone" above the target
-      const hoverY = b.finalY - 80 - Math.random() * 60;
-      if (b.currentY > hoverY) {
-        b.currentY = hoverY;
-        b.velocityY = 0;
+      // Pause to "think" once it's lined up and has stopped descending
+      if ((arrivedHorizontally || b.currentX === b.overshootX) && reachedHover) {
+        b.state = 'HESITATING';
+        b.hesitateTimer =
+          C.hesitateFramesMin +
+          Math.random() * (C.hesitateFramesMax - C.hesitateFramesMin);
       }
       continue;
     }
 
     // ── PHASE 2: Hesitate — the "player" is thinking ──
     if (b.state === 'HESITATING') {
-      b.hesitateTimer--;
+      b.hesitateTimer -= frames;
       // Subtle hover wobble
-      b.currentY += Math.sin(b.hesitateTimer * 0.15) * 0.3;
+      b.currentY += Math.sin(b.hesitateTimer * 0.15) * 0.3 * frames;
       if (b.hesitateTimer <= 0) {
         b.state = 'CORRECTING';
       }
@@ -102,28 +131,22 @@ export function updateBlockPhysics(
 
     // ── PHASE 3: Correct toward finalX (but overshoot slightly the other way) ──
     if (b.state === 'CORRECTING') {
-      const dxToOvercorrect = b.overcorrectX - b.currentX;
-      if (Math.abs(dxToOvercorrect) < C.correctionSpeed * 2) {
-        b.currentX = b.overcorrectX;
+      b.currentX = approach(b.currentX, b.overcorrectX, C.correctionSpeed, frames);
+      if (b.currentX === b.overcorrectX) {
         b.state = 'OVERCORRECTING';
-      } else {
-        b.currentX += Math.sign(dxToOvercorrect) * C.correctionSpeed;
       }
       // Very slow drift down
-      b.currentY += 0.3;
+      b.currentY += 0.3 * frames;
       continue;
     }
 
     // ── PHASE 4: Overcorrect back to exact finalX ──
     if (b.state === 'OVERCORRECTING') {
-      const dxToFinal = b.finalX - b.currentX;
-      if (Math.abs(dxToFinal) < C.correctionSpeed) {
-        b.currentX = b.finalX;
+      b.currentX = approach(b.currentX, b.finalX, C.correctionSpeed * 0.8, frames);
+      if (b.currentX === b.finalX) {
         b.state = 'FINAL_ALIGN';
-      } else {
-        b.currentX += Math.sign(dxToFinal) * (C.correctionSpeed * 0.8);
       }
-      b.currentY += 0.2;
+      b.currentY += 0.2 * frames;
       continue;
     }
 
@@ -136,8 +159,8 @@ export function updateBlockPhysics(
 
     // ── PHASE 6: Hard drop straight down ──
     if (b.state === 'HARD_DROP') {
-      b.velocityY += 1.2;
-      b.currentY += b.velocityY;
+      b.velocityY += C.hardDropAccel * frames;
+      b.currentY += b.velocityY * frames;
       if (b.currentY >= b.finalY) {
         b.currentY = b.finalY;
         b.currentX = b.finalX; // Ensure pixel-perfect alignment

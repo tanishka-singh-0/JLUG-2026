@@ -8,6 +8,15 @@ import { BlockPiece } from "../engine/types";
 
 const C = HERO_BLOCK_CONFIG;
 
+// Below this viewport width, the wordmark stacks vertically (J/L/U/G
+// top-to-bottom) instead of side-by-side, so it reads clearly and
+// fills the available height on phones.
+const MOBILE_BREAKPOINT = 768;
+
+function getOrientation(width: number): "horizontal" | "vertical" {
+  return width < MOBILE_BREAKPOINT ? "vertical" : "horizontal";
+}
+
 export default function FallingBlockScene() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
@@ -21,25 +30,60 @@ export default function FallingBlockScene() {
       "(prefers-reduced-motion: reduce)",
     ).matches;
 
-    let blocks: BlockPiece[] = spawnBlocks(prefersReducedMotion);
+    let orientation: "horizontal" | "vertical" = "horizontal";
+    let blocks: BlockPiece[] = spawnBlocks(prefersReducedMotion, orientation);
+    let hasSpawnedOnce = false;
+
+    // ── Animation state ──
+    let raf: number;
+    let lastTime = performance.now();
+    let seqTime = prefersReducedMotion ? C.buildDuration : 0;
 
     // ── Resize ──
-    const resize = () => {
+    // Uses ResizeObserver (not just the window "resize" event) because
+    // the canvas's own size can change from layout/flex changes that
+    // never fire a window resize (e.g. initial paint on mobile), which
+    // previously left the scene stuck at a stale/default size.
+    const resize = (width: number, height: number) => {
+      if (width === 0 || height === 0) return;
+
       const dpr = window.devicePixelRatio || 1;
-      const rect = canvas.getBoundingClientRect();
-      canvas.width = rect.width * dpr;
-      canvas.height = rect.height * dpr;
+      canvas.width = width * dpr;
+      canvas.height = height * dpr;
+      canvas.style.width = `${width}px`;
+      canvas.style.height = `${height}px`;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+      // Re-spawn the composition if orientation changed (or on first
+      // real measurement), so the layout switches between horizontal
+      // and stacked-vertical, and initial render uses the right one.
+      const nextOrientation = getOrientation(width);
+      if (nextOrientation !== orientation || !hasSpawnedOnce) {
+        orientation = nextOrientation;
+        hasSpawnedOnce = true;
+        seqTime = prefersReducedMotion ? C.buildDuration : 0;
+        blocks = spawnBlocks(prefersReducedMotion, orientation);
+      }
     };
-    resize();
-    window.addEventListener("resize", resize);
+
+    const resizeObserver = new ResizeObserver((entries) => {
+      const entry = entries[0];
+      if (!entry) return;
+      const { width, height } = entry.contentRect;
+      resize(width, height);
+    });
+    resizeObserver.observe(canvas);
 
     // ── Mouse ──
     const mouse = { x: -9999, y: -9999, active: false };
     const onMove = (e: MouseEvent) => {
       const r = canvas.getBoundingClientRect();
-      mouse.x = ((e.clientX - r.left) / r.width) * C.internalWidth;
-      mouse.y = ((e.clientY - r.top) / r.height) * C.internalHeight;
+      const internalW =
+        orientation === "vertical" ? C.internalWidthVertical : C.internalWidth;
+      const internalH =
+        orientation === "vertical" ? C.internalHeightVertical : C.internalHeight;
+      mouse.x = ((e.clientX - r.left) / r.width) * internalW;
+      mouse.y = ((e.clientY - r.top) / r.height) * internalH;
       mouse.active = true;
     };
     const onLeave = () => {
@@ -47,11 +91,6 @@ export default function FallingBlockScene() {
     };
     canvas.addEventListener("mousemove", onMove);
     canvas.addEventListener("mouseleave", onLeave);
-
-    // ── Animation state ──
-    let raf: number;
-    let lastTime = performance.now();
-    let seqTime = prefersReducedMotion ? C.buildDuration : 0;
 
     // ── Render ──
     const render = (now: number) => {
@@ -62,15 +101,20 @@ export default function FallingBlockScene() {
         seqTime += dt;
         if (seqTime >= C.totalLoopDuration) {
           seqTime = 0;
-          blocks = spawnBlocks(false);
+          blocks = spawnBlocks(false, orientation);
         }
       }
 
       const rect = canvas.getBoundingClientRect();
       ctx.clearRect(0, 0, rect.width, rect.height);
 
-      const sx = rect.width / C.internalWidth;
-      const sy = rect.height / C.internalHeight;
+      const internalWidth =
+        orientation === "vertical" ? C.internalWidthVertical : C.internalWidth;
+      const internalHeight =
+        orientation === "vertical" ? C.internalHeightVertical : C.internalHeight;
+
+      const sx = rect.width / internalWidth;
+      const sy = rect.height / internalHeight;
       ctx.save();
       ctx.scale(sx, sy);
 
@@ -79,10 +123,18 @@ export default function FallingBlockScene() {
       ctx.strokeStyle = `rgba(242, 240, 232, ${C.gridOpacity})`;
       ctx.lineWidth = 0.5;
       // Only draw grid in the letter construction zone
-      const gridLeft = C.startX - cell;
-      const gridRight = C.startX + 4 * C.letterSpacing;
-      const gridTop = C.startY - cell;
-      const gridBottom = C.startY + 7 * cell + cell;
+      const gridLeft =
+        (orientation === "vertical" ? C.startXVertical : C.startX) - cell;
+      const gridRight =
+        orientation === "vertical"
+          ? C.startXVertical + 9 * cell + cell
+          : C.startX + 4 * C.letterSpacing;
+      const gridTop =
+        (orientation === "vertical" ? C.startYVertical : C.startY) - cell;
+      const gridBottom =
+        orientation === "vertical"
+          ? C.startYVertical + 4 * (7 * cell + C.letterStackGap) + cell
+          : C.startY + 7 * cell + cell;
       for (let x = gridLeft; x <= gridRight; x += cell) {
         ctx.beginPath();
         ctx.moveTo(x, gridTop);
@@ -97,14 +149,17 @@ export default function FallingBlockScene() {
       }
 
       // ── Physics ──
-      updateBlockPhysics(blocks, seqTime, prefersReducedMotion);
+      updateBlockPhysics(blocks, seqTime, prefersReducedMotion, dt);
+
+      // 60fps-equivalent frames elapsed, for frame-rate independent visuals
+      const frames = Math.min(dt / (1000 / 60), 3);
 
       // ── Render blocks ──
       for (const b of blocks) {
         // Skip pieces that haven't spawned yet
         if (b.state === "WAITING") continue;
         // Skip pieces that have fallen far off screen
-        if (b.currentY > C.internalHeight + 200) continue;
+        if (b.currentY > internalHeight + 200) continue;
 
         // Mouse displacement for settled blocks
         if (b.state === "SETTLED" && mouse.active) {
@@ -134,7 +189,7 @@ export default function FallingBlockScene() {
           // Landing flash
           const flashAlpha = b.flashPhase;
           ctx.fillStyle = `rgba(255, 255, 255, ${flashAlpha})`;
-          b.flashPhase -= 0.04;
+          b.flashPhase -= 0.04 * frames;
         } else {
           ctx.globalAlpha = b.brightness;
           ctx.fillStyle = b.color;
@@ -195,7 +250,7 @@ export default function FallingBlockScene() {
     raf = requestAnimationFrame(render);
 
     return () => {
-      window.removeEventListener("resize", resize);
+      resizeObserver.disconnect();
       canvas.removeEventListener("mousemove", onMove);
       canvas.removeEventListener("mouseleave", onLeave);
       cancelAnimationFrame(raf);

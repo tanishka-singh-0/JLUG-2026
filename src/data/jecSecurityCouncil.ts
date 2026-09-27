@@ -40,7 +40,7 @@ export const JEC_SECURITY_COUNCIL_MEMBERS: SecurityCouncilMember[] = [
     id: 1,
     name: "AKSHAT TIWARI",
 
-    image: "/alumni/2026-27, heads/akshat.png",
+    image: "/alumni/members/akshat.png",
     imageScale: 1.2,
     objectPosition: "center 5%",
 
@@ -49,7 +49,7 @@ export const JEC_SECURITY_COUNCIL_MEMBERS: SecurityCouncilMember[] = [
     id: 2,
     name: "CHITRANSH TIWARI",
 
-    image: "/alumni/2026-27, heads/chitransh.png",
+    image: "/alumni/members/chitransh.png",
     imageScale: 1,
     objectPosition: "center 50%",
 
@@ -97,6 +97,62 @@ export const JEC_SECURITY_COUNCIL_MEMBERS: SecurityCouncilMember[] = [
     imageScale: 1.2,
     objectPosition: "center 5%",
 
+  },
+  {id: 8,
+    name: "HARSHIT SOLANKI",
+
+    image: "/assets/presidents/harshit_solanki.jpg",
+    imageScale: 1,
+    objectPosition: "center 5%",
+  },
+  {id: 9,
+    name: "PRINCE DWIVEDI",
+
+    image: "/assets/presidents/prince_dwivedi.png",
+    imageScale: 1,
+    objectPosition: "center 5%",
+  },
+  {id: 10,
+    name: "PALAK CHOUDARY",
+
+    image: "/alumni/members/palak.jpeg",
+    imageScale: 1.2,
+    objectPosition: "center 5%",
+  },
+  {id: 11,
+    name: "VARSHA GURBANI",
+
+    image: "/alumni/members/varsha.jpeg",
+    imageScale: 1,
+    objectPosition: "center 5%",
+  },
+   {id: 12,
+    name: "ISHITA MODI",
+
+    image: "/alumni/members/ishita.jpeg",
+    imageScale: 1,
+    objectPosition: "center 5%",
+  },
+  {id: 13,
+    name: "ADITI SHRIVASTAVA",
+
+    image: "/alumni/members/aditi.jpeg",
+    imageScale: 1,
+    objectPosition: "center 5%",
+  },
+  {id: 14,
+    name: "PREETI PATEL",
+
+    image: "/alumni/members/preeti.jpeg",
+    imageScale: 1,
+    objectPosition: "center 5%",
+  },
+  {id: 15,
+    name: "AASTHA GAUTAM",
+
+    image: "/alumni/members/aastha.jpeg",
+    imageScale: 1,
+    objectPosition: "center 0%",
   },
 
 ];

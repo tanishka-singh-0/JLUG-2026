@@ -20,6 +20,39 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
+## Navbar mascot clips
+
+The animated mascot in the top-right of the navigation bar plays GIFs generated
+from the source videos in `assets/mascot/`. Those sources are read-only; every
+served asset under `public/assets/mascot/` is generated.
+
+```bash
+npm run mascot:clips          # regenerate the still, the clips and the manifest
+npm run mascot:clips:verify   # check that ffmpeg/ffprobe are invocable, then stop
+npm run mascot:clips:probe    # advisory scene-change probe, writes nothing
+```
+
+`npm run mascot:clips` requires **ffmpeg and ffprobe**. If they are missing the
+pipeline installs them through winget (falling back to Chocolatey) and
+re-verifies. To point at an existing build instead, set `MASCOT_FFMPEG_BIN` and
+`MASCOT_FFPROBE_BIN`.
+
+To change which moments become clips:
+
+1. Run `npm run mascot:clips:probe` to see candidate cut points. The probe is
+   advisory only — it never edits the config, which is what keeps reruns
+   reproducible.
+2. Review the footage and edit `SEGMENTS` in
+   `scripts/mascot-clips/clipPipelineConfig.mjs`. That file holds every tunable:
+   segment boundaries, the crop rectangles, output size, the frame-rate and
+   palette ladder, and the size budgets.
+3. Re-run `npm run mascot:clips`. Clip roles (`idle` / `hover` / `activate`) are
+   assigned by id in `src/features/mascot/data/navbarMascotClips.ts`.
+
+`src/features/mascot/data/navbarMascotClipManifest.generated.ts` is written by
+the pipeline and should not be hand-edited — every value in it is measured from
+the produced files with ffprobe.
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:

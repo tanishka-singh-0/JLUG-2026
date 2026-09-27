@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
+import NavbarMascot from "@/features/mascot/components/NavbarMascot";
 import { NAV_ITEMS, isActivePath } from "@/lib/navigation";
 
 const JOIN_HREF = "/join";
@@ -88,6 +89,17 @@ export default function SiteNav() {
               </li>
             ) : null}
           </ul>
+
+          {/* Navbar mascot. One slot serves both breakpoints: at md+ the MENU
+              button is hidden so this is the last element of the row, and below
+              md the link list is hidden so it sits immediately before the
+              visible toggle. It lives in the nav row rather than the mobile
+              panel, so it stays visible while the panel is open. No flex-1 and
+              no vertical padding, so the row's height and the existing
+              justify-between distribution are untouched. */}
+          <div className="flex shrink-0 items-center px-4 md:border-l md:border-jlug-line md:px-5">
+            <NavbarMascot />
+          </div>
 
           {/* Mobile toggle */}
           <button

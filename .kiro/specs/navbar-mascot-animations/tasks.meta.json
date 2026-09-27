@@ -1,0 +1,373 @@
+{
+  "pbtResults": {},
+  "executionHistory": {
+    "1.1 Install the test runner and wire every npm script": [
+      {
+        "executionId": "3d3e0a0d-2c58-434e-9b70-44b53db6b46f",
+        "chatSessionId": "sess_642b3c77-c3d6-40ec-8533-3c0e8d2fc11b",
+        "timestamp": 1790421976368
+      },
+      {
+        "executionId": "3d3e0a0d-2c58-434e-9b70-44b53db6b46f",
+        "chatSessionId": "sess_642b3c77-c3d6-40ec-8533-3c0e8d2fc11b",
+        "timestamp": 1790421989997
+      },
+      {
+        "executionId": "3d3e0a0d-2c58-434e-9b70-44b53db6b46f",
+        "chatSessionId": "sess_642b3c77-c3d6-40ec-8533-3c0e8d2fc11b",
+        "timestamp": 1790422264324
+      }
+    ],
+    "2.1 Create `scripts/mascot-clips/clipPipelineConfig.mjs`": [
+      {
+        "executionId": "3d3e0a0d-2c58-434e-9b70-44b53db6b46f",
+        "chatSessionId": "sess_642b3c77-c3d6-40ec-8533-3c0e8d2fc11b",
+        "timestamp": 1790421976424
+      },
+      {
+        "executionId": "3d3e0a0d-2c58-434e-9b70-44b53db6b46f",
+        "chatSessionId": "sess_642b3c77-c3d6-40ec-8533-3c0e8d2fc11b",
+        "timestamp": 1790421991400
+      },
+      {
+        "executionId": "3d3e0a0d-2c58-434e-9b70-44b53db6b46f",
+        "chatSessionId": "sess_642b3c77-c3d6-40ec-8533-3c0e8d2fc11b",
+        "timestamp": 1790422265156
+      }
+    ],
+    "2.2 Create `scripts/mascot-clips/ensureEncoder.mjs` and confirm the toolchain on this machine": [
+      {
+        "executionId": "3d3e0a0d-2c58-434e-9b70-44b53db6b46f",
+        "chatSessionId": "sess_642b3c77-c3d6-40ec-8533-3c0e8d2fc11b",
+        "timestamp": 1790421976501
+      },
+      {
+        "executionId": "3d3e0a0d-2c58-434e-9b70-44b53db6b46f",
+        "chatSessionId": "sess_642b3c77-c3d6-40ec-8533-3c0e8d2fc11b",
+        "timestamp": 1790422275239
+      },
+      {
+        "executionId": "3d3e0a0d-2c58-434e-9b70-44b53db6b46f",
+        "chatSessionId": "sess_642b3c77-c3d6-40ec-8533-3c0e8d2fc11b",
+        "timestamp": 1790422691250
+      }
+    ],
+    "2.3 Create `scripts/mascot-clips/probeSources.mjs`": [
+      {
+        "executionId": "3d3e0a0d-2c58-434e-9b70-44b53db6b46f",
+        "chatSessionId": "sess_642b3c77-c3d6-40ec-8533-3c0e8d2fc11b",
+        "timestamp": 1790421976571
+      },
+      {
+        "executionId": "3d3e0a0d-2c58-434e-9b70-44b53db6b46f",
+        "chatSessionId": "sess_642b3c77-c3d6-40ec-8533-3c0e8d2fc11b",
+        "timestamp": 1790422275907
+      },
+      {
+        "executionId": "3d3e0a0d-2c58-434e-9b70-44b53db6b46f",
+        "chatSessionId": "sess_642b3c77-c3d6-40ec-8533-3c0e8d2fc11b",
+        "timestamp": 1790422691584
+      }
+    ],
+    "2.4 Create `scripts/mascot-clips/detectSegments.mjs` and commit the final segment table": [
+      {
+        "executionId": "3d3e0a0d-2c58-434e-9b70-44b53db6b46f",
+        "chatSessionId": "sess_642b3c77-c3d6-40ec-8533-3c0e8d2fc11b",
+        "timestamp": 1790421976619
+      },
+      {
+        "executionId": "3d3e0a0d-2c58-434e-9b70-44b53db6b46f",
+        "chatSessionId": "sess_642b3c77-c3d6-40ec-8533-3c0e8d2fc11b",
+        "timestamp": 1790422696602
+      },
+      {
+        "executionId": "3d3e0a0d-2c58-434e-9b70-44b53db6b46f",
+        "chatSessionId": "sess_642b3c77-c3d6-40ec-8533-3c0e8d2fc11b",
+        "timestamp": 1790424357290
+      }
+    ],
+    "2.5 Create `scripts/mascot-clips/encodeClips.mjs`": [
+      {
+        "executionId": "3d3e0a0d-2c58-434e-9b70-44b53db6b46f",
+        "chatSessionId": "sess_642b3c77-c3d6-40ec-8533-3c0e8d2fc11b",
+        "timestamp": 1790421976668
+      },
+      {
+        "executionId": "3d3e0a0d-2c58-434e-9b70-44b53db6b46f",
+        "chatSessionId": "sess_642b3c77-c3d6-40ec-8533-3c0e8d2fc11b",
+        "timestamp": 1790424598828
+      },
+      {
+        "executionId": "3d3e0a0d-2c58-434e-9b70-44b53db6b46f",
+        "chatSessionId": "sess_642b3c77-c3d6-40ec-8533-3c0e8d2fc11b",
+        "timestamp": 1790425161343
+      }
+    ],
+    "2.6 Create `scripts/mascot-clips/writeManifest.mjs`": [
+      {
+        "executionId": "3d3e0a0d-2c58-434e-9b70-44b53db6b46f",
+        "chatSessionId": "sess_642b3c77-c3d6-40ec-8533-3c0e8d2fc11b",
+        "timestamp": 1790421976718
+      },
+      {
+        "executionId": "3d3e0a0d-2c58-434e-9b70-44b53db6b46f",
+        "chatSessionId": "sess_642b3c77-c3d6-40ec-8533-3c0e8d2fc11b",
+        "timestamp": 1790424598927
+      },
+      {
+        "executionId": "3d3e0a0d-2c58-434e-9b70-44b53db6b46f",
+        "chatSessionId": "sess_642b3c77-c3d6-40ec-8533-3c0e8d2fc11b",
+        "timestamp": 1790425161457
+      }
+    ],
+    "2.7 Create `scripts/mascot-clips/generate-mascot-clips.mjs`": [
+      {
+        "executionId": "3d3e0a0d-2c58-434e-9b70-44b53db6b46f",
+        "chatSessionId": "sess_642b3c77-c3d6-40ec-8533-3c0e8d2fc11b",
+        "timestamp": 1790421976769
+      },
+      {
+        "executionId": "3d3e0a0d-2c58-434e-9b70-44b53db6b46f",
+        "chatSessionId": "sess_642b3c77-c3d6-40ec-8533-3c0e8d2fc11b",
+        "timestamp": 1790425187177
+      },
+      {
+        "executionId": "3d3e0a0d-2c58-434e-9b70-44b53db6b46f",
+        "chatSessionId": "sess_642b3c77-c3d6-40ec-8533-3c0e8d2fc11b",
+        "timestamp": 1790425904699
+      }
+    ],
+    "2.8 Run the pipeline and commit the generated media": [
+      {
+        "executionId": "3d3e0a0d-2c58-434e-9b70-44b53db6b46f",
+        "chatSessionId": "sess_642b3c77-c3d6-40ec-8533-3c0e8d2fc11b",
+        "timestamp": 1790421976854
+      },
+      {
+        "executionId": "3d3e0a0d-2c58-434e-9b70-44b53db6b46f",
+        "chatSessionId": "sess_642b3c77-c3d6-40ec-8533-3c0e8d2fc11b",
+        "timestamp": 1790425929180
+      },
+      {
+        "executionId": "3d3e0a0d-2c58-434e-9b70-44b53db6b46f",
+        "chatSessionId": "sess_642b3c77-c3d6-40ec-8533-3c0e8d2fc11b",
+        "timestamp": 1790426138312
+      }
+    ],
+    "3. Checkpoint - pipeline and generated assets": [
+      {
+        "executionId": "3d3e0a0d-2c58-434e-9b70-44b53db6b46f",
+        "chatSessionId": "sess_642b3c77-c3d6-40ec-8533-3c0e8d2fc11b",
+        "timestamp": 1790421976901
+      },
+      {
+        "executionId": "3d3e0a0d-2c58-434e-9b70-44b53db6b46f",
+        "chatSessionId": "sess_642b3c77-c3d6-40ec-8533-3c0e8d2fc11b",
+        "timestamp": 1790426151398
+      }
+    ],
+    "4.1 Create `src/features/mascot/data/navbarMascotConfig.ts`": [
+      {
+        "executionId": "3d3e0a0d-2c58-434e-9b70-44b53db6b46f",
+        "chatSessionId": "sess_642b3c77-c3d6-40ec-8533-3c0e8d2fc11b",
+        "timestamp": 1790421976953
+      },
+      {
+        "executionId": "3d3e0a0d-2c58-434e-9b70-44b53db6b46f",
+        "chatSessionId": "sess_642b3c77-c3d6-40ec-8533-3c0e8d2fc11b",
+        "timestamp": 1790426159859
+      },
+      {
+        "executionId": "3d3e0a0d-2c58-434e-9b70-44b53db6b46f",
+        "chatSessionId": "sess_642b3c77-c3d6-40ec-8533-3c0e8d2fc11b",
+        "timestamp": 1790426294786
+      }
+    ],
+    "4.2 Create `src/features/mascot/data/navbarMascotClips.ts`": [
+      {
+        "executionId": "3d3e0a0d-2c58-434e-9b70-44b53db6b46f",
+        "chatSessionId": "sess_642b3c77-c3d6-40ec-8533-3c0e8d2fc11b",
+        "timestamp": 1790421977002
+      },
+      {
+        "executionId": "3d3e0a0d-2c58-434e-9b70-44b53db6b46f",
+        "chatSessionId": "sess_642b3c77-c3d6-40ec-8533-3c0e8d2fc11b",
+        "timestamp": 1790426304219
+      },
+      {
+        "executionId": "3d3e0a0d-2c58-434e-9b70-44b53db6b46f",
+        "chatSessionId": "sess_642b3c77-c3d6-40ec-8533-3c0e8d2fc11b",
+        "timestamp": 1790426565322
+      }
+    ],
+    "5.1 Create `src/features/mascot/engine/navbarMascotPlaybackTypes.ts`": [
+      {
+        "executionId": "3d3e0a0d-2c58-434e-9b70-44b53db6b46f",
+        "chatSessionId": "sess_642b3c77-c3d6-40ec-8533-3c0e8d2fc11b",
+        "timestamp": 1790421977056
+      },
+      {
+        "executionId": "3d3e0a0d-2c58-434e-9b70-44b53db6b46f",
+        "chatSessionId": "sess_642b3c77-c3d6-40ec-8533-3c0e8d2fc11b",
+        "timestamp": 1790426572689
+      },
+      {
+        "executionId": "3d3e0a0d-2c58-434e-9b70-44b53db6b46f",
+        "chatSessionId": "sess_642b3c77-c3d6-40ec-8533-3c0e8d2fc11b",
+        "timestamp": 1790426689397
+      }
+    ],
+    "5.2 Create `src/features/mascot/engine/navbarMascotPlayback.ts`": [
+      {
+        "executionId": "3d3e0a0d-2c58-434e-9b70-44b53db6b46f",
+        "chatSessionId": "sess_642b3c77-c3d6-40ec-8533-3c0e8d2fc11b",
+        "timestamp": 1790421977104
+      },
+      {
+        "executionId": "3d3e0a0d-2c58-434e-9b70-44b53db6b46f",
+        "chatSessionId": "sess_642b3c77-c3d6-40ec-8533-3c0e8d2fc11b",
+        "timestamp": 1790426695989
+      },
+      {
+        "executionId": "3d3e0a0d-2c58-434e-9b70-44b53db6b46f",
+        "chatSessionId": "sess_642b3c77-c3d6-40ec-8533-3c0e8d2fc11b",
+        "timestamp": 1790427439031
+      }
+    ],
+    "6. Checkpoint - registry and engine": [
+      {
+        "executionId": "3d3e0a0d-2c58-434e-9b70-44b53db6b46f",
+        "chatSessionId": "sess_642b3c77-c3d6-40ec-8533-3c0e8d2fc11b",
+        "timestamp": 1790421977172
+      },
+      {
+        "executionId": "3d3e0a0d-2c58-434e-9b70-44b53db6b46f",
+        "chatSessionId": "sess_642b3c77-c3d6-40ec-8533-3c0e8d2fc11b",
+        "timestamp": 1790427446701
+      }
+    ],
+    "7.1 Create `src/features/mascot/hooks/useEnvironmentFlags.ts`": [
+      {
+        "executionId": "3d3e0a0d-2c58-434e-9b70-44b53db6b46f",
+        "chatSessionId": "sess_642b3c77-c3d6-40ec-8533-3c0e8d2fc11b",
+        "timestamp": 1790421977226
+      },
+      {
+        "executionId": "3d3e0a0d-2c58-434e-9b70-44b53db6b46f",
+        "chatSessionId": "sess_642b3c77-c3d6-40ec-8533-3c0e8d2fc11b",
+        "timestamp": 1790427447631
+      },
+      {
+        "executionId": "3d3e0a0d-2c58-434e-9b70-44b53db6b46f",
+        "chatSessionId": "sess_642b3c77-c3d6-40ec-8533-3c0e8d2fc11b",
+        "timestamp": 1790427749269
+      }
+    ],
+    "7.2 Create `src/features/mascot/hooks/useClipSource.ts`": [
+      {
+        "executionId": "3d3e0a0d-2c58-434e-9b70-44b53db6b46f",
+        "chatSessionId": "sess_642b3c77-c3d6-40ec-8533-3c0e8d2fc11b",
+        "timestamp": 1790421977285
+      },
+      {
+        "executionId": "3d3e0a0d-2c58-434e-9b70-44b53db6b46f",
+        "chatSessionId": "sess_642b3c77-c3d6-40ec-8533-3c0e8d2fc11b",
+        "timestamp": 1790427757591
+      }
+    ],
+    "7.3 Create `src/features/mascot/hooks/useNavbarMascot.ts`": [
+      {
+        "executionId": "3d3e0a0d-2c58-434e-9b70-44b53db6b46f",
+        "chatSessionId": "sess_642b3c77-c3d6-40ec-8533-3c0e8d2fc11b",
+        "timestamp": 1790421977369
+      }
+    ],
+    "8.1 Create `src/features/mascot/components/NavbarMascotView.tsx`": [
+      {
+        "executionId": "3d3e0a0d-2c58-434e-9b70-44b53db6b46f",
+        "chatSessionId": "sess_642b3c77-c3d6-40ec-8533-3c0e8d2fc11b",
+        "timestamp": 1790421977427
+      }
+    ],
+    "8.2 Create `src/features/mascot/components/NavbarMascot.tsx`": [
+      {
+        "executionId": "3d3e0a0d-2c58-434e-9b70-44b53db6b46f",
+        "chatSessionId": "sess_642b3c77-c3d6-40ec-8533-3c0e8d2fc11b",
+        "timestamp": 1790421977482
+      }
+    ],
+    "9.1 Record the baseline navigation row height": [
+      {
+        "executionId": "3d3e0a0d-2c58-434e-9b70-44b53db6b46f",
+        "chatSessionId": "sess_642b3c77-c3d6-40ec-8533-3c0e8d2fc11b",
+        "timestamp": 1790421977535
+      },
+      {
+        "executionId": "3d3e0a0d-2c58-434e-9b70-44b53db6b46f",
+        "chatSessionId": "sess_642b3c77-c3d6-40ec-8533-3c0e8d2fc11b",
+        "timestamp": 1790421992235
+      },
+      {
+        "executionId": "3d3e0a0d-2c58-434e-9b70-44b53db6b46f",
+        "chatSessionId": "sess_642b3c77-c3d6-40ec-8533-3c0e8d2fc11b",
+        "timestamp": 1790422266581
+      }
+    ],
+    "9.2 Mount the Nav_Slot in `src/components/SiteNav.tsx`": [
+      {
+        "executionId": "3d3e0a0d-2c58-434e-9b70-44b53db6b46f",
+        "chatSessionId": "sess_642b3c77-c3d6-40ec-8533-3c0e8d2fc11b",
+        "timestamp": 1790421977588
+      }
+    ],
+    "9.3 Confirm the row height is unchanged": [
+      {
+        "executionId": "3d3e0a0d-2c58-434e-9b70-44b53db6b46f",
+        "chatSessionId": "sess_642b3c77-c3d6-40ec-8533-3c0e8d2fc11b",
+        "timestamp": 1790421977645
+      }
+    ],
+    "9.5 Document the pipeline in `README.md`": [
+      {
+        "executionId": "3d3e0a0d-2c58-434e-9b70-44b53db6b46f",
+        "chatSessionId": "sess_642b3c77-c3d6-40ec-8533-3c0e8d2fc11b",
+        "timestamp": 1790421977723
+      }
+    ],
+    "10.1 Run the full gate and fix every failure": [
+      {
+        "executionId": "3d3e0a0d-2c58-434e-9b70-44b53db6b46f",
+        "chatSessionId": "sess_642b3c77-c3d6-40ec-8533-3c0e8d2fc11b",
+        "timestamp": 1790421977774
+      }
+    ],
+    "1. Test tooling and package scripts": [
+      {
+        "executionId": "3d3e0a0d-2c58-434e-9b70-44b53db6b46f",
+        "chatSessionId": "sess_642b3c77-c3d6-40ec-8533-3c0e8d2fc11b",
+        "timestamp": 1790422264419
+      }
+    ],
+    "2. Media pipeline": [
+      {
+        "executionId": "3d3e0a0d-2c58-434e-9b70-44b53db6b46f",
+        "chatSessionId": "sess_642b3c77-c3d6-40ec-8533-3c0e8d2fc11b",
+        "timestamp": 1790426138402
+      }
+    ],
+    "4. Clip registry data layer": [
+      {
+        "executionId": "3d3e0a0d-2c58-434e-9b70-44b53db6b46f",
+        "chatSessionId": "sess_642b3c77-c3d6-40ec-8533-3c0e8d2fc11b",
+        "timestamp": 1790426565432
+      }
+    ],
+    "5. Playback engine": [
+      {
+        "executionId": "3d3e0a0d-2c58-434e-9b70-44b53db6b46f",
+        "chatSessionId": "sess_642b3c77-c3d6-40ec-8533-3c0e8d2fc11b",
+        "timestamp": 1790427439146
+      }
+    ]
+  }
+}

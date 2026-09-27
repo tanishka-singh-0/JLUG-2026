@@ -97,7 +97,7 @@ export default function SpotlightModal({ member, onClose }: SpotlightModalProps)
         <div className="p-6">
           <div className="flex items-center justify-between border-b border-jlug-line pb-3 mb-4">
             <span className="font-mono text-xs uppercase tracking-widest text-jlug-gray-1">
-              JLUG // {member.category.toUpperCase()}
+              JLUG // {(member.category || "engineering").toUpperCase()}
             </span>
             <span className="font-mono text-xs text-jlug-accent border border-jlug-line px-2 py-0.5">
               ACTIVE

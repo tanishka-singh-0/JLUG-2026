@@ -22,7 +22,12 @@ export default function IDCard({ member, href, onClick }: IDCardProps) {
             alt={member.name}
             fill
             unoptimized
-            className="object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-300"
+            className="object-cover transition-all duration-300"
+            style={{
+              objectFit: "cover",
+              objectPosition: member.objectPosition || "center center",
+              transform: `scale(${member.imageScale || 1})`,
+            }}
           />
         </div>
         <h3 className="text-xl font-bold uppercase mb-1 text-jlug-white group-hover:text-jlug-accent transition-colors">
@@ -33,25 +38,35 @@ export default function IDCard({ member, href, onClick }: IDCardProps) {
         </p>
       </div>
 
-      <p className="font-mono text-[0.7rem] text-jlug-gray-2 mt-4 line-clamp-2">
-        {member.bio}
-      </p>
+      {member.bio && (
+        <p className="font-mono text-[0.7rem] text-jlug-gray-2 mt-4 line-clamp-2">
+          {member.bio}
+        </p>
+      )}
     </div>
   );
 
-  const className = "group relative bg-jlug-black border border-jlug-line p-1 hover:border-jlug-accent transition-colors text-left cursor-pointer h-full block";
+  const baseClassName = "group relative bg-jlug-black border border-jlug-line p-1 hover:border-jlug-accent transition-colors text-left h-full block";
 
   if (href) {
     return (
-      <Link href={href} className={className} onClick={onClick}>
+      <Link href={href} className={`${baseClassName} cursor-pointer`} onClick={onClick}>
         {content}
       </Link>
     );
   }
 
+  if (onClick) {
+    return (
+      <button type="button" className={`${baseClassName} cursor-pointer`} onClick={onClick}>
+        {content}
+      </button>
+    );
+  }
+
   return (
-    <button type="button" className={className} onClick={onClick}>
+    <div className={baseClassName}>
       {content}
-    </button>
+    </div>
   );
 }

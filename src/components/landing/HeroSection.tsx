@@ -2,7 +2,7 @@ import InteractiveWordmark from "@/components/InteractiveWordmark";
 
 export default function HeroSection() {
   return (
-    <section className="relative min-h-[calc(100vh-3.5rem)] flex flex-col border-b border-jlug-line overflow-hidden">
+    <section className="relative h-[calc(100vh-3.5rem)] min-h-[calc(100vh-3.5rem)] flex flex-col border-b border-jlug-line overflow-hidden">
       {/* Top metadata strip */}
       <div className="flex justify-between items-center px-6 md:px-12 py-4 border-b border-jlug-line/50 font-mono text-[0.6rem] md:text-[0.7rem] text-jlug-gray-2 uppercase tracking-widest z-20">
         <span>JLUG / 001</span>
@@ -11,7 +11,7 @@ export default function HeroSection() {
       </div>
 
       {/* Canvas — the artwork IS the hero */}
-      <div className="flex-1 relative">
+      <div className="relative flex-1 min-h-0">
         <InteractiveWordmark />
       </div>
 

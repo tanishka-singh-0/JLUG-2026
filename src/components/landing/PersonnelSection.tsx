@@ -7,7 +7,7 @@ export default function PersonnelSection() {
     <section className="relative py-32 border-b border-jlug-line bg-jlug-ink">
       <div className="px-6 md:px-24 mb-16">
         <div className="font-mono text-xs text-jlug-accent mb-4 uppercase tracking-widest">
-          04 // PERSONNEL
+          03 // PERSONNEL
         </div>
         <h2 className="text-5xl md:text-8xl font-semibold tracking-tight">THE BUILDERS</h2>
       </div>

@@ -39,7 +39,7 @@ export interface JecScMember {
 }
 
 export const JEC_SC_COUNCIL_CONFIG = {
-  title: "JEC STUDENT COUNCIL",
+  title: "JEC STUDENT COMMITTEE",
   shortTitle: "JEC SC",
   tagline: "WHERE STUDENT VOICE MEETS LEADERSHIP",
   institution: "JABALPUR ENGINEERING COLLEGE",

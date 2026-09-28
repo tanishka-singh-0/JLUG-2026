@@ -17,7 +17,7 @@ export interface President {
   year: string;
   name: string;
   photo: string;
-  branch: string;
+  branch?: string;
   note?: string;
   /** Optional short tag, e.g. "Founder" or "Co-founder", shown next to the name. */
   tag?: string;
@@ -68,7 +68,6 @@ export const PRESIDENTS: President[] = [
     year: "2022–23",
     name: "Samveg Shandilya",
     photo: "/assets/presidents/samveg_shandilya.jpg",
-    branch: "B.Tech — Industrial Production",
 
     socials: {
       linkedin: "https://linkedin.com/",
@@ -78,7 +77,6 @@ export const PRESIDENTS: President[] = [
     year: "2023–24",
     name: "Mustkeem Arsh",
     photo: "/assets/presidents/mustkeem_arsh.jpg",
-    branch: "B.Tech — Electronics and Communication Engineering",
 
     socials: {
       github: "https://github.com/",
@@ -89,7 +87,6 @@ export const PRESIDENTS: President[] = [
     year: "2024–25",
     name: "Harshit Solanki",
     photo: "/assets/presidents/harshit_solanki.jpg",
-    branch: "B.Tech — Electrical Engineering",
 
     socials: {
       github: "https://github.com/",
@@ -100,7 +97,6 @@ export const PRESIDENTS: President[] = [
     year: "2025–26",
     name: "Prince Dwivedi",
     photo: "/assets/presidents/aarav_mehta.png",
-    branch: "B.Tech — Electronics and Communication Engineering",
 
     socials: {
       github: "https://github.com/",
@@ -111,7 +107,6 @@ export const PRESIDENTS: President[] = [
     year: "2026–27",
     name: "Akshat Tiwari",
     photo: "/assets/presidents/president_2026_27.jpg",
-    branch: "B.Tech — Computer Science",
 
     socials: {
       github: "https://github.com/",

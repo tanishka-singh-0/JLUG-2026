@@ -30,7 +30,7 @@ export interface SecurityCouncilMember {
 }
 
 export const JEC_SECURITY_COUNCIL_CONFIG = {
-  title: "JEC SECURITY COUNCIL",
+  title: "JEC STUDENT COUNCIL",
   shortTitle: "JEC SC",
   institution: "JABALPUR ENGINEERING COLLEGE",
 };

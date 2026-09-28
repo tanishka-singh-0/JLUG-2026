@@ -39,23 +39,9 @@ export const NAV_ITEMS: NavItem[] = [
     ],
   },
   {
-    href: "/hall-of-fame",
-    label: "HALL OF FAME",
-    index: "02",
-    title: "HALL OF FAME",
-    blurb:
-      "Every president who has led JLUG, from the first term in 2019 to the current one.",
-    meta: "SINCE 2019",
-    todo: [
-      "Presidents list with term year, branch and photo",
-      "Ordering: most recent term first",
-      "Optional: core-team credits per term",
-    ],
-  },
-  {
     href: "/members",
     label: "MEMBERS",
-    index: "03",
+    index: "02",
     title: "MEMBERS",
     blurb:
       "The whole group across every year — first years through final years.",
@@ -64,6 +50,20 @@ export const NAV_ITEMS: NavItem[] = [
       "Member directory data source",
       "Filter or grouping by year and by domain",
       "Reuse the ID-card treatment from the landing page",
+    ],
+  },
+  {
+    href: "/hall-of-fame",
+    label: "HALL OF FAME",
+    index: "03",
+    title: "HALL OF FAME",
+    blurb:
+      "Every president who has led JLUG, from the first term in 2019 to the current one.",
+    meta: "SINCE 2019",
+    todo: [
+      "Presidents list with term year, branch and photo",
+      "Ordering: most recent term first",
+      "Optional: core-team credits per term",
     ],
   },
   {

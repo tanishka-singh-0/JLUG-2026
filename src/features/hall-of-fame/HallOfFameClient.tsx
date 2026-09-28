@@ -203,7 +203,6 @@ function TextPanel({ president, index, total, visibility, entering }: TextPanelP
       >
         {president.branch}
       </p>
-
       {/* Accent divider */}
       <div
         className="mb-3 sm:mb-5 bg-jlug-accent"
@@ -527,10 +526,6 @@ export default function HallOfFameClient() {
                       {p.tag}
                     </span>
                   )}
-                </span>
-                <span className="hidden md:block flex-1 h-px bg-jlug-line" />
-                <span className="font-mono text-[0.65rem] text-jlug-gray-2 uppercase tracking-wide">
-                  {p.branch}
                 </span>
               </div>
               {p.note && (

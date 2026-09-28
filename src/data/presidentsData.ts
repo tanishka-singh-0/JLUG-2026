@@ -19,6 +19,8 @@ export interface President {
   photo: string;
   branch: string;
   note?: string;
+  /** Optional short tag, e.g. "Founder" or "Co-founder", shown next to the name. */
+  tag?: string;
   socials?: {
     github?: string;
     linkedin?: string;
@@ -31,6 +33,7 @@ export const PRESIDENTS: President[] = [
     name: "Ayushman Parchoria",
     photo: "/assets/presidents/ayushman_parchoria.jpg",
     branch: "B.Tech — Information Technology",
+    tag: "Founder",
 
     socials: {
       github: "https://github.com/",
@@ -42,6 +45,7 @@ export const PRESIDENTS: President[] = [
     name: "Pranshu Mishra",
     photo: "/assets/presidents/pranshu_mishra.jpg",
     branch: "B.Tech — Computer Science Engineering",
+    tag: "Co-founder",
 
     socials: {
       github: "https://github.com/",
@@ -53,6 +57,7 @@ export const PRESIDENTS: President[] = [
     name: "Mohammad Usaid",
     photo: "/assets/presidents/mohammad_usaid.png",
     branch: "B.Tech — Electronics & Communication",
+    tag: "Co-founder",
 
     socials: {
       github: "https://github.com/",

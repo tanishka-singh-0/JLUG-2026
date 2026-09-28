@@ -4,7 +4,6 @@ import HeroSection from "@/components/landing/HeroSection";
 import ManifestoSection from "@/components/landing/ManifestoSection";
 import ClubIntroSection from "@/components/landing/ClubIntroSection";
 import SiteIndexSection from "@/components/landing/SiteIndexSection";
-import PersonnelSection from "@/components/landing/PersonnelSection";
 import RecruitCTASection from "@/components/landing/RecruitCTASection";
 import EventsSection from "@/components/landing/EventsSection";
 import CallToActionSection from "@/components/landing/CallToActionSection";
@@ -29,9 +28,6 @@ export default function Home() {
 
         {/* SECTIONS / SITE INDEX — entry points to the dedicated pages */}
         <SiteIndexSection />
-
-        {/* PEOPLE / ID CARDS */}
-        <PersonnelSection />
 
         {/* NEW RECRUITS TEASER */}
         <RecruitCTASection />

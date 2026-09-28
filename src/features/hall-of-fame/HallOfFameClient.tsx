@@ -186,14 +186,6 @@ function TextPanel({ president, index, total, visibility, entering }: TextPanelP
         ))}
       </h2>
 
-      {/* Branch */}
-      <p
-        className="font-mono text-[0.68rem] sm:text-xs text-jlug-gray-1 uppercase tracking-widest mb-2 sm:mb-4 lg:mb-5"
-        style={{ opacity: sub1 }}
-      >
-        {president.branch}
-      </p>
-
       {/* Accent divider */}
       <div
         className="mb-3 sm:mb-5 bg-jlug-accent"
@@ -510,10 +502,6 @@ export default function HallOfFameClient() {
                 </span>
                 <span className="text-lg sm:text-xl md:text-2xl font-bold uppercase tracking-tight group-hover:text-jlug-accent transition-colors">
                   {p.name}
-                </span>
-                <span className="hidden md:block flex-1 h-px bg-jlug-line" />
-                <span className="font-mono text-[0.65rem] text-jlug-gray-2 uppercase tracking-wide">
-                  {p.branch}
                 </span>
               </div>
               {p.note && (

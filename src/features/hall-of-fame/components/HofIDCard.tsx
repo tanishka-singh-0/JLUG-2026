@@ -12,7 +12,7 @@ export interface HofIDCardProps {
   cardId: string;         // e.g. "CR_2025_01"
   name: string;
   role: string;
-  branch: string;
+  branch?: string;
   yearOfStudy: string;    // "4TH YEAR"
   academicYear: string;   // "2025–26"
   isActive: boolean;
@@ -62,7 +62,7 @@ export default function HofIDCard({
           {name}
         </h3>
         <p className="font-mono text-xs text-jlug-gray-1 uppercase tracking-wide truncate">
-          {role} / {branch} / {yearOfStudy}
+          {role}{branch ? ` / ${branch}` : ""} / {yearOfStudy}
         </p>
       </div>
     </div>

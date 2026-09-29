@@ -21,10 +21,7 @@ export interface President {
   note?: string;
   /** Optional short tag, e.g. "Founder" or "Co-founder", shown next to the name. */
   tag?: string;
-  socials?: {
-    github?: string;
-    linkedin?: string;
-  };
+
 }
 
 export const PRESIDENTS: President[] = [
@@ -35,10 +32,7 @@ export const PRESIDENTS: President[] = [
     branch: "B.Tech — Information Technology",
     tag: "Founder",
 
-    socials: {
-      github: "https://github.com/",
-      linkedin: "https://linkedin.com/",
-    },
+
   },
   {
     year: "2020–21",
@@ -47,10 +41,7 @@ export const PRESIDENTS: President[] = [
     branch: "B.Tech — Computer Science Engineering",
     tag: "Co-founder",
 
-    socials: {
-      github: "https://github.com/",
-      linkedin: "https://linkedin.com/",
-    },
+
   },
   {
     year: "2021–22",
@@ -59,58 +50,41 @@ export const PRESIDENTS: President[] = [
     branch: "B.Tech — Electronics & Communication",
     tag: "Co-founder",
 
-    socials: {
-      github: "https://github.com/",
-      linkedin: "https://linkedin.com/",
-    },
+
   },
   {
     year: "2022–23",
     name: "Samveg Shandilya",
     photo: "/assets/presidents/samveg_shandilya.jpg",
 
-    socials: {
-      linkedin: "https://linkedin.com/",
-    },
+
   },
   {
     year: "2023–24",
     name: "Mustkeem Arsh",
     photo: "/assets/presidents/mustkeem_arsh.jpg",
 
-    socials: {
-      github: "https://github.com/",
-      linkedin: "https://linkedin.com/",
-    },
+
   },
   {
     year: "2024–25",
     name: "Harshit Solanki",
     photo: "/assets/presidents/harshit_solanki.jpg",
 
-    socials: {
-      github: "https://github.com/",
-      linkedin: "https://linkedin.com/",
-    },
+
   },
   {
     year: "2025–26",
     name: "Prince Dwivedi",
     photo: "/assets/presidents/aarav_mehta.png",
 
-    socials: {
-      github: "https://github.com/",
-      linkedin: "https://linkedin.com/",
-    },
+
   },
   {
     year: "2026–27",
     name: "Akshat Tiwari",
     photo: "/assets/presidents/akshat_tiwari.jpeg",
 
-    socials: {
-      github: "https://github.com/",
-      linkedin: "https://linkedin.com/",
-    },
+
   },
 ];

@@ -416,7 +416,7 @@ function updateFilterCounts(members) {
     });
 
     const badge = document.getElementById("roster-badge");
-    if (badge) badge.textContent = `300+ ACTIVE MEMBERS`;
+    if (badge) badge.textContent = `200+ ACTIVE MEMBERS`;
 }
 
 function setupFilterBar() {

@@ -85,6 +85,5 @@ export const PRESIDENTS: President[] = [
     name: "Akshat Tiwari",
     photo: "/assets/presidents/akshat_tiwari.jpeg",
 
-
   },
 ];

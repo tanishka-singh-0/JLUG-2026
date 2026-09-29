@@ -30,7 +30,7 @@ export interface StudentCouncilMember {
 }
 
 export const JEC_STUDENT_COUNCIL_CONFIG = {
-  title: "JEC STUDENT COMMITTE",
+  title: "JEC STUDENT COUNCIL",
   shortTitle: "JEC SC",
   institution: "JABALPUR ENGINEERING COLLEGE",
 };
@@ -41,7 +41,7 @@ export const JEC_STUDENT_COUNCIL_MEMBERS: StudentCouncilMember[] = [
     name: "AKSHAT TIWARI",
 
     image: "/assets/presidents/akshat_tiwari.jpeg",
-    imageScale: 1,
+    imageScale: 1.2,
     objectPosition: "center 5%",
 
   },

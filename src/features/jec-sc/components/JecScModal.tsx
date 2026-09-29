@@ -2,10 +2,10 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import { SecurityCouncilMember } from "@/data/jecSecurityCouncil";
+import { StudentCouncilMember } from "@/data/jecStudentCouncil";
 
 interface JecScModalProps {
-  member: SecurityCouncilMember | null;
+  member: StudentCouncilMember | null;
   onClose: () => void;
 }
 
@@ -56,7 +56,7 @@ export default function JecScModal({ member, onClose }: JecScModalProps) {
           <div className="flex items-center justify-between border-b border-jlug-line pb-3 mb-6 font-mono text-xs uppercase tracking-widest text-jlug-gray-1">
             <div className="flex items-center gap-2">
               <span className="h-2 w-2 bg-jlug-accent animate-ping" />
-              <span>JEC SECURITY COUNCIL // 026_{String(member.id).padStart(2, "0")}</span>
+              <span>JEC STUDENT COUNCIL // 026_{String(member.id).padStart(2, "0")}</span>
             </div>
             <button
               type="button"

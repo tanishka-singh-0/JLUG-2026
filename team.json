@@ -3,9 +3,9 @@
         "id": 1,
         "name": "AKSHAT TIWARI",
         "role": "President",
-        "image": "/alumni/members/akshat.png",
-        "imageScale": 1.2,
-        "objectPosition": "center 5%"
+        "image": "/alumni/members/akshat.jpeg",
+        "imageScale": 1,
+        "objectPosition": "center 0%"
     },
     {
         "id": 2,

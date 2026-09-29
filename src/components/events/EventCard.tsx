@@ -57,9 +57,11 @@ export default function EventCard({ event, year = "2026" }: EventCardProps) {
               <span className="border border-jlug-line px-2 py-1">
                 TAG: {event.tag}
               </span>
-              <span className="border border-jlug-line px-2 py-1">
-                DATE: {event.date}
-              </span>
+              {event.date && event.date.toLowerCase() !== "tba" && event.date.toLowerCase() !== "tbd" && (
+                <span className="border border-jlug-line px-2 py-1">
+                  DATE: {event.date}
+                </span>
+              )}
             </div>
             <h2 className="mb-6 text-6xl font-bold uppercase leading-[0.85] tracking-tighter md:text-8xl">
               {event.name.split(" ").map((word, index) => (

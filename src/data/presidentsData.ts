@@ -106,7 +106,7 @@ export const PRESIDENTS: President[] = [
   {
     year: "2026–27",
     name: "Akshat Tiwari",
-    photo: "/assets/presidents/president_2026_27.jpg",
+    photo: "/assets/presidents/akshat_tiwari.jpeg",
 
     socials: {
       github: "https://github.com/",

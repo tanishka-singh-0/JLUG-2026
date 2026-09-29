@@ -2,11 +2,11 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { SecurityCouncilMember } from "@/data/jecSecurityCouncil";
+import { StudentCouncilMember } from "@/data/jecStudentCouncil";
 
 interface JecScCardProps {
-  member: SecurityCouncilMember;
-  onSelect?: (member: SecurityCouncilMember) => void;
+  member: StudentCouncilMember;
+  onSelect?: (member: StudentCouncilMember) => void;
 }
 
 export default function JecScCard({ member, onSelect }: JecScCardProps) {

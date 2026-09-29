@@ -70,7 +70,7 @@ export const JEC_SC_MEMBERS: JecScMember[] = [
     role: "President",
     wing: "Executive Council",
     branchYear: "4th Year · Computer Science & Engineering",
-    photo: "/alumni/2026-27, heads/akshat.jpeg",
+    photo: "/assets/presidents/akshat_tiwari.jpeg",
     bio: "Guiding the student body towards unified growth, bridging the gap between student aspirations and institute leadership.",
     badge: "HEAD OF COUNCIL",
     email: "president.sc@jecjabalpur.ac.in",

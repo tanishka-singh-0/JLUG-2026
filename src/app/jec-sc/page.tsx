@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 import JecScRoster from "@/features/jec-sc/components/JecScRoster";
-import { JEC_SECURITY_COUNCIL_MEMBERS } from "@/data/jecSecurityCouncil";
+import { JEC_STUDENT_COUNCIL_MEMBERS } from "@/data/jecStudentCouncil";
 
 export const metadata: Metadata = {
-  title: "JEC Security Council | JLUG",
+  title: "JEC Student Council | JLUG",
   description:
-    "Official representatives and members of the JEC Security Council, Jabalpur Engineering College.",
+    "Official representatives and members of the JEC Student Council, Jabalpur Engineering College.",
 };
 
-export default function JecSecurityCouncilPage() {
-  return <JecScRoster initialMembers={JEC_SECURITY_COUNCIL_MEMBERS} />;
+export default function JecStudentCouncilPage() {
+  return <JecScRoster initialMembers={JEC_STUDENT_COUNCIL_MEMBERS} />;
 }

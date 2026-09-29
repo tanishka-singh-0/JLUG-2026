@@ -148,7 +148,7 @@ export const CORE_TEAM: CoreTeamMember[] = [
     branch: "Industrial & Production Engg.",
     yearOfStudy: "4th",
     domain: "Community",
-    portraitUrl: "/alumni/2026-27, heads/akshat.jpeg",
+    portraitUrl: "/assets/presidents/akshat_tiwari.jpeg",
   },
   {
     id: "ct-2026-02",

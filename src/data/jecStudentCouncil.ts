@@ -1,9 +1,9 @@
 /**
  * ============================================================================
- * JEC SECURITY COUNCIL — MEMBER DATA CONFIGURATION
+ * JEC STUDENT COUNCIL — MEMBER DATA CONFIGURATION
  * ============================================================================
  * 
- * Modify this file to easily update members of the JEC Security Council.
+ * Modify this file to easily update members of the JEC Student Council.
  * 
  * Each member entry supports:
  * - id: Unique identifier
@@ -17,7 +17,7 @@
  * - socials: (optional) LinkedIn, GitHub, etc.
  */
 
-export interface SecurityCouncilMember {
+export interface StudentCouncilMember {
   id: number | string;
   name: string;
   role?: string;
@@ -29,18 +29,18 @@ export interface SecurityCouncilMember {
   socials?: Record<string, string>;
 }
 
-export const JEC_SECURITY_COUNCIL_CONFIG = {
+export const JEC_STUDENT_COUNCIL_CONFIG = {
   title: "JEC STUDENT COUNCIL",
   shortTitle: "JEC SC",
   institution: "JABALPUR ENGINEERING COLLEGE",
 };
 
-export const JEC_SECURITY_COUNCIL_MEMBERS: SecurityCouncilMember[] = [
+export const JEC_STUDENT_COUNCIL_MEMBERS: StudentCouncilMember[] = [
   {
     id: 1,
     name: "AKSHAT TIWARI",
 
-    image: "/alumni/members/akshat.png",
+    image: "/assets/presidents/akshat_tiwari.jpeg",
     imageScale: 1.2,
     objectPosition: "center 5%",
 

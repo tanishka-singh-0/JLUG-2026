@@ -71,7 +71,7 @@ export default function JecScModal({ member, onClose }: JecScModalProps) {
           <div className="grid grid-cols-1 md:grid-cols-5 gap-6 items-start">
             {/* Photo Column */}
             <div className="md:col-span-2">
-              <div className="relative aspect-[3/4] w-full overflow-hidden border border-jlug-line bg-jlug-black">
+              <div className="relative aspect-[3/4] w-full overflow-hidden border border-jlug-line bg-black">
                 {!imageError && member.image ? (
                   <Image
                     src={member.image}
@@ -79,10 +79,11 @@ export default function JecScModal({ member, onClose }: JecScModalProps) {
                     fill
                     unoptimized
                     onError={() => setImageError(true)}
-                    className="object-contain"
+                    className="object-cover"
                     style={{
-                      objectFit: "contain",
-                      objectPosition: "center",
+                      objectFit: "cover",
+                      objectPosition: member.objectPosition || "center",
+                      transform: `translateY(${member.imageOffsetY ?? 0}%) scale(${member.imageScale ?? 1})`,
                     }}
                   />
                 ) : (

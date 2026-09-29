@@ -39,7 +39,7 @@ export default function JecScCard({ member, onSelect }: JecScCardProps) {
           </div>
 
           {/* Photo frame */}
-          <div className="relative mb-4 aspect-[3/4] w-full overflow-hidden border border-jlug-line/80 bg-jlug-black">
+          <div className="relative mb-4 aspect-[3/4] w-full overflow-hidden border border-jlug-line/80 bg-black">
             {!imageError && member.image ? (
               <Image
                 src={member.image}
@@ -47,10 +47,11 @@ export default function JecScCard({ member, onSelect }: JecScCardProps) {
                 fill
                 unoptimized
                 onError={() => setImageError(true)}
-                className="object-contain transition-all duration-500 ease-out"
+                className="object-cover transition-all duration-500 ease-out"
                 style={{
-                  objectFit: "contain",
-                  objectPosition: "center",
+                  objectFit: "cover",
+                  objectPosition: member.objectPosition || "center",
+                  transform: `translateY(${member.imageOffsetY ?? 0}%) scale(${member.imageScale ?? 1})`,
                 }}
               />
             ) : (

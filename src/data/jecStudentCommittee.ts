@@ -13,6 +13,7 @@
  * - bio: Short quote or description
  * - imageScale: (optional) Zoom scale factor (default: 1)
  * - objectPosition: (optional) Image alignment, e.g. "center 20%"
+ * - imageOffsetY: (optional) Shift photo vertically in % of frame height (positive = down)
  * - email: (optional) Contact email
  * - socials: (optional) LinkedIn, GitHub, etc.
  */
@@ -25,6 +26,7 @@ export interface StudentCommitteeMember {
   bio?: string;
   imageScale?: number;
   objectPosition?: string;
+  imageOffsetY?: number;
   email?: string;
   socials?: Record<string, string>;
 }
@@ -41,8 +43,8 @@ export const JEC_STUDENT_COMMITTEE_MEMBERS: StudentCommitteeMember[] = [
     name: "AKSHAT TIWARI",
 
     image: "/assets/presidents/akshat_tiwari.jpeg",
-    imageScale: 1.2,
-    objectPosition: "center 5%",
+    imageScale: 1,
+    objectPosition: "center top",
 
   },
   {
@@ -51,7 +53,7 @@ export const JEC_STUDENT_COMMITTEE_MEMBERS: StudentCommitteeMember[] = [
 
     image: "/alumni/members/chitransh.png",
     imageScale: 1,
-    objectPosition: "center 50%",
+    objectPosition: "center",
 
   },
   {
@@ -60,7 +62,7 @@ export const JEC_STUDENT_COMMITTEE_MEMBERS: StudentCommitteeMember[] = [
 
     image: "/assets/presidents/prince_dwivedi.png",
     imageScale: 1,
-    objectPosition: "center 5%",
+    objectPosition: "center",
     
 
   },
@@ -69,8 +71,9 @@ export const JEC_STUDENT_COMMITTEE_MEMBERS: StudentCommitteeMember[] = [
     name: "PALAK CHOUDHARY",
 
     image: "/alumni/members/palak.jpeg",
-    imageScale: 1,
-    objectPosition: "center 5%",
+    imageScale: 1.22,
+    objectPosition: "center 20%",
+    imageOffsetY: 5,
     
 
   },
@@ -80,7 +83,7 @@ export const JEC_STUDENT_COMMITTEE_MEMBERS: StudentCommitteeMember[] = [
 
     image: "/assets/presidents/harshit_solanki.jpg",
     imageScale: 1,
-    objectPosition: "center 5%",
+    objectPosition: "center",
     
   },
 
@@ -90,7 +93,7 @@ export const JEC_STUDENT_COMMITTEE_MEMBERS: StudentCommitteeMember[] = [
 
     image: "/alumni/members/varsha.jpeg",
     imageScale: 1,
-    objectPosition: "center 5%",
+    objectPosition: "center",
     
   },
   {
@@ -98,8 +101,9 @@ export const JEC_STUDENT_COMMITTEE_MEMBERS: StudentCommitteeMember[] = [
     name: "MUSTKEEM ARSH",
 
     image: "/assets/presidents/mustkeem_arsh.jpg",
-    imageScale: 0.9,
-    objectPosition: "center 60%",
+    imageScale: 1,
+    objectPosition: "center",
+    imageOffsetY: 4,
     
 
   },
@@ -107,16 +111,16 @@ export const JEC_STUDENT_COMMITTEE_MEMBERS: StudentCommitteeMember[] = [
     name: "ISHITA MODI",
 
     image: "/alumni/members/ishita.jpeg",
-    imageScale: 1,
-    objectPosition: "center 5%",
+    imageScale: 1.09,
+    objectPosition: "center",
     
   },
   {id: 9,
     name: "SAMVEG SHANDILYA",
 
     image: "/assets/presidents/samveg_shandilya.jpg",
-    imageScale: 1.2,
-    objectPosition: "center 5%",
+    imageScale: 1.14,
+    objectPosition: "center",
     
   },
 
@@ -124,47 +128,47 @@ export const JEC_STUDENT_COMMITTEE_MEMBERS: StudentCommitteeMember[] = [
     name: "PREETI PATEL",
 
     image: "/alumni/members/preeti.jpeg",
-    imageScale: 1,
-    objectPosition: "center 5%",
+    imageScale: 1.08,
+    objectPosition: "center",
   },
   {id: 11,
     name: "ADITI SHRIVASTAVA",
 
     image: "/alumni/members/aditi.jpeg",
-    imageScale: 1,
-    objectPosition: "center 5%",
+    imageScale: 1.08,
+    objectPosition: "center",
     
   },
    {id: 12,
     name: "AASTHA GAUTAM",
 
     image: "/alumni/members/aastha.jpeg",
-    imageScale: 0.9,
-    objectPosition: "center 0%",
+    imageScale: 1.08,
+    objectPosition: "center",
     
   },
   {id: 13,
     name: "MOHAMMAD USAID",
 
     image: "/assets/presidents/mohammad_usaid.png",
-    imageScale: 1.3,
-    objectPosition: "center 40%",
+    imageScale: 1.15,
+    objectPosition: "center",
     
   },
   {id: 14,
     name: "PRANSHU MISHRA",
 
     image: "/assets/presidents/pranshu_mishra.jpg",
-    imageScale: 1.3,
-    objectPosition: "center 30%",
+    imageScale: 1.14,
+    objectPosition: "center",
     
   },
   {id: 15,
     name: "AYUSHMAN PARCHORIA",
 
     image: "/assets/presidents/ayushman_parchoria.jpg",
-    imageScale: 1.2,
-    objectPosition: "center 5%",
+    imageScale: 1.09,
+    objectPosition: "center",
     
   },
 

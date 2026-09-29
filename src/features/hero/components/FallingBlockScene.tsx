@@ -8,6 +8,7 @@ import { BlockPiece } from "../engine/types";
 
 const C = HERO_BLOCK_CONFIG;
 
+
 // Below this viewport width, the wordmark stacks vertically (J/L/U/G
 // top-to-bottom) instead of side-by-side, so it reads clearly and
 // fills the available height on phones.

@@ -63,10 +63,14 @@ export default function EventCard({ event, year = "2026" }: EventCardProps) {
                 </span>
               )}
             </div>
-            <h2 className="mb-6 text-[3.5625rem] font-bold uppercase leading-[0.85] tracking-tighter md:text-8xl">
-              {event.name.split(" ").map((word, index) => (
-                <span className="block" key={`${event.id}-${word}-${index}`}>
+            <h2 className="mb-6 text-[3.384375rem] font-bold uppercase leading-[0.85] tracking-tighter md:text-8xl">
+              {event.name.split(" ").map((word, index, words) => (
+                <span
+                  className="inline md:block"
+                  key={`${event.id}-${word}-${index}`}
+                >
                   {word}
+                  {index < words.length - 1 ? " " : ""}
                 </span>
               ))}
             </h2>

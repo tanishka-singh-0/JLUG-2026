@@ -40,9 +40,9 @@ export default function MascotHUDOverlay({
   const tiltDeg = pointer.active ? (pointer.normalizedX * 18).toFixed(1) : "0.0";
 
   return (
-    <div className="absolute inset-0 pointer-events-none select-none p-4 md:p-6 flex flex-col justify-between z-10 font-mono text-[0.65rem] md:text-[0.7rem] text-jlug-gray-2 uppercase tracking-widest">
+    <div className="absolute inset-0 pointer-events-none select-none p-3 sm:p-4 md:p-6 flex flex-col justify-between z-10 font-mono text-[0.6rem] sm:text-[0.65rem] md:text-[0.7rem] text-jlug-gray-2 uppercase tracking-wider sm:tracking-widest">
       {/* Top Bar HUD */}
-      <div className="flex justify-between items-start">
+      <div className="flex justify-between items-start gap-3">
         <div className="flex flex-col gap-1">
           <div className="flex items-center gap-2">
             <span className="w-1.5 h-1.5 rounded-full bg-jlug-accent animate-pulse" />
@@ -51,7 +51,7 @@ export default function MascotHUDOverlay({
           <span className="text-[0.6rem] text-jlug-gray-1">VER 2.6 // PBR SHADER ENGINE</span>
         </div>
 
-        <div className="text-right flex flex-col gap-0.5">
+        <div className="hidden text-right shrink-0 whitespace-nowrap sm:flex flex-col gap-0.5">
           <div className="text-jlug-gray-1">
             PTR: [ <span className="text-jlug-accent">{normX}</span> ,{" "}
             <span className="text-jlug-accent">{normY}</span> ]

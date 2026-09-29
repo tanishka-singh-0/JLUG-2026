@@ -47,7 +47,7 @@ export function buildMascotRig(): MascotRig {
   rootGroup.add(bodyGroup);
 
   // Lathe curve for smooth continuous penguin body silhouette
-  const bodyPoints: THREE.Vector2[] = [];
+  const rawPoints: THREE.Vector2[] = [];
   // Base to crown profile
   const profileCoords = [
     [0.0, 0.2],
@@ -65,8 +65,11 @@ export function buildMascotRig(): MascotRig {
   ];
 
   for (const [r, y] of profileCoords) {
-    bodyPoints.push(new THREE.Vector2(r, y));
+    rawPoints.push(new THREE.Vector2(r, y));
   }
+  
+  const spline = new THREE.SplineCurve(rawPoints);
+  const bodyPoints = spline.getPoints(64);
 
   const bodyGeo = new THREE.LatheGeometry(bodyPoints, 48);
   bodyGeo.computeVertexNormals();
@@ -79,8 +82,8 @@ export function buildMascotRig(): MascotRig {
   // Modeled as a smooth curved anterior patch nestled into the body
   const bellyGeo = new THREE.SphereGeometry(1.0, 32, 24, 0, Math.PI * 2, 0, Math.PI * 0.55);
   const bellyMesh = new THREE.Mesh(bellyGeo, bellyMaterial);
-  bellyMesh.scale.set(0.92, 1.15, 0.65);
-  bellyMesh.position.set(0, 1.15, 0.58);
+  bellyMesh.scale.set(0.92, 0.96, 0.70);
+  bellyMesh.position.set(0, 1.05, 0.62);
   bellyMesh.rotation.x = 0.08;
   bodyGroup.add(bellyMesh);
 
@@ -93,19 +96,19 @@ export function buildMascotRig(): MascotRig {
   // ── 3a. Beak ──
   const beakGroup = new THREE.Group();
   beakGroup.name = "BeakGroup";
-  beakGroup.position.set(0, 0.22, 0.88);
+  beakGroup.position.set(0, 0.22, 1.02);
   beakGroup.rotation.x = -0.06;
 
   // Upper beak: curved triangular shape with soft bridge
-  const upperBeakGeo = new THREE.ConeGeometry(0.32, 0.58, 24);
+  const upperBeakGeo = new THREE.ConeGeometry(0.32, 0.58, 32);
   upperBeakGeo.rotateX(Math.PI / 2);
-  upperBeakGeo.scale(1.15, 0.62, 1.0);
+  upperBeakGeo.scale(1.15, 0.85, 1.0);
   const upperBeakMesh = new THREE.Mesh(upperBeakGeo, beakMaterial);
   upperBeakMesh.position.set(0, 0.04, 0.18);
   beakGroup.add(upperBeakMesh);
 
   // Lower beak: slightly smaller supportive jaw
-  const lowerBeakGeo = new THREE.ConeGeometry(0.24, 0.42, 24);
+  const lowerBeakGeo = new THREE.ConeGeometry(0.24, 0.42, 32);
   lowerBeakGeo.rotateX(Math.PI / 2);
   lowerBeakGeo.scale(0.95, 0.45, 0.85);
   const lowerBeakMesh = new THREE.Mesh(lowerBeakGeo, beakMaterial);
@@ -129,13 +132,13 @@ export function buildMascotRig(): MascotRig {
     side: THREE.DoubleSide,
   });
 
-  const scleraGeo = new THREE.SphereGeometry(0.24, 32, 24);
-  const irisPlaneGeo = new THREE.PlaneGeometry(0.38, 0.38);
+  const scleraGeo = new THREE.SphereGeometry(0.26, 32, 24);
+  const irisPlaneGeo = new THREE.PlaneGeometry(0.42, 0.42);
 
-  // Left Eyeball Group (Pivots at eye center: x=-0.38, y=0.38, z=0.76)
+  // Left Eyeball Group
   const eyeLeftGroup = new THREE.Group();
   eyeLeftGroup.name = "EyeLeftGroup";
-  eyeLeftGroup.position.set(-0.38, 0.38, 0.76);
+  eyeLeftGroup.position.set(-0.38, 0.38, 0.96);
   eyeLeftGroup.rotation.y = -0.12;
   eyeLeftGroup.rotation.x = -0.04;
 
@@ -145,16 +148,16 @@ export function buildMascotRig(): MascotRig {
   const pupilLeftGroup = new THREE.Group();
   pupilLeftGroup.name = "PupilLeftGroup";
   const pupilLeftMesh = new THREE.Mesh(irisPlaneGeo, irisMat);
-  pupilLeftMesh.position.set(0, 0, 0.242);
+  pupilLeftMesh.position.set(0, 0, 0.262);
   pupilLeftGroup.add(pupilLeftMesh);
   eyeLeftGroup.add(pupilLeftGroup);
 
   headGroup.add(eyeLeftGroup);
 
-  // Right Eyeball Group (Pivots at eye center: x=0.38, y=0.38, z=0.76)
+  // Right Eyeball Group
   const eyeRightGroup = new THREE.Group();
   eyeRightGroup.name = "EyeRightGroup";
-  eyeRightGroup.position.set(0.38, 0.38, 0.76);
+  eyeRightGroup.position.set(0.38, 0.38, 0.96);
   eyeRightGroup.rotation.y = 0.12;
   eyeRightGroup.rotation.x = -0.04;
 
@@ -164,7 +167,7 @@ export function buildMascotRig(): MascotRig {
   const pupilRightGroup = new THREE.Group();
   pupilRightGroup.name = "PupilRightGroup";
   const pupilRightMesh = new THREE.Mesh(irisPlaneGeo, irisMat);
-  pupilRightMesh.position.set(0, 0, 0.242);
+  pupilRightMesh.position.set(0, 0, 0.262);
   pupilRightGroup.add(pupilRightMesh);
   eyeRightGroup.add(pupilRightGroup);
 
@@ -250,28 +253,31 @@ export function buildMascotRig(): MascotRig {
   // ── 5. Feet (3-lobed webbed cute penguin feet) ──
   const createFoot = (isLeft: boolean) => {
     const footGroup = new THREE.Group();
-    // Central foot base
-    const baseGeo = new THREE.BoxGeometry(0.55, 0.14, 0.75);
+    // Central foot base (smooth oval instead of a sharp box)
+    const baseGeo = new THREE.SphereGeometry(0.28, 32, 16);
     const baseMesh = new THREE.Mesh(baseGeo, feetMaterial);
-    baseMesh.position.set(0, 0.07, 0.18);
+    baseMesh.scale.set(1.1, 0.35, 1.4);
+    baseMesh.position.set(0, 0.08, 0.18);
     footGroup.add(baseMesh);
 
-    // 3 Rounded forward toe lobes
-    const toeGeo = new THREE.CylinderGeometry(0.1, 0.1, 0.14, 16);
-    toeGeo.rotateX(Math.PI / 2);
-
+    // 3 Rounded forward toe lobes (spherical instead of sharp cylinders)
+    const toeGeo = new THREE.SphereGeometry(0.12, 24, 16);
+    
     const toeCenter = new THREE.Mesh(toeGeo, feetMaterial);
-    toeCenter.position.set(0, 0.07, 0.58);
+    toeCenter.scale.set(1.0, 0.8, 1.5);
+    toeCenter.position.set(0, 0.06, 0.52);
     footGroup.add(toeCenter);
 
     const toeLeft = new THREE.Mesh(toeGeo, feetMaterial);
-    toeLeft.position.set(-0.2, 0.07, 0.52);
-    toeLeft.rotation.y = -0.18;
+    toeLeft.scale.set(1.0, 0.8, 1.5);
+    toeLeft.position.set(-0.2, 0.06, 0.46);
+    toeLeft.rotation.y = -0.25;
     footGroup.add(toeLeft);
 
     const toeRight = new THREE.Mesh(toeGeo, feetMaterial);
-    toeRight.position.set(0.2, 0.07, 0.52);
-    toeRight.rotation.y = 0.18;
+    toeRight.scale.set(1.0, 0.8, 1.5);
+    toeRight.position.set(0.2, 0.06, 0.46);
+    toeRight.rotation.y = 0.25;
     footGroup.add(toeRight);
 
     footGroup.position.set(isLeft ? -0.46 : 0.46, 0.0, 0.15);

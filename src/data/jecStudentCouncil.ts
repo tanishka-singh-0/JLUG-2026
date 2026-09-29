@@ -41,7 +41,7 @@ export const JEC_STUDENT_COUNCIL_MEMBERS: StudentCouncilMember[] = [
     name: "AKSHAT TIWARI",
 
     image: "/assets/presidents/akshat_tiwari.jpeg",
-    imageScale: 1.2,
+    imageScale: 1,
     objectPosition: "center 5%",
 
   },

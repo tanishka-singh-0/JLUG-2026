@@ -261,7 +261,7 @@ export default function FallingBlockScene() {
   return (
     <canvas
       ref={canvasRef}
-      className="w-full h-full cursor-crosshair"
+      className="w-full h-full cursor-crosshair touch-pan-y"
       style={{ display: "block" }}
     />
   );

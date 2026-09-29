@@ -63,7 +63,7 @@ export default function EventCard({ event, year = "2026" }: EventCardProps) {
                 </span>
               )}
             </div>
-            <h2 className="mb-6 text-[3.384375rem] font-bold uppercase leading-[0.85] tracking-tighter md:text-8xl">
+            <h2 className="mb-6 break-words text-[clamp(2.25rem,12vw,3.384375rem)] font-bold uppercase leading-[0.85] tracking-tighter md:text-7xl lg:text-8xl">
               {event.name.split(" ").map((word, index, words) => (
                 <span
                   className="inline md:block"
@@ -190,7 +190,7 @@ export default function EventCard({ event, year = "2026" }: EventCardProps) {
                     {event.images.length}{" "}
                     {event.images.length === 1 ? "IMAGE" : "IMAGES"}
                   </p>
-                  <h3 className="mt-2 text-3xl font-bold uppercase md:text-5xl">
+                  <h3 className="mt-2 break-words text-2xl font-bold uppercase min-[400px]:text-3xl md:text-5xl">
                     {event.name}
                   </h3>
                 </div>

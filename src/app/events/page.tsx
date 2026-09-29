@@ -27,7 +27,7 @@ export default function EventsPage() {
           </p>
         </ScrollReveal>
         <ScrollReveal direction="left" delay={80}>
-          <h1 className="text-5xl font-semibold uppercase tracking-tight md:text-8xl">
+          <h1 className="break-words text-4xl font-semibold uppercase tracking-tight min-[400px]:text-5xl md:text-7xl lg:text-8xl">
             {item.title}
           </h1>
         </ScrollReveal>

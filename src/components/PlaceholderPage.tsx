@@ -31,7 +31,7 @@ export default function PlaceholderPage({ item }: { item: NavItem }) {
         <p className="mb-6 font-mono text-xs uppercase tracking-widest text-jlug-accent">
           {item.index} {"//"} {item.label}
         </p>
-        <h1 className="text-5xl font-semibold uppercase tracking-tight md:text-8xl">
+        <h1 className="break-words text-4xl font-semibold uppercase tracking-tight min-[400px]:text-5xl md:text-7xl lg:text-8xl">
           {item.title}
         </h1>
         <p className="mt-8 max-w-2xl text-lg text-jlug-gray-1 md:text-xl">

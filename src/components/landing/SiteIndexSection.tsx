@@ -10,7 +10,7 @@ export default function SiteIndexSection() {
       </div>
 
       <div className="px-6 md:px-24 pt-20 pb-8">
-        <h2 className="text-5xl md:text-8xl font-semibold tracking-tight uppercase">
+        <h2 className="break-words text-4xl min-[400px]:text-5xl md:text-7xl lg:text-8xl font-semibold tracking-tight uppercase">
           GO DEEPER
         </h2>
         <p className="mt-6 max-w-xl text-lg text-jlug-gray-1">
@@ -33,7 +33,7 @@ export default function SiteIndexSection() {
             </div>
 
             <div>
-              <h3 className="text-3xl md:text-5xl font-bold uppercase tracking-tight leading-[0.95]">
+              <h3 className="break-words text-2xl min-[400px]:text-3xl md:text-5xl font-bold uppercase tracking-tight leading-[0.95]">
                 {item.title}
               </h3>
               <p className="mt-5 max-w-md text-base text-jlug-gray-1 group-hover:text-jlug-black/70">

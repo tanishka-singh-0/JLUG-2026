@@ -18,7 +18,7 @@ export default function RecruitCTASection() {
                 <span className="inline-block h-1.5 w-1.5 rounded-full bg-jlug-accent" />
                 NEXT SLOT: ID_026_04 // OPEN
               </div>
-              <h2 className="text-4xl font-bold uppercase leading-[0.95] tracking-tight md:text-6xl">
+              <h2 className="break-words text-3xl font-bold uppercase leading-[0.95] tracking-tight min-[400px]:text-4xl md:text-6xl">
                 You could be
                 <br />
                 here next.

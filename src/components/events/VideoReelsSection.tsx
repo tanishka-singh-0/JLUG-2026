@@ -15,7 +15,7 @@ export default function VideoReelsSection() {
         <div className="mb-4 font-mono text-xs uppercase tracking-widest text-jlug-accent">
           AFTER_MOVIES // REELS
         </div>
-        <h2 className="text-4xl font-semibold uppercase tracking-tight md:text-6xl">
+        <h2 className="break-words text-3xl font-semibold uppercase tracking-tight min-[400px]:text-4xl md:text-6xl">
           Relive the highlights
         </h2>
         <p className="mt-4 text-lg text-jlug-gray-1">

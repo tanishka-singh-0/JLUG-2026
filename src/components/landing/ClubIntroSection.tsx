@@ -6,7 +6,7 @@ export default function ClubIntroSection() {
           <div className="mb-4 font-mono text-xs uppercase tracking-widest text-jlug-accent">
             01B // THE INTRO
           </div>
-          <h2 className="text-4xl font-semibold uppercase tracking-tight md:text-6xl">
+          <h2 className="break-words text-3xl font-semibold uppercase tracking-tight min-[400px]:text-4xl md:text-6xl">
             Watch us in motion
           </h2>
           <p className="mt-4 text-lg text-jlug-gray-1">

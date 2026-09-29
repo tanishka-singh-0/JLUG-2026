@@ -11,7 +11,7 @@ export default function EventsSection() {
           <div className="mb-4 font-mono text-xs uppercase tracking-widest text-jlug-accent">
             04 // ARCHIVE
           </div>
-          <h2 className="text-5xl font-semibold tracking-tight md:text-8xl">
+          <h2 className="break-words text-4xl font-semibold tracking-tight min-[400px]:text-5xl md:text-7xl lg:text-8xl">
             EVENT LOG
           </h2>
         </div>

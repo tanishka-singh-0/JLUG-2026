@@ -58,6 +58,7 @@ body {
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
   margin: 0;
   padding: 0;
+  overflow-x: clip;
 }
 
 /* Dynamic SVG Zip-Line Cable Canvas */

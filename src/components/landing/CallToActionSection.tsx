@@ -4,7 +4,7 @@ export default function CallToActionSection() {
   return (
     <section className="relative">
       <div className="px-6 md:px-24 py-40 flex flex-col items-center justify-center text-center border-b border-jlug-line">
-        <h2 className="text-[clamp(4rem,12vw,14rem)] font-bold leading-[0.8] tracking-[-0.05em] mb-16 uppercase">
+        <h2 className="text-[clamp(2.75rem,12vw,14rem)] break-words font-bold leading-[0.8] tracking-[-0.05em] mb-16 uppercase">
           YOU COULD<br/>BE HERE.
         </h2>
         <div className="relative">

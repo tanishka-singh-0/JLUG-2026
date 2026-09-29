@@ -186,6 +186,16 @@ function TextPanel({ president, index, total, visibility, entering }: TextPanelP
         ))}
       </h2>
 
+      {/* Founder / Co-founder tag */}
+      {president.tag && (
+        <span
+          className="inline-block w-fit mb-2 sm:mb-4 border border-jlug-accent px-2.5 py-1 font-mono text-[0.65rem] sm:text-xs uppercase tracking-widest text-jlug-accent"
+          style={{ opacity: sub1 }}
+        >
+          {president.tag}
+        </span>
+      )}
+
       {/* Branch */}
       <p
         className="font-mono text-[0.68rem] sm:text-xs text-jlug-gray-1 uppercase tracking-widest mb-2 sm:mb-4 lg:mb-5"
@@ -193,7 +203,6 @@ function TextPanel({ president, index, total, visibility, entering }: TextPanelP
       >
         {president.branch}
       </p>
-
       {/* Accent divider */}
       <div
         className="mb-3 sm:mb-5 bg-jlug-accent"
@@ -508,12 +517,15 @@ export default function HallOfFameClient() {
                 <span className="font-mono text-xs text-jlug-accent uppercase tracking-widest min-w-[5.5rem]">
                   {p.year}
                 </span>
-                <span className="text-lg sm:text-xl md:text-2xl font-bold uppercase tracking-tight group-hover:text-jlug-accent transition-colors">
-                  {p.name}
-                </span>
-                <span className="hidden md:block flex-1 h-px bg-jlug-line" />
-                <span className="font-mono text-[0.65rem] text-jlug-gray-2 uppercase tracking-wide">
-                  {p.branch}
+                <span className="flex items-center gap-2.5 flex-wrap">
+                  <span className="text-lg sm:text-xl md:text-2xl font-bold uppercase tracking-tight group-hover:text-jlug-accent transition-colors">
+                    {p.name}
+                  </span>
+                  {p.tag && (
+                    <span className="border border-jlug-accent px-2 py-0.5 font-mono text-[0.6rem] uppercase tracking-widest text-jlug-accent">
+                      {p.tag}
+                    </span>
+                  )}
                 </span>
               </div>
               {p.note && (

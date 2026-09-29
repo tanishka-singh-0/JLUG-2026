@@ -17,7 +17,7 @@ export interface President {
   termLabel: string;       // e.g. "2023–24"
   termStartYear: number;   // 2023
   termEndYear: number;     // 2024
-  branch: string;          // e.g. "CSE", "IT", "ECE"
+  branch?: string;         // e.g. "CSE", "IT", "ECE"
   portraitUrl: string;     // /alumni/xxxx.jpg
   domain: Domain;          // primary domain they led
   legacyNote?: string;     // 1-line "what they're known for" (optional)
@@ -31,7 +31,7 @@ export interface CoreTeamMember {
   name: string;
   academicYear: string;    // e.g. "2023–24" — used for grouping
   role: string;            // e.g. "Design Lead", "Events Co-lead"
-  branch: string;
+  branch?: string;
   yearOfStudy: "1st" | "2nd" | "3rd" | "4th";
   domain: Domain;
   portraitUrl?: string;

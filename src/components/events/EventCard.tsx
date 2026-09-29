@@ -61,7 +61,7 @@ export default function EventCard({ event, year = "2026" }: EventCardProps) {
                 DATE: {event.date}
               </span>
             </div>
-            <h2 className="mb-6 text-6xl font-bold uppercase leading-[0.85] tracking-tighter md:text-8xl">
+            <h2 className="mb-6 text-[3.5625rem] font-bold uppercase leading-[0.85] tracking-tighter md:text-8xl">
               {event.name.split(" ").map((word, index) => (
                 <span className="block" key={`${event.id}-${word}-${index}`}>
                   {word}

@@ -99,9 +99,6 @@ export default function PresidentRow({
                 <span className="border border-jlug-line px-2 py-1 bg-jlug-black">
                   {president.termLabel}
                 </span>
-                <span className="border border-jlug-line px-2 py-1 bg-jlug-black">
-                  {president.branch}
-                </span>
                 <span className="text-jlug-accent hidden sm:inline">
                   [{president.domain}]
                 </span>

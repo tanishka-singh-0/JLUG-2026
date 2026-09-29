@@ -1,14 +1,14 @@
 /**
  * ============================================================================
- * JEC STUDENT COUNCIL — MEMBER DATA CONFIGURATION
+ * JEC STUDENT COMMITTEE — MEMBER DATA CONFIGURATION
  * ============================================================================
  * 
- * Modify this file to easily update members of the JEC Student Council.
+ * Modify this file to easily update members of the JEC Student Committee.
  * 
  * Each member entry supports:
  * - id: Unique identifier
  * - name: Full Name (displayed in uppercase)
- * - role: Council Role / Designation
+ * - role: Committee Role / Designation
  * - image: Path to photo in /public folder (e.g., "/alumni/2026-27, heads/akshat.jpeg")
  * - bio: Short quote or description
  * - imageScale: (optional) Zoom scale factor (default: 1)
@@ -17,7 +17,7 @@
  * - socials: (optional) LinkedIn, GitHub, etc.
  */
 
-export interface StudentCouncilMember {
+export interface StudentCommitteeMember {
   id: number | string;
   name: string;
   role?: string;
@@ -29,13 +29,13 @@ export interface StudentCouncilMember {
   socials?: Record<string, string>;
 }
 
-export const JEC_STUDENT_COUNCIL_CONFIG = {
-  title: "JEC STUDENT COUNCIL",
+export const JEC_STUDENT_COMMITTEE_CONFIG = {
+  title: "JLUG JEC STUDENT COMMITTEE",
   shortTitle: "JEC SC",
   institution: "JABALPUR ENGINEERING COLLEGE",
 };
 
-export const JEC_STUDENT_COUNCIL_MEMBERS: StudentCouncilMember[] = [
+export const JEC_STUDENT_COMMITTEE_MEMBERS: StudentCommitteeMember[] = [
   {
     id: 1,
     name: "AKSHAT TIWARI",

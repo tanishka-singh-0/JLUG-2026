@@ -1,13 +1,13 @@
 "use client";
 
 import {
-  StudentCouncilMember,
-  JEC_STUDENT_COUNCIL_CONFIG,
-} from "@/data/jecStudentCouncil";
+  StudentCommitteeMember,
+  JEC_STUDENT_COMMITTEE_CONFIG,
+} from "@/data/jecStudentCommittee";
 import JecScCard from "./JecScCard";
 
 interface JecScRosterProps {
-  initialMembers: StudentCouncilMember[];
+  initialMembers: StudentCommitteeMember[];
 }
 
 export default function JecScRoster({ initialMembers }: JecScRosterProps) {
@@ -20,7 +20,7 @@ export default function JecScRoster({ initialMembers }: JecScRosterProps) {
           <div className="flex items-center gap-2">
             <span className="text-jlug-accent font-bold">JLUG // CO-OP</span>
             <span className="text-jlug-gray-3">/</span>
-            <span>{JEC_STUDENT_COUNCIL_CONFIG.institution}</span>
+            <span>{JEC_STUDENT_COMMITTEE_CONFIG.institution}</span>
           </div>
           <div>
             <span className="border border-jlug-line bg-jlug-black px-2.5 py-0.5 text-jlug-accent font-semibold">
@@ -31,7 +31,7 @@ export default function JecScRoster({ initialMembers }: JecScRosterProps) {
 
         {/* Title */}
         <h1 className="font-display text-4xl font-bold tracking-tight text-jlug-white sm:text-6xl lg:text-7xl uppercase animate-float-in-2">
-          {JEC_STUDENT_COUNCIL_CONFIG.title}
+          {JEC_STUDENT_COMMITTEE_CONFIG.title}
         </h1>
       </header>
 

@@ -2,10 +2,10 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import { StudentCouncilMember } from "@/data/jecStudentCouncil";
+import { StudentCommitteeMember } from "@/data/jecStudentCommittee";
 
 interface JecScModalProps {
-  member: StudentCouncilMember | null;
+  member: StudentCommitteeMember | null;
   onClose: () => void;
 }
 
@@ -56,7 +56,7 @@ export default function JecScModal({ member, onClose }: JecScModalProps) {
           <div className="flex items-center justify-between border-b border-jlug-line pb-3 mb-6 font-mono text-xs uppercase tracking-widest text-jlug-gray-1">
             <div className="flex items-center gap-2">
               <span className="h-2 w-2 bg-jlug-accent animate-ping" />
-              <span>JEC STUDENT COUNCIL // 026_{String(member.id).padStart(2, "0")}</span>
+              <span>JLUG JEC STUDENT COMMITTEE // 026_{String(member.id).padStart(2, "0")}</span>
             </div>
             <button
               type="button"
@@ -79,11 +79,10 @@ export default function JecScModal({ member, onClose }: JecScModalProps) {
                     fill
                     unoptimized
                     onError={() => setImageError(true)}
-                    className="object-cover"
+                    className="object-contain"
                     style={{
-                      objectFit: "cover",
-                      objectPosition: member.objectPosition || "center 20%",
-                      transform: `scale(${member.imageScale || 1})`,
+                      objectFit: "contain",
+                      objectPosition: "center",
                     }}
                   />
                 ) : (

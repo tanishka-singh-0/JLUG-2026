@@ -2,11 +2,11 @@
 
 import { useState } from "react";
 import Image from "next/image";
-import { StudentCouncilMember } from "@/data/jecStudentCouncil";
+import { StudentCommitteeMember } from "@/data/jecStudentCommittee";
 
 interface JecScCardProps {
-  member: StudentCouncilMember;
-  onSelect?: (member: StudentCouncilMember) => void;
+  member: StudentCommitteeMember;
+  onSelect?: (member: StudentCommitteeMember) => void;
 }
 
 export default function JecScCard({ member, onSelect }: JecScCardProps) {
@@ -47,11 +47,10 @@ export default function JecScCard({ member, onSelect }: JecScCardProps) {
                 fill
                 unoptimized
                 onError={() => setImageError(true)}
-                className="object-cover transition-all duration-500 ease-out"
+                className="object-contain transition-all duration-500 ease-out"
                 style={{
-                  objectFit: "cover",
-                  objectPosition: member.objectPosition || "center 20%",
-                  transform: `scale(${member.imageScale || 1})`,
+                  objectFit: "contain",
+                  objectPosition: "center",
                 }}
               />
             ) : (

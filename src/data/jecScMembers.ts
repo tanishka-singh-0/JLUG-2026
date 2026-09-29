@@ -1,6 +1,6 @@
 /**
  * ============================================================================
- * JEC STUDENT COUNCIL (JEC SC) — MEMBER DIRECTORY VARIABLE CONFIG
+ * JEC STUDENT COMMITTEE (JEC SC) — MEMBER DIRECTORY VARIABLE CONFIG
  * ============================================================================
  * 
  * HOW TO UPDATE MEMBERS:
@@ -14,7 +14,7 @@
 
 export type JecScWing =
   | "All"
-  | "Executive Council"
+  | "Executive Committee"
   | "Technical Wing"
   | "Cultural Wing"
   | "Sports & Welfare"
@@ -38,7 +38,7 @@ export interface JecScMember {
   };
 }
 
-export const JEC_SC_COUNCIL_CONFIG = {
+export const JEC_SC_COMMITTEE_CONFIG = {
   title: "JEC STUDENT COMMITTEE",
   shortTitle: "JEC SC",
   tagline: "WHERE STUDENT VOICE MEETS LEADERSHIP",
@@ -56,7 +56,7 @@ export const JEC_SC_COUNCIL_CONFIG = {
 
 export const JEC_SC_CATEGORIES: JecScWing[] = [
   "All",
-  "Executive Council",
+  "Executive Committee",
   "Technical Wing",
   "Cultural Wing",
   "Sports & Welfare",
@@ -68,11 +68,11 @@ export const JEC_SC_MEMBERS: JecScMember[] = [
     id: "sc-01",
     name: "AKSHAT TIWARI",
     role: "President",
-    wing: "Executive Council",
+    wing: "Executive Committee",
     branchYear: "4th Year · Computer Science & Engineering",
     photo: "/assets/presidents/akshat_tiwari.jpeg",
     bio: "Guiding the student body towards unified growth, bridging the gap between student aspirations and institute leadership.",
-    badge: "HEAD OF COUNCIL",
+    badge: "HEAD OF COMMITTEE",
     email: "president.sc@jecjabalpur.ac.in",
     socials: {
       linkedin: "https://linkedin.com",
@@ -83,10 +83,10 @@ export const JEC_SC_MEMBERS: JecScMember[] = [
     id: "sc-02",
     name: "CHITRANSH TIWARI",
     role: "Vice President",
-    wing: "Executive Council",
+    wing: "Executive Committee",
     branchYear: "4th Year · Information Technology",
     photo: "/alumni/2026-27, heads/chitransh.jpeg",
-    bio: "Overseeing council governance, inter-departmental synergies, and strategic student initiatives across all faculties.",
+    bio: "Overseeing committee governance, inter-departmental synergies, and strategic student initiatives across all faculties.",
     badge: "EXECUTIVE",
     email: "vp.sc@jecjabalpur.ac.in",
     socials: {
@@ -97,10 +97,10 @@ export const JEC_SC_MEMBERS: JecScMember[] = [
     id: "sc-03",
     name: "PEEHU PAHADE",
     role: "General Secretary",
-    wing: "Executive Council",
+    wing: "Executive Committee",
     branchYear: "3rd Year · Electronics & Telecommunication",
     photo: "/alumni/2026-27, heads/peehu.jpeg",
-    bio: "Orchestrating general council operations, institutional liaisoning, and ensuring every student voice translates into action.",
+    bio: "Orchestrating general committee operations, institutional liaisoning, and ensuring every student voice translates into action.",
     badge: "CORE LEAD",
     email: "gensec.sc@jecjabalpur.ac.in",
     socials: {
@@ -112,10 +112,10 @@ export const JEC_SC_MEMBERS: JecScMember[] = [
     id: "sc-04",
     name: "SHIV OJHA",
     role: "Executive President",
-    wing: "Executive Council",
+    wing: "Executive Committee",
     branchYear: "4th Year · Mechanical Engineering",
     photo: "/alumni/2026-27, heads/shiv.jpeg",
-    bio: "Spearheading execution policy, campus infrastructure dialogs, and high-impact council summits.",
+    bio: "Spearheading execution policy, campus infrastructure dialogs, and high-impact committee summits.",
     badge: "EXECUTIVE",
     email: "exec.sc@jecjabalpur.ac.in",
     socials: {
@@ -126,10 +126,10 @@ export const JEC_SC_MEMBERS: JecScMember[] = [
     id: "sc-05",
     name: "RITIKA",
     role: "Executive Secretary",
-    wing: "Executive Council",
+    wing: "Executive Committee",
     branchYear: "3rd Year · Electrical Engineering",
     photo: "/alumni/2026-27, heads/ritika.jpeg",
-    bio: "Managing council documentation, administrative coordination, and inter-club alignments for all university events.",
+    bio: "Managing committee documentation, administrative coordination, and inter-club alignments for all university events.",
     badge: "SECRETARIAT",
     email: "ritika.sc@jecjabalpur.ac.in",
     socials: {
@@ -227,7 +227,7 @@ export const JEC_SC_MEMBERS: JecScMember[] = [
     wing: "Media & PR",
     branchYear: "3rd Year · Electronics & Telecommunication",
     photo: "/alumni/2026-27, heads/saurabh.jpeg",
-    bio: "Crafting council branding, media outreach, press releases, and digital storytelling across all channels.",
+    bio: "Crafting committee branding, media outreach, press releases, and digital storytelling across all channels.",
     badge: "MEDIA LEAD",
     email: "media.sc@jecjabalpur.ac.in",
     socials: {
@@ -252,7 +252,7 @@ export const JEC_SC_MEMBERS: JecScMember[] = [
     id: "sc-14",
     name: "PUSHPENDRA",
     role: "Logistics & Operations Lead",
-    wing: "Executive Council",
+    wing: "Executive Committee",
     branchYear: "3rd Year · Mechanical Engineering",
     photo: "/alumni/2026-27, heads/pushpendra.jpeg",
     bio: "Ensuring flawless operational execution, ground management, and vendor logistics for campus-wide events.",
@@ -278,7 +278,7 @@ export const JEC_SC_MEMBERS: JecScMember[] = [
     id: "sc-16",
     name: "VINAY",
     role: "Joint Secretary",
-    wing: "Executive Council",
+    wing: "Executive Committee",
     branchYear: "3rd Year · Electrical Engineering",
     photo: "/alumni/2026-27, heads/vinay.jpeg",
     bio: "Supporting executive oversight, committee meetings, and inter-society collaborations across JEC.",

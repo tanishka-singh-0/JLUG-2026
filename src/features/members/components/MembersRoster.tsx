@@ -15,7 +15,7 @@ export default function MembersRoster({ initialMembers }: MembersRosterProps) {
         <div className="flex items-center justify-between font-mono text-xs uppercase tracking-widest text-jlug-gray-1 mb-4 animate-float-in-1">
           <span>JLUG // ROSTER</span>
           <span className="site-header__badge bg-jlug-black text-jlug-white border border-jlug-line px-3 py-1 rounded-full font-semibold">
-            300+ ACTIVE MEMBERS
+            200+ ACTIVE MEMBERS
           </span>
         </div>
 

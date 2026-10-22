@@ -1,30 +1,33 @@
-'use client';
+"use client";
 
-import SplitFlapText from "@/components/SplitFlapText";
+import RecruitmentForm from "@/features/recruitment/components/RecruitmentForm";
+import Footer from "@/components/Footer";
 
 export default function JoinClient() {
   return (
-    <div className="relative z-10 mx-auto flex min-h-[calc(100vh-3.5rem)] w-full max-w-[1440px] items-center justify-center border-jlug-line bg-jlug-black/80 backdrop-blur-sm md:border-l md:border-r">
-      <SplitFlapText
-        words={['RECRUITMENT', 'COMING SOON']}
-        flipDuration={0.12}
-        stagger={0.06}
-        cycleDelay={2400}
-        charset="alphanumeric"
-        flipsPerChar={8}
-        tileColor="#111827"
-        textColor="#f8fafc"
-        tileRadius={8}
-        gap={6}
-        fontSize={105}
-        loop
-        padTo={12}
-        highlights={[
-          [0, 4, 9],       // RECRUITMENT: R(0), U(4), N(9)
-          [0, 1, 3, 8, 9], // COMING SOON: C(0), O(1), I(3), O(8), O(9)
-        ]}
-        highlightColor="#B7F34A"
-      />
+    <div className="relative z-10 mx-auto flex min-h-[calc(100vh-3.5rem)] w-full max-w-[1440px] flex-col border-jlug-line bg-jlug-black/80 backdrop-blur-sm md:border-l md:border-r">
+      {/* Top Breadcrumb Header Bar */}
+      <div className="flex items-center justify-between border-b border-jlug-line px-6 py-4 font-mono text-[0.65rem] uppercase tracking-widest text-jlug-gray-2 md:px-12">
+        <div className="flex items-center gap-2">
+          <span>/ROOT /JOIN</span>
+          <span className="text-jlug-gray-3">//</span>
+          <span className="text-jlug-white">CADRE_INTAKE</span>
+        </div>
+        <div className="flex items-center gap-2 text-jlug-accent">
+          <span className="inline-block h-1.5 w-1.5 rounded-full bg-jlug-accent" />
+          <span>RECRUITMENT_OPEN</span>
+        </div>
+      </div>
+
+      {/* Main interactive Recruitment Application UI */}
+      <main className="flex-1">
+        <RecruitmentForm />
+      </main>
+
+      {/* Footer */}
+      <div className="border-t border-jlug-line">
+        <Footer />
+      </div>
     </div>
   );
 }
